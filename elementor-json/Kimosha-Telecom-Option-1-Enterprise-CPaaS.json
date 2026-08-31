@@ -1,0 +1,1535 @@
+{
+  "version": "0.4",
+  "title": "Kimosha-Telecom-Option-1-Enterprise-CPaaS",
+  "type": "page",
+  "content": [
+    {
+      "id": "28507a34",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "full",
+        "background_background": "classic",
+        "background_color": "#FFF3EB",
+        "padding": {
+          "unit": "px",
+          "top": "0",
+          "right": "24",
+          "bottom": "0",
+          "left": "24",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "c3538bfe",
+          "elType": "container",
+          "isInner": true,
+          "settings": {
+            "content_width": "boxed",
+            "boxed_width": {
+              "unit": "px",
+              "size": 1200
+            },
+            "flex_direction": "column",
+            "gap": {
+              "unit": "px",
+              "size": 24
+            }
+          },
+          "elements": [
+            {
+              "id": "b93da8d7",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "html",
+              "settings": {
+                "html": "<div style='background:#FFF3EB; border-bottom:1px solid #F9C9A6; padding:8px 24px; font-size:13px; font-weight:600; color:#A8420E; display:flex; justify-content:center; align-items:center; gap:10px; text-align:center;'>\n      <span style='background:#F26522; color:#FFF; font-size:11px; font-family:monospace; font-weight:700; padding:2px 8px; border-radius:999px;'>NEW</span>\n      <span>Direct SMPP 3.4 & Tier-1 SS7 Interconnects now live in 200+ countries with sub-second delivery.</span>\n    </div>"
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fcda6379",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "full",
+        "background_background": "classic",
+        "background_color": "#FFFFFF",
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "24",
+          "bottom": "60",
+          "left": "24",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "c23aa399",
+          "elType": "container",
+          "isInner": true,
+          "settings": {
+            "content_width": "boxed",
+            "boxed_width": {
+              "unit": "px",
+              "size": 1200
+            },
+            "flex_direction": "column",
+            "gap": {
+              "unit": "px",
+              "size": 24
+            }
+          },
+          "elements": [
+            {
+              "id": "0bfc24a0",
+              "elType": "container",
+              "isInner": true,
+              "settings": {
+                "flex_direction": "row",
+                "justify_content": "space-between",
+                "align_items": "center",
+                "flex_wrap": "wrap",
+                "gap": {
+                  "unit": "px",
+                  "size": 36
+                }
+              },
+              "elements": [
+                {
+                  "id": "2b87aa84",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "width": {
+                      "unit": "%",
+                      "size": 55
+                    },
+                    "flex_direction": "column",
+                    "gap": {
+                      "unit": "px",
+                      "size": 18
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "56819a6c",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "html",
+                      "settings": {
+                        "html": "<span style='background:#FFF3EB; color:#A8420E; font-family:monospace; font-size:12px; font-weight:700; padding:4px 12px; border-radius:999px; border:1px solid #F9C9A6;'>ENTERPRISE TELECOM INFRASTRUCTURE</span>"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "7f606c86",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "Wholesale SMS & Voice<br><span style='color:#F26522;'>Built for Scale.</span>",
+                        "header_size": "h1",
+                        "align": "left",
+                        "title_color": "#1A1A2E",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Plus Jakarta Sans",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 48
+                        },
+                        "typography_font_weight": "800",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.2
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "d3aa423d",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p style='color:#5A6370; font-size:17px; line-height:1.65;'>Kimosha Telecom delivers carrier-grade wholesale SMS termination, crystal-clear voice routes, and developer-first APIs across 200+ countries with direct operator interconnects and 99.99% SLA.</p>"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "81a81b5f",
+                      "elType": "container",
+                      "isInner": true,
+                      "settings": {
+                        "flex_direction": "row",
+                        "gap": {
+                          "unit": "px",
+                          "size": 14
+                        }
+                      },
+                      "elements": [
+                        {
+                          "id": "fd71e952",
+                          "elType": "widget",
+                          "isInner": false,
+                          "widgetType": "button",
+                          "settings": {
+                            "text": "Get Rate Card",
+                            "link": {
+                              "url": "#contact",
+                              "is_external": false,
+                              "nofollow": false
+                            },
+                            "background_color": "#F26522",
+                            "button_text_color": "#FFFFFF",
+                            "border_radius": {
+                              "unit": "px",
+                              "top": "999",
+                              "right": "999",
+                              "bottom": "999",
+                              "left": "999",
+                              "isLinked": true
+                            },
+                            "text_padding": {
+                              "unit": "px",
+                              "top": "13",
+                              "right": "28",
+                              "bottom": "13",
+                              "left": "28",
+                              "isLinked": false
+                            }
+                          },
+                          "elements": []
+                        },
+                        {
+                          "id": "674de9aa",
+                          "elType": "widget",
+                          "isInner": false,
+                          "widgetType": "button",
+                          "settings": {
+                            "text": "Explore Services",
+                            "link": {
+                              "url": "#services",
+                              "is_external": false,
+                              "nofollow": false
+                            },
+                            "background_color": "transparent",
+                            "button_text_color": "#1A1A2E",
+                            "border_radius": {
+                              "unit": "px",
+                              "top": "999",
+                              "right": "999",
+                              "bottom": "999",
+                              "left": "999",
+                              "isLinked": true
+                            },
+                            "text_padding": {
+                              "unit": "px",
+                              "top": "13",
+                              "right": "28",
+                              "bottom": "13",
+                              "left": "28",
+                              "isLinked": false
+                            },
+                            "border_border": "solid",
+                            "border_width": {
+                              "unit": "px",
+                              "top": "1",
+                              "right": "1",
+                              "bottom": "1",
+                              "left": "1",
+                              "isLinked": true
+                            },
+                            "border_color": "#E5E7EB"
+                          },
+                          "elements": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "83b1a08f",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "width": {
+                      "unit": "%",
+                      "size": 42
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "e297c5fa",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "html",
+                      "settings": {
+                        "html": "<div style='background:linear-gradient(160deg,#FFFFFF 0%,#FFF8F4 100%); border-radius:18px; border:1px solid #E5E7EB; padding:24px; box-shadow:0 16px 40px rgba(242,101,34,0.08); position:relative; overflow:hidden;'>\n                  <div style='display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;'>\n                    <span style='background:#FFF3EB; color:#A8420E; font-family:monospace; font-size:11px; font-weight:700; padding:3px 10px; border-radius:999px; border:1px solid #F9C9A6;'>LIVE CARRIER NETWORK</span>\n                    <span style='color:#10B981; font-family:monospace; font-size:12px; font-weight:700;'>\u25cf 100% OPERATIONAL</span>\n                  </div>\n                  <div style='background:#FFFFFF; border:1px solid #E5E7EB; border-radius:12px; padding:20px; text-align:center; margin-bottom:14px;'>\n                    <div style='font-size:32px; font-weight:800; color:#F26522;'>12,556 TPS</div>\n                    <div style='font-size:12px; color:#5A6370; font-weight:600;'>Real-Time Messages Routed / Sec</div>\n                  </div>\n                  <div style='display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:12.5px;'>\n                    <div style='background:#FFFFFF; border:1px solid #E5E7EB; border-radius:8px; padding:10px; text-align:center;'>\n                      <strong style='color:#1A1A2E;'>200+</strong><br><span style='color:#5A6370; font-size:11px;'>Direct Countries</span>\n                    </div>\n                    <div style='background:#FFFFFF; border:1px solid #E5E7EB; border-radius:8px; padding:10px; text-align:center;'>\n                      <strong style='color:#F26522;'>99.99%</strong><br><span style='color:#5A6370; font-size:11px;'>Network SLA</span>\n                    </div>\n                  </div>\n                </div>"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ec5dd993",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "full",
+        "background_background": "classic",
+        "background_color": "#F8F9FB",
+        "padding": {
+          "unit": "px",
+          "top": "30",
+          "right": "24",
+          "bottom": "30",
+          "left": "24",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "0a4d5530",
+          "elType": "container",
+          "isInner": true,
+          "settings": {
+            "content_width": "boxed",
+            "boxed_width": {
+              "unit": "px",
+              "size": 1200
+            },
+            "flex_direction": "column",
+            "gap": {
+              "unit": "px",
+              "size": 24
+            }
+          },
+          "elements": [
+            {
+              "id": "5a6805b1",
+              "elType": "container",
+              "isInner": true,
+              "settings": {
+                "flex_direction": "row",
+                "justify_content": "space-between",
+                "flex_wrap": "wrap",
+                "gap": {
+                  "unit": "px",
+                  "size": 16
+                }
+              },
+              "elements": [
+                {
+                  "id": "b3758478",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "background_background": "classic",
+                    "background_color": "#FFFFFF",
+                    "border_border": "solid",
+                    "border_width": {
+                      "unit": "px",
+                      "top": "1",
+                      "right": "1",
+                      "bottom": "1",
+                      "left": "1",
+                      "isLinked": true
+                    },
+                    "border_color": "#E5E7EB",
+                    "border_radius": {
+                      "unit": "px",
+                      "top": "14",
+                      "right": "14",
+                      "bottom": "14",
+                      "left": "14",
+                      "isLinked": true
+                    },
+                    "padding": {
+                      "unit": "px",
+                      "top": "24",
+                      "right": "20",
+                      "bottom": "24",
+                      "left": "20",
+                      "isLinked": false
+                    },
+                    "width": {
+                      "unit": "%",
+                      "size": 23
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "21d4dcb6",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "200+",
+                        "align": "center",
+                        "title_color": "#F26522",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 36
+                        },
+                        "typography_font_weight": "800"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "e13c405b",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p style='text-align:center; color:#5A6370; font-size:14px; font-weight:600;'>Connected Countries</p>"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "3c5d0d19",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "background_background": "classic",
+                    "background_color": "#FFFFFF",
+                    "border_border": "solid",
+                    "border_width": {
+                      "unit": "px",
+                      "top": "1",
+                      "right": "1",
+                      "bottom": "1",
+                      "left": "1",
+                      "isLinked": true
+                    },
+                    "border_color": "#E5E7EB",
+                    "border_radius": {
+                      "unit": "px",
+                      "top": "14",
+                      "right": "14",
+                      "bottom": "14",
+                      "left": "14",
+                      "isLinked": true
+                    },
+                    "padding": {
+                      "unit": "px",
+                      "top": "24",
+                      "right": "20",
+                      "bottom": "24",
+                      "left": "20",
+                      "isLinked": false
+                    },
+                    "width": {
+                      "unit": "%",
+                      "size": 23
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "7f40e9b3",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "99.99%",
+                        "align": "center",
+                        "title_color": "#F26522",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 36
+                        },
+                        "typography_font_weight": "800"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "7b81af15",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p style='text-align:center; color:#5A6370; font-size:14px; font-weight:600;'>Network Uptime SLA</p>"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "b0f9c6ec",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "background_background": "classic",
+                    "background_color": "#FFFFFF",
+                    "border_border": "solid",
+                    "border_width": {
+                      "unit": "px",
+                      "top": "1",
+                      "right": "1",
+                      "bottom": "1",
+                      "left": "1",
+                      "isLinked": true
+                    },
+                    "border_color": "#E5E7EB",
+                    "border_radius": {
+                      "unit": "px",
+                      "top": "14",
+                      "right": "14",
+                      "bottom": "14",
+                      "left": "14",
+                      "isLinked": true
+                    },
+                    "padding": {
+                      "unit": "px",
+                      "top": "24",
+                      "right": "20",
+                      "bottom": "24",
+                      "left": "20",
+                      "isLinked": false
+                    },
+                    "width": {
+                      "unit": "%",
+                      "size": 23
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "22a1d0b4",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "12,500+",
+                        "align": "center",
+                        "title_color": "#F26522",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 36
+                        },
+                        "typography_font_weight": "800"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "ba537aa0",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p style='text-align:center; color:#5A6370; font-size:14px; font-weight:600;'>Peak TPS Throughput</p>"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "22c1a259",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "background_background": "classic",
+                    "background_color": "#FFFFFF",
+                    "border_border": "solid",
+                    "border_width": {
+                      "unit": "px",
+                      "top": "1",
+                      "right": "1",
+                      "bottom": "1",
+                      "left": "1",
+                      "isLinked": true
+                    },
+                    "border_color": "#E5E7EB",
+                    "border_radius": {
+                      "unit": "px",
+                      "top": "14",
+                      "right": "14",
+                      "bottom": "14",
+                      "left": "14",
+                      "isLinked": true
+                    },
+                    "padding": {
+                      "unit": "px",
+                      "top": "24",
+                      "right": "20",
+                      "bottom": "24",
+                      "left": "20",
+                      "isLinked": false
+                    },
+                    "width": {
+                      "unit": "%",
+                      "size": 23
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "ed07e876",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "24/7/365",
+                        "align": "center",
+                        "title_color": "#F26522",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 36
+                        },
+                        "typography_font_weight": "800"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "a3f32865",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p style='text-align:center; color:#5A6370; font-size:14px; font-weight:600;'>Dedicated NOC Support</p>"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4923ebd9",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "full",
+        "background_background": "classic",
+        "background_color": "#FFFFFF",
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "24",
+          "bottom": "80",
+          "left": "24",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "65f9a7f8",
+          "elType": "container",
+          "isInner": true,
+          "settings": {
+            "content_width": "boxed",
+            "boxed_width": {
+              "unit": "px",
+              "size": 1200
+            },
+            "flex_direction": "column",
+            "gap": {
+              "unit": "px",
+              "size": 24
+            }
+          },
+          "elements": [
+            {
+              "id": "6f38e14a",
+              "elType": "container",
+              "isInner": true,
+              "settings": {},
+              "elements": [
+                {
+                  "id": "50b9c52f",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "html",
+                  "settings": {
+                    "html": "<div style='text-align:center;'><span style='background:#FFF3EB; color:#A8420E; font-family:monospace; font-size:12px; font-weight:700; padding:4px 12px; border-radius:999px; border:1px solid #F9C9A6;'>CORE TELECOM SERVICES</span></div>"
+                  },
+                  "elements": []
+                },
+                {
+                  "id": "04285202",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "heading",
+                  "settings": {
+                    "title": "High-Capacity Telecom Infrastructure",
+                    "header_size": "h2",
+                    "align": "center",
+                    "title_color": "#1A1A2E",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Plus Jakarta Sans",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 36
+                    },
+                    "typography_font_weight": "800",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.2
+                    }
+                  },
+                  "elements": []
+                },
+                {
+                  "id": "2c4547ab",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "text-editor",
+                  "settings": {
+                    "editor": "<p style='color:#5A6370; font-size:16px; line-height:1.65;'><div style='text-align:center;'>Engineered for telecommunications carriers and aggregators demanding zero-downtime reliability.</div></p>"
+                  },
+                  "elements": []
+                }
+              ]
+            },
+            {
+              "id": "b1489fb2",
+              "elType": "container",
+              "isInner": true,
+              "settings": {
+                "flex_direction": "row",
+                "flex_wrap": "wrap",
+                "justify_content": "space-between",
+                "gap": {
+                  "unit": "px",
+                  "size": 24
+                }
+              },
+              "elements": [
+                {
+                  "id": "a95c04e7",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "background_background": "classic",
+                    "background_color": "#FFFFFF",
+                    "border_border": "solid",
+                    "border_width": {
+                      "unit": "px",
+                      "top": "1",
+                      "right": "1",
+                      "bottom": "1",
+                      "left": "4",
+                      "isLinked": false
+                    },
+                    "border_color": "#E5E7EB",
+                    "border_left_color": "#F26522",
+                    "border_radius": {
+                      "unit": "px",
+                      "top": "14",
+                      "right": "14",
+                      "bottom": "14",
+                      "left": "14",
+                      "isLinked": true
+                    },
+                    "padding": {
+                      "unit": "px",
+                      "top": "32",
+                      "right": "28",
+                      "bottom": "32",
+                      "left": "28",
+                      "isLinked": false
+                    },
+                    "width": {
+                      "unit": "%",
+                      "size": 48
+                    },
+                    "flex_direction": "column",
+                    "gap": {
+                      "unit": "px",
+                      "size": 12
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "c07998d1",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "html",
+                      "settings": {
+                        "html": "<span style='font-family:monospace; font-size:12px; font-weight:700; color:#F26522; background:#FFF3EB; padding:3px 10px; border-radius:999px;'>01 / A2P CORE</span>"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "eef3c9cb",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "Wholesale SMS Termination",
+                        "header_size": "h3",
+                        "align": "left",
+                        "title_color": "#1A1A2E",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Plus Jakarta Sans",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 22
+                        },
+                        "typography_font_weight": "800",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.2
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "5196c09d",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p style='color:#5A6370; font-size:14.5px; line-height:1.65;'>Direct operator routes across 200+ countries with dynamic Least-Cost Routing (LCR), CLI preservation, and sub-second DLR reporting.</p>"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "efaea53f",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "background_background": "classic",
+                    "background_color": "#FFFFFF",
+                    "border_border": "solid",
+                    "border_width": {
+                      "unit": "px",
+                      "top": "1",
+                      "right": "1",
+                      "bottom": "1",
+                      "left": "4",
+                      "isLinked": false
+                    },
+                    "border_color": "#E5E7EB",
+                    "border_left_color": "#F26522",
+                    "border_radius": {
+                      "unit": "px",
+                      "top": "14",
+                      "right": "14",
+                      "bottom": "14",
+                      "left": "14",
+                      "isLinked": true
+                    },
+                    "padding": {
+                      "unit": "px",
+                      "top": "32",
+                      "right": "28",
+                      "bottom": "32",
+                      "left": "28",
+                      "isLinked": false
+                    },
+                    "width": {
+                      "unit": "%",
+                      "size": 48
+                    },
+                    "flex_direction": "column",
+                    "gap": {
+                      "unit": "px",
+                      "size": 12
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "af6a3a4a",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "html",
+                      "settings": {
+                        "html": "<span style='font-family:monospace; font-size:12px; font-weight:700; color:#F26522; background:#FFF3EB; padding:3px 10px; border-radius:999px;'>02 / VOICE SIP</span>"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "30aebccd",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "Voice Termination (VoIP & SIP)",
+                        "header_size": "h3",
+                        "align": "left",
+                        "title_color": "#1A1A2E",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Plus Jakarta Sans",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 22
+                        },
+                        "typography_font_weight": "800",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.2
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "a58edbc0",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p style='color:#5A6370; font-size:14.5px; line-height:1.65;'>Premium wholesale voice minutes with guaranteed CLI transparency, ultra-low Post-Dial Delay (PDD < 1.5s), and global SBCs.</p>"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "03e58e81",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "background_background": "classic",
+                    "background_color": "#FFFFFF",
+                    "border_border": "solid",
+                    "border_width": {
+                      "unit": "px",
+                      "top": "1",
+                      "right": "1",
+                      "bottom": "1",
+                      "left": "4",
+                      "isLinked": false
+                    },
+                    "border_color": "#E5E7EB",
+                    "border_left_color": "#F26522",
+                    "border_radius": {
+                      "unit": "px",
+                      "top": "14",
+                      "right": "14",
+                      "bottom": "14",
+                      "left": "14",
+                      "isLinked": true
+                    },
+                    "padding": {
+                      "unit": "px",
+                      "top": "32",
+                      "right": "28",
+                      "bottom": "32",
+                      "left": "28",
+                      "isLinked": false
+                    },
+                    "width": {
+                      "unit": "%",
+                      "size": 48
+                    },
+                    "flex_direction": "column",
+                    "gap": {
+                      "unit": "px",
+                      "size": 12
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "85d69550",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "html",
+                      "settings": {
+                        "html": "<span style='font-family:monospace; font-size:12px; font-weight:700; color:#F26522; background:#FFF3EB; padding:3px 10px; border-radius:999px;'>03 / TRANSACTIONAL</span>"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "e4372552",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "A2P Enterprise Messaging & OTP",
+                        "header_size": "h3",
+                        "align": "left",
+                        "title_color": "#1A1A2E",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Plus Jakarta Sans",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 22
+                        },
+                        "typography_font_weight": "800",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.2
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "e463b88c",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p style='color:#5A6370; font-size:14.5px; line-height:1.65;'>Mission-critical verification messaging engineered for banking OTPs, 2FA codes, security alerts, and transactional notifications.</p>"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "5b6181dd",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "background_background": "classic",
+                    "background_color": "#FFFFFF",
+                    "border_border": "solid",
+                    "border_width": {
+                      "unit": "px",
+                      "top": "1",
+                      "right": "1",
+                      "bottom": "1",
+                      "left": "4",
+                      "isLinked": false
+                    },
+                    "border_color": "#E5E7EB",
+                    "border_left_color": "#F26522",
+                    "border_radius": {
+                      "unit": "px",
+                      "top": "14",
+                      "right": "14",
+                      "bottom": "14",
+                      "left": "14",
+                      "isLinked": true
+                    },
+                    "padding": {
+                      "unit": "px",
+                      "top": "32",
+                      "right": "28",
+                      "bottom": "32",
+                      "left": "28",
+                      "isLinked": false
+                    },
+                    "width": {
+                      "unit": "%",
+                      "size": 48
+                    },
+                    "flex_direction": "column",
+                    "gap": {
+                      "unit": "px",
+                      "size": 12
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "5aa47d54",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "html",
+                      "settings": {
+                        "html": "<span style='font-family:monospace; font-size:12px; font-weight:700; color:#F26522; background:#FFF3EB; padding:3px 10px; border-radius:999px;'>04 / DEVELOPER API</span>"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "a74f0de6",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "SMPP 3.4 & RESTful API Platform",
+                        "header_size": "h3",
+                        "align": "left",
+                        "title_color": "#1A1A2E",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Plus Jakarta Sans",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 22
+                        },
+                        "typography_font_weight": "800",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.2
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "7735991b",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p style='color:#5A6370; font-size:14.5px; line-height:1.65;'>Enterprise-grade SMPP binds supporting Transceiver/Receiver modes alongside modern REST APIs and real-time webhooks.</p>"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e88d9b22",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "full",
+        "background_background": "classic",
+        "background_color": "#F8F9FB",
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "24",
+          "bottom": "80",
+          "left": "24",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "5582c289",
+          "elType": "container",
+          "isInner": true,
+          "settings": {
+            "content_width": "boxed",
+            "boxed_width": {
+              "unit": "px",
+              "size": 1200
+            },
+            "flex_direction": "column",
+            "gap": {
+              "unit": "px",
+              "size": 24
+            }
+          },
+          "elements": [
+            {
+              "id": "bffb3592",
+              "elType": "container",
+              "isInner": true,
+              "settings": {},
+              "elements": [
+                {
+                  "id": "8fd62575",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "html",
+                  "settings": {
+                    "html": "<div style='text-align:center;'><span style='background:#FFF3EB; color:#A8420E; font-family:monospace; font-size:12px; font-weight:700; padding:4px 12px; border-radius:999px; border:1px solid #F9C9A6;'>COMPETITIVE SUPERIORITY</span></div>"
+                  },
+                  "elements": []
+                },
+                {
+                  "id": "a59afd84",
+                  "elType": "widget",
+                  "isInner": false,
+                  "widgetType": "heading",
+                  "settings": {
+                    "title": "Kimosha Direct vs Standard Aggregators",
+                    "header_size": "h2",
+                    "align": "center",
+                    "title_color": "#1A1A2E",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Plus Jakarta Sans",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 34
+                    },
+                    "typography_font_weight": "800",
+                    "typography_line_height": {
+                      "unit": "em",
+                      "size": 1.2
+                    }
+                  },
+                  "elements": []
+                }
+              ]
+            },
+            {
+              "id": "e0bad3ae",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "html",
+              "settings": {
+                "html": "<div style='background:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(26,26,46,0.04);'>\n      <table style='width:100%; border-collapse:collapse; text-align:left; font-size:14.5px;'>\n        <tr style='background:#F8F9FB;'>\n          <th style='padding:16px 20px; border-bottom:1px solid #E5E7EB;'>Feature Capability</th>\n          <th style='padding:16px 20px; border-bottom:1px solid #E5E7EB; background:#FFF3EB; color:#A8420E; border-left:2px solid #F26522; border-right:2px solid #F26522;'>Kimosha Telecom Direct</th>\n          <th style='padding:16px 20px; border-bottom:1px solid #E5E7EB;'>Standard Grey Aggregators</th>\n        </tr>\n        <tr><td style='padding:14px 20px; border-bottom:1px solid #E5E7EB;'><strong>Route Architecture</strong></td><td style='padding:14px 20px; border-bottom:1px solid #E5E7EB; background:#FFF3EB; font-weight:700; border-left:2px solid #F26522; border-right:2px solid #F26522;'>100% 1-Hop Direct MNO Interconnects</td><td style='padding:14px 20px; border-bottom:1px solid #E5E7EB;'>Multi-hop Grey / Resold Paths</td></tr>\n        <tr><td style='padding:14px 20px; border-bottom:1px solid #E5E7EB;'><strong>Average Delivery Speed</strong></td><td style='padding:14px 20px; border-bottom:1px solid #E5E7EB; background:#FFF3EB; font-weight:700; border-left:2px solid #F26522; border-right:2px solid #F26522;'>&lt; 1.2 seconds globally</td><td style='padding:14px 20px; border-bottom:1px solid #E5E7EB;'>8 - 45 seconds (delayed queues)</td></tr>\n        <tr><td style='padding:14px 20px; border-bottom:1px solid #E5E7EB;'><strong>CLI & Sender ID Preservation</strong></td><td style='padding:14px 20px; border-bottom:1px solid #E5E7EB; background:#FFF3EB; font-weight:700; border-left:2px solid #F26522; border-right:2px solid #F26522;'>Guaranteed True Pass-Through</td><td style='padding:14px 20px; border-bottom:1px solid #E5E7EB;'>Random / Overwritten Numbers</td></tr>\n        <tr><td style='padding:14px 20px;'><strong>24/7 NOC Support</strong></td><td style='padding:14px 20px; background:#FFF3EB; font-weight:700; border-left:2px solid #F26522; border-right:2px solid #F26522;'>Dedicated Telecom Engineers</td><td style='padding:14px 20px;'>Email ticket queue (office hours only)</td></tr>\n      </table>\n    </div>"
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a112f943",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "full",
+        "background_background": "classic",
+        "background_color": "#FFFFFF",
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "24",
+          "bottom": "80",
+          "left": "24",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "af2aa063",
+          "elType": "container",
+          "isInner": true,
+          "settings": {
+            "content_width": "boxed",
+            "boxed_width": {
+              "unit": "px",
+              "size": 1200
+            },
+            "flex_direction": "column",
+            "gap": {
+              "unit": "px",
+              "size": 24
+            }
+          },
+          "elements": [
+            {
+              "id": "eb9ab506",
+              "elType": "container",
+              "isInner": true,
+              "settings": {
+                "flex_direction": "row",
+                "justify_content": "space-between",
+                "align_items": "center",
+                "flex_wrap": "wrap"
+              },
+              "elements": [
+                {
+                  "id": "025d3fae",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "width": {
+                      "unit": "%",
+                      "size": 48
+                    },
+                    "flex_direction": "column",
+                    "gap": {
+                      "unit": "px",
+                      "size": 14
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "bf93fa0b",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "html",
+                      "settings": {
+                        "html": "<span style='background:#FFF3EB; color:#A8420E; font-family:monospace; font-size:12px; font-weight:700; padding:4px 12px; border-radius:999px;'>ABOUT KIMOSHA</span>"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "c25e51ff",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "Built for Global Connectivity & Trust",
+                        "header_size": "h2",
+                        "align": "left",
+                        "title_color": "#1A1A2E",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Plus Jakarta Sans",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 32
+                        },
+                        "typography_font_weight": "800",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.2
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "1ba1ac97",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p style='color:#5A6370; font-size:15.5px; line-height:1.65;'>Headquartered in Dubai with points of presence across Frankfurt, London, and Singapore, Kimosha Telecom bridges enterprises and operators with high-throughput routing solutions.</p>"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "e77d7301",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "html",
+                      "settings": {
+                        "html": "<div style='border-left:4px solid #F26522; padding-left:16px; font-style:italic; color:#1A1A2E; margin:16px 0; font-size:15.5px;'>&ldquo;Our mission is to eliminate friction in international telecommunications through carrier-grade SMS and voice connectivity backed by real SLAs.&rdquo;</div>"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "4b49fb7e",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "width": {
+                      "unit": "%",
+                      "size": 48
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "b3ac351f",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "html",
+                      "settings": {
+                        "html": "<div style='display:flex; flex-direction:column; gap:12px;'>\n                  <div style='background:#FFFFFF; border:1px solid #E5E7EB; border-radius:12px; padding:16px 20px;'>\n                    <h4 style='color:#1A1A2E; margin-bottom:4px; font-size:15px;'>\u2713 Carrier-Grade Reliability</h4>\n                    <p style='color:#5A6370; font-size:13.5px; margin:0;'>Active-Active geo-redundant clusters guarantee 99.99% uptime with sub-second failover.</p>\n                  </div>\n                  <div style='background:#FFFFFF; border:1px solid #E5E7EB; border-radius:12px; padding:16px 20px;'>\n                    <h4 style='color:#1A1A2E; margin-bottom:4px; font-size:15px;'>\u2713 Complete Route Transparency</h4>\n                    <p style='color:#5A6370; font-size:13.5px; margin:0;'>Real-time delivery receipts, CDR extracts, and zero false-answer supervision (FAS).</p>\n                  </div>\n                  <div style='background:#FFFFFF; border:1px solid #E5E7EB; border-radius:12px; padding:16px 20px;'>\n                    <h4 style='color:#1A1A2E; margin-bottom:4px; font-size:15px;'>\u2713 Dynamic Least Cost Routing</h4>\n                    <p style='color:#5A6370; font-size:13.5px; margin:0;'>AI-driven path selection optimizes message throughput and wholesale voice pricing.</p>\n                  </div>\n                </div>"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d40aecf6",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "full",
+        "background_background": "classic",
+        "background_color": "#F8F9FB",
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "24",
+          "bottom": "80",
+          "left": "24",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "474848f7",
+          "elType": "container",
+          "isInner": true,
+          "settings": {
+            "content_width": "boxed",
+            "boxed_width": {
+              "unit": "px",
+              "size": 1200
+            },
+            "flex_direction": "column",
+            "gap": {
+              "unit": "px",
+              "size": 24
+            }
+          },
+          "elements": [
+            {
+              "id": "34ed432b",
+              "elType": "container",
+              "isInner": true,
+              "settings": {
+                "flex_direction": "row",
+                "justify_content": "space-between",
+                "align_items": "center",
+                "flex_wrap": "wrap"
+              },
+              "elements": [
+                {
+                  "id": "0e241583",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "width": {
+                      "unit": "%",
+                      "size": 42
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "7f4b8d0d",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "heading",
+                      "settings": {
+                        "title": "Direct Carrier Inquiries",
+                        "header_size": "h2",
+                        "align": "left",
+                        "title_color": "#1A1A2E",
+                        "typography_typography": "custom",
+                        "typography_font_family": "Plus Jakarta Sans",
+                        "typography_font_size": {
+                          "unit": "px",
+                          "size": 24
+                        },
+                        "typography_font_weight": "800",
+                        "typography_line_height": {
+                          "unit": "em",
+                          "size": 1.2
+                        }
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "e67c5a71",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "text-editor",
+                      "settings": {
+                        "editor": "<p style='color:#5A6370; font-size:14.5px; line-height:1.65;'>Reach out to our global routing team for interconnect agreements and custom wholesale volume tiers.</p>"
+                      },
+                      "elements": []
+                    },
+                    {
+                      "id": "2b1bbf6a",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "html",
+                      "settings": {
+                        "html": "<div style='margin-top:16px; font-size:14px; line-height:1.8; color:#5A6370;'>\n                  <div><strong>Sales:</strong> sales@kimoshatelco.com</div>\n                  <div><strong>24/7 NOC:</strong> noc@kimoshatelco.com</div>\n                  <div><strong>HQ:</strong> Dubai Internet City, Dubai, UAE</div>\n                </div>"
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "409a6399",
+                  "elType": "container",
+                  "isInner": true,
+                  "settings": {
+                    "width": {
+                      "unit": "%",
+                      "size": 52
+                    },
+                    "background_background": "classic",
+                    "background_color": "#FFFFFF",
+                    "border_border": "solid",
+                    "border_width": {
+                      "unit": "px",
+                      "top": "1",
+                      "right": "1",
+                      "bottom": "1",
+                      "left": "1",
+                      "isLinked": true
+                    },
+                    "border_color": "#E5E7EB",
+                    "border_radius": {
+                      "unit": "px",
+                      "top": "16",
+                      "right": "16",
+                      "bottom": "16",
+                      "left": "16",
+                      "isLinked": true
+                    },
+                    "padding": {
+                      "unit": "px",
+                      "top": "32",
+                      "right": "28",
+                      "bottom": "32",
+                      "left": "28",
+                      "isLinked": false
+                    }
+                  },
+                  "elements": [
+                    {
+                      "id": "fa7b1e01",
+                      "elType": "widget",
+                      "isInner": false,
+                      "widgetType": "html",
+                      "settings": {
+                        "html": "<form onsubmit='event.preventDefault(); alert(\"Request submitted successfully!\");' style='display:flex; flex-direction:column; gap:14px;'>\n                  <input type='text' placeholder='Your Full Name' required style='padding:12px 14px; border:1px solid #E5E7EB; border-radius:8px; width:100%; font-size:14px;'>\n                  <input type='email' placeholder='Corporate Email' required style='padding:12px 14px; border:1px solid #E5E7EB; border-radius:8px; width:100%; font-size:14px;'>\n                  <select style='padding:12px 14px; border:1px solid #E5E7EB; border-radius:8px; width:100%; font-size:14px;'>\n                    <option>Wholesale SMS Termination</option>\n                    <option>Voice Termination (VoIP/SIP)</option>\n                    <option>A2P Enterprise Messaging</option>\n                  </select>\n                  <textarea placeholder='Target Destinations / Expected Volume...' rows='3' style='padding:12px 14px; border:1px solid #E5E7EB; border-radius:8px; width:100%; font-size:14px;'></textarea>\n                  <button type='submit' style='background:#F26522; color:#FFF; padding:13px; border:none; border-radius:999px; font-weight:700; cursor:pointer;'>Submit Interconnect Request</button>\n                </form>"
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6930b83d",
+      "elType": "container",
+      "isInner": false,
+      "settings": {
+        "content_width": "full",
+        "background_background": "classic",
+        "background_color": "#F8F9FB",
+        "padding": {
+          "unit": "px",
+          "top": "50",
+          "right": "24",
+          "bottom": "30",
+          "left": "24",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "71aed9a4",
+          "elType": "container",
+          "isInner": true,
+          "settings": {
+            "content_width": "boxed",
+            "boxed_width": {
+              "unit": "px",
+              "size": 1200
+            },
+            "flex_direction": "column",
+            "gap": {
+              "unit": "px",
+              "size": 24
+            }
+          },
+          "elements": [
+            {
+              "id": "d46565d8",
+              "elType": "widget",
+              "isInner": false,
+              "widgetType": "html",
+              "settings": {
+                "html": "<div style='display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:32px; font-size:14px; color:#5A6370; padding-bottom:32px; border-bottom:1px solid #E5E7EB;'>\n      <div><strong style='font-size:18px; color:#1A1A2E;'>kimosha<span style='color:#F26522;'>telco</span></strong><p style='margin-top:8px; font-size:13px;'>Carrier-grade wholesale SMS termination and voice routing hub.</p></div>\n      <div><strong style='color:#1A1A2E;'>Services</strong><br><a href='#services'>Wholesale SMS</a><br><a href='#services'>Voice VoIP</a><br><a href='#services'>A2P OTP</a></div>\n      <div><strong style='color:#1A1A2E;'>Company</strong><br><a href='#about'>About Us</a><br><a href='#comparison'>Comparison</a><br><a href='#contact'>Carrier NOC</a></div>\n      <div><strong style='color:#1A1A2E;'>Contact</strong><br>sales@kimoshatelco.com<br>noc@kimoshatelco.com</div>\n    </div>\n    <div style='padding-top:20px; font-size:13px; color:#8D95A0; text-align:center;'>&copy; 2026 Kimosha Telecom FZ-LLC. All rights reserved.</div>"
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_settings": {
+    "hide_title": "yes"
+  }
+}

@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimosha Telecom | Option 2: Global Carrier Network Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #F26522;
+      --brand-hover: #E05A1A;
+      --brand-light: #FFF3EB;
+      --brand-soft: #FDEADB;
+      --brand-border: #F9C9A6;
+      --brand-dark: #A8420E;
+      --text: #1A1A2E;
+      --text-muted: #5A6370;
+      --text-soft: #8D95A0;
+      --bg: #FFFFFF;
+      --bg-alt: #F8F9FB;
+      --border: #E5E7EB;
+      --shadow-sm: 0 2px 8px rgba(26, 26, 46, 0.04);
+      --shadow-md: 0 8px 24px rgba(26, 26, 46, 0.06);
+      --shadow-lg: 0 16px 40px rgba(26, 26, 46, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 999px;
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      color: var(--text);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header & Minimal Nav */
+    header.site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .brand-logo .dot { color: var(--brand); }
+    .brand-logo .tag {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      background: var(--brand-light);
+      color: var(--brand-dark);
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--brand); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 26px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: var(--brand);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(242, 101, 34, 0.25);
+    }
+    .btn-primary:hover {
+      background: var(--brand-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Full-Width Centered Hero */
+    .hero-centered {
+      padding: 90px 0 70px 0;
+      text-align: center;
+      background: radial-gradient(circle at 50% 30%, #FFF5EE 0%, #FFFFFF 70%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-network {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 100%;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-content-centered {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-eyebrow .status-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 6px #10B981;
+    }
+    .hero-centered h1 {
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+      margin-bottom: 20px;
+    }
+    .hero-centered h1 span { color: var(--brand); }
+    .hero-centered p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 32px auto;
+      line-height: 1.65;
+    }
+    .hero-metrics-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 32px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 12px 32px;
+      box-shadow: var(--shadow-sm);
+      margin-top: 36px;
+    }
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .metric-val {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--brand);
+    }
+    .metric-desc {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Logo Marquee Ticker */
+    .marquee-section {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 22px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      gap: 40px;
+      animation: marquee 25s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .carrier-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Section Global */
+    section { padding: 80px 0; }
+    .section-header-centered {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 52px auto;
+    }
+    .section-pill {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      background: var(--brand-light);
+      border: 1px solid var(--brand-border);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+    }
+    .section-title { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+    .section-subtitle { font-size: 16.5px; color: var(--text-muted); }
+
+    /* 3x2 Numbered Services Grid */
+    .services-grid-3x2 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card-hub {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--brand);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .service-card-hub:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .card-top-tag {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      margin-bottom: 14px;
+    }
+    .service-card-hub h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .service-card-hub p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .card-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .card-pill-item {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    /* Interactive SVG Network Map Section */
+    .network-map-section {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .map-container-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+    .map-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .live-throughput-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--brand-light);
+      border: 1px solid var(--brand-border);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--brand-dark);
+      font-weight: 700;
+    }
+    .map-svg-wrap {
+      width: 100%;
+      height: 380px;
+      position: relative;
+      background: #FAFAFC;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .map-node {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--brand);
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 0 10px rgba(242, 101, 34, 0.6);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .map-node:hover {
+      transform: scale(1.4);
+    }
+    .map-node.hub-primary {
+      width: 24px;
+      height: 24px;
+      background: #E05A1A;
+      animation: pulse-ring 2s infinite;
+    }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(242, 101, 34, 0.7); }
+      70% { box-shadow: 0 0 0 16px rgba(242, 101, 34, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(242, 101, 34, 0); }
+    }
+    .node-label {
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      background: #FFFFFF;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      pointer-events: none;
+    }
+    .map-tooltip {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 18px;
+      box-shadow: var(--shadow-md);
+      font-size: 13px;
+      font-family: var(--font-mono);
+      max-width: 320px;
+    }
+
+    /* Technical Specs (3 Columns) */
+    .specs-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .spec-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .spec-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: var(--brand-light);
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .spec-card h3 { font-size: 18px; margin-bottom: 12px; }
+    .spec-list { list-style: none; }
+    .spec-list li {
+      font-size: 14px;
+      color: var(--text-muted);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .spec-list li:last-child { border-bottom: none; }
+    .spec-list li svg { color: var(--brand); flex-shrink: 0; }
+
+    /* Single Large Testimonial Block */
+    .testimonial-box {
+      background: var(--brand-light);
+      border: 1px solid var(--brand-border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .testimonial-quote {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--brand-dark);
+    }
+    .testimonial-role {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Orange Gradient CTA Banner */
+    .cta-banner-section {
+      background: linear-gradient(135deg, #F26522 0%, #D84D0C 100%);
+      color: #FFFFFF;
+      padding: 70px 0;
+      text-align: center;
+    }
+    .cta-banner-section h2 {
+      font-size: 38px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 14px;
+    }
+    .cta-banner-section p {
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 620px;
+      margin: 0 auto 28px auto;
+    }
+    .btn-white {
+      background: #FFFFFF;
+      color: var(--brand-dark);
+      font-weight: 800;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+    .btn-white:hover {
+      background: #FFF5EE;
+      transform: translateY(-2px);
+    }
+
+    /* Centered Contact Form (No Split) */
+    .contact-centered-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 14px;
+      background: var(--bg-alt);
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--brand);
+      background: #FFFFFF;
+    }
+    .form-feedback {
+      display: none;
+      padding: 12px;
+      background: #ECFDF5;
+      color: #065F46;
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      font-weight: 600;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* 3-Column Footer */
+    footer.site-footer {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      padding: 60px 0 30px 0;
+    }
+    .footer-grid-3 {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul a {
+      font-size: 14px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--brand); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-soft);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .services-grid-3x2 { grid-template-columns: repeat(2, 1fr); }
+      .specs-grid-3 { grid-template-columns: 1fr; }
+      .footer-grid-3 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 767px) {
+      section { padding: 56px 0; }
+      .nav-links { display: none; }
+      .hero-centered h1 { font-size: 34px; }
+      .hero-metrics-pill { flex-direction: column; gap: 16px; border-radius: var(--radius-md); }
+      .services-grid-3x2 { grid-template-columns: 1fr; }
+      .contact-centered-wrap { padding: 24px; }
+      .footer-grid-3 { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimal Navigation -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="#" class="brand-logo">
+        <span>kimosha</span><span class="dot">telco</span>
+        <span class="tag">GLOBAL HUB</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Routes & Services</a></li>
+        <li><a href="#network">Network Map</a></li>
+        <li><a href="#specs">Carrier Specs</a></li>
+        <li><a href="#contact">Interconnect NOC</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary">Connect NOC</a>
+    </div>
+  </header>
+
+  <!-- Full-Width Centered Hero -->
+  <section class="hero-centered">
+    <svg class="hero-bg-network" viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="500" cy="250" r="220" stroke="#F26522" stroke-width="1.5" stroke-dasharray="6 6"/>
+      <circle cx="500" cy="250" r="140" stroke="#E5E7EB" stroke-width="1.5"/>
+      <circle cx="500" cy="250" r="320" stroke="#F9C9A6" stroke-width="1"/>
+      <line x1="150" y1="250" x2="850" y2="250" stroke="#E5E7EB" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <line x1="500" y1="50" x2="500" y2="450" stroke="#E5E7EB" stroke-width="1.5" stroke-dasharray="4 4"/>
+    </svg>
+
+    <div class="container hero-content-centered">
+      <div class="hero-eyebrow">
+        <div class="status-dot"></div>
+        Global Routing Core: 100% Operational &bull; 500+ Interconnects Active
+      </div>
+      <h1>Global Carrier Hub for <span>Wholesale SMS & Voice</span></h1>
+      <p>
+        Connecting Tier-1 telecom operators, international mobile networks, and enterprise aggregators across 200+ countries with dynamic least-cost routing and sub-second delivery SLAs.
+      </p>
+      <div>
+        <a href="#contact" class="btn btn-primary" style="padding: 14px 34px; font-size: 15px;">Establish Carrier Interconnect</a>
+      </div>
+
+      <div class="hero-metrics-pill">
+        <div class="metric-item">
+          <span class="metric-val">200+</span>
+          <span class="metric-desc">Countries Terminated</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-val">500+</span>
+          <span class="metric-desc">MNO Direct Binds</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-val">99.99%</span>
+          <span class="metric-desc">Core SLA Uptime</span>
+        </div>
+        <div class="metric-item">
+          <span class="metric-val">&lt; 1.2s</span>
+          <span class="metric-desc">Handset DLR Latency</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logo Marquee Ticker -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="carrier-pill">📡 Tier-1 Operator Interconnect</span>
+      <span class="carrier-pill">🌍 Middle East & GCC Direct Routes</span>
+      <span class="carrier-pill">🇪🇺 European Telco Exchange (Equinix FR2)</span>
+      <span class="carrier-pill">🇺🇸 North America SS7 SIGTRAN</span>
+      <span class="carrier-pill">🌏 APAC Low-Latency Carrier Core</span>
+      <span class="carrier-pill">🇿🇦 Africa Wholesale SMS Termination</span>
+      <span class="carrier-pill">📡 Tier-1 Operator Interconnect</span>
+      <span class="carrier-pill">🌍 Middle East & GCC Direct Routes</span>
+      <span class="carrier-pill">🇪🇺 European Telco Exchange (Equinix FR2)</span>
+      <span class="carrier-pill">🇺🇸 North America SS7 SIGTRAN</span>
+      <span class="carrier-pill">🌏 APAC Low-Latency Carrier Core</span>
+      <span class="carrier-pill">🇿🇦 Africa Wholesale SMS Termination</span>
+    </div>
+  </div>
+
+  <!-- Services: 3x2 Grid (6 Cards) -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header-centered">
+        <span class="section-pill">Carrier Service Portfolio</span>
+        <h2 class="section-title">Wholesale Telecommunication Solutions</h2>
+        <p class="section-subtitle">Carrier-to-carrier interconnect solutions optimized for high-volume message delivery and premium voice call routing.</p>
+      </div>
+
+      <div class="services-grid-3x2">
+        <!-- 1 -->
+        <div class="service-card-hub">
+          <div>
+            <div class="card-top-tag">01 / A2P TERMINATION</div>
+            <h3>Wholesale SMS Termination</h3>
+            <p>Direct 1-hop routes with dynamic least-cost routing, CLI preservation, and true handset SS7 acknowledgments.</p>
+          </div>
+          <div class="card-pills-row">
+            <span class="card-pill-item">Direct SS7</span>
+            <span class="card-pill-item">LCR Engine</span>
+            <span class="card-pill-item">Handset DLR</span>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="service-card-hub">
+          <div>
+            <div class="card-top-tag">02 / SIP TRUNKING</div>
+            <h3>Voice Termination (VoIP/TDM)</h3>
+            <p>Wholesale voice minutes with guaranteed CLI transparency, sub-50ms jitter, and low Post-Dial Delay via global SBCs.</p>
+          </div>
+          <div class="card-pills-row">
+            <span class="card-pill-item">SIP RFC 3261</span>
+            <span class="card-pill-item">G.711 / G.729</span>
+            <span class="card-pill-item">True CLI</span>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="service-card-hub">
+          <div>
+            <div class="card-top-tag">03 / VERIFICATION</div>
+            <h3>A2P Enterprise Messaging</h3>
+            <p>Dedicated priority lanes for OTPs, two-factor authentication, and transaction alerts with zero queue delay.</p>
+          </div>
+          <div class="card-pills-row">
+            <span class="card-pill-item">OTP Priority</span>
+            <span class="card-pill-item">99.9% Delivery</span>
+            <span class="card-pill-item">&lt; 1.2s Latency</span>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="service-card-hub">
+          <div>
+            <div class="card-top-tag">04 / PROTOCOL</div>
+            <h3>SMPP 3.4 & API Platform</h3>
+            <p>High-throughput binary SMPP transceiver binds and RESTful JSON APIs for seamless switch and gateway integration.</p>
+          </div>
+          <div class="card-pills-row">
+            <span class="card-pill-item">SMPP v3.4</span>
+            <span class="card-pill-item">REST JSON</span>
+            <span class="card-pill-item">TLS 1.3</span>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="service-card-hub">
+          <div>
+            <div class="card-top-tag">05 / AGGREGATION</div>
+            <h3>SMS Hubbing & Interconnect</h3>
+            <p>Single commercial agreement giving instant access to 800+ mobile networks with real-time billing and anti-fraud filters.</p>
+          </div>
+          <div class="card-pills-row">
+            <span class="card-pill-item">Hub-to-Hub</span>
+            <span class="card-pill-item">Anti-Spam Filter</span>
+            <span class="card-pill-item">Multi-Currency</span>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="service-card-hub">
+          <div>
+            <div class="card-top-tag">06 / BROADCAST</div>
+            <h3>Voice Broadcasting & IVR</h3>
+            <p>Automated outbound voice campaigns with interactive DTMF key capture, Text-to-Speech in 40+ languages, and AMD detection.</p>
+          </div>
+          <div class="card-pills-row">
+            <span class="card-pill-item">10k+ Channels</span>
+            <span class="card-pill-item">DTMF Capture</span>
+            <span class="card-pill-item">Multilingual TTS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive SVG Carrier Map Section -->
+  <section id="network" class="network-map-section">
+    <div class="container">
+      <div class="section-header-centered">
+        <span class="section-pill">Carrier Reach</span>
+        <h2 class="section-title">Global Carrier Network Backbone</h2>
+        <p class="section-subtitle">Geographically distributed routing hubs ensuring sub-50ms packet transmission and 99.99% carrier SLA.</p>
+      </div>
+
+      <div class="map-container-card">
+        <div class="map-header">
+          <div>
+            <h3 style="font-size: 20px;">Interactive Point of Presence (PoP) Map</h3>
+            <p style="font-size: 14px; color: var(--text-muted);">Hover over any node to inspect live interconnect latency and route status.</p>
+          </div>
+          <div class="live-throughput-badge">
+            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--brand);"></span>
+            Live Core Throughput: 11,420 TPS
+          </div>
+        </div>
+
+        <div class="map-svg-wrap" id="mapStage">
+          <!-- Background SVG World Map Graphic Simulation -->
+          <svg width="100%" height="100%" viewBox="0 0 1000 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M150 120 Q 300 80 400 130 T 600 140 T 850 160" stroke="#E5E7EB" stroke-width="2" stroke-dasharray="4 4"/>
+            <path d="M220 220 Q 400 240 600 220 T 800 280" stroke="#E5E7EB" stroke-width="2" stroke-dasharray="4 4"/>
+            <line x1="580" y1="190" x2="480" y2="120" stroke="#F9C9A6" stroke-width="1.5"/>
+            <line x1="580" y1="190" x2="440" y2="110" stroke="#F9C9A6" stroke-width="1.5"/>
+            <line x1="580" y1="190" x2="780" y2="240" stroke="#F9C9A6" stroke-width="1.5"/>
+            <line x1="580" y1="190" x2="220" y2="140" stroke="#F9C9A6" stroke-width="1.5"/>
+            <line x1="580" y1="190" x2="560" y2="310" stroke="#F9C9A6" stroke-width="1.5"/>
+          </svg>
+
+          <!-- Interactive Regional Nodes -->
+          <!-- 1. Dubai HQ (Primary Hub) -->
+          <div class="map-node hub-primary" style="left: 58%; top: 48%;"
+               onmouseover="showMapTooltip('Dubai HQ Core (DX1)', 'Status: Active Master Hub | Latency: 0.2ms | Routes: 500+ Direct MNOs')">
+            <span class="node-label">Dubai HQ</span>
+          </div>
+
+          <!-- 2. London -->
+          <div class="map-node" style="left: 44%; top: 28%;"
+               onmouseover="showMapTooltip('London PoP (LD4)', 'Status: Operational | Latency: 18ms | Routes: Western Europe Tier-1')">
+            <span class="node-label">London</span>
+          </div>
+
+          <!-- 3. Frankfurt -->
+          <div class="map-node" style="left: 48%; top: 30%;"
+               onmouseover="showMapTooltip('Frankfurt PoP (FR2)', 'Status: Operational | Latency: 16ms | Routes: Central Europe & Balkans')">
+            <span class="node-label">Frankfurt</span>
+          </div>
+
+          <!-- 4. Singapore -->
+          <div class="map-node" style="left: 78%; top: 60%;"
+               onmouseover="showMapTooltip('Singapore PoP (SG1)', 'Status: Operational | Latency: 24ms | Routes: APAC & ASEAN Direct')">
+            <span class="node-label">Singapore</span>
+          </div>
+
+          <!-- 5. New York -->
+          <div class="map-node" style="left: 22%; top: 35%;"
+               onmouseover="showMapTooltip('New York PoP (NY4)', 'Status: Operational | Latency: 22ms | Routes: North America 10DLC & SS7')">
+            <span class="node-label">New York</span>
+          </div>
+
+          <!-- 6. Johannesburg -->
+          <div class="map-node" style="left: 56%; top: 78%;"
+               onmouseover="showMapTooltip('Johannesburg Hub', 'Status: Operational | Latency: 32ms | Routes: Pan-Africa Wholesale SMS')">
+            <span class="node-label">Johannesburg</span>
+          </div>
+
+          <!-- 7. Sao Paulo -->
+          <div class="map-node" style="left: 32%; top: 72%;"
+               onmouseover="showMapTooltip('Sao Paulo PoP', 'Status: Operational | Latency: 28ms | Routes: LATAM Wholesale Gateway')">
+            <span class="node-label">Sao Paulo</span>
+          </div>
+
+          <!-- Dynamic Tooltip -->
+          <div class="map-tooltip" id="mapTooltip">
+            <strong>Hover over a hub node</strong><br>
+            <span style="color: var(--text-muted);">Inspect real-time latency and interconnect stats.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Specs (3 Columns) -->
+  <section id="specs">
+    <div class="container">
+      <div class="section-header-centered">
+        <span class="section-pill">Technical Excellence</span>
+        <h2 class="section-title">Built to Telecom Carrier Standards</h2>
+        <p class="section-subtitle">Full compliance with ITU-T, GSMA, and 3GPP telecommunication standards.</p>
+      </div>
+
+      <div class="specs-grid-3">
+        <div class="spec-card">
+          <div class="spec-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <h3>Route Optimization</h3>
+          <ul class="spec-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Dynamic Least Cost Routing (LCR)</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Automatic Quality Fallback Paths</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Real-Time Handset DLR Feedback</li>
+          </ul>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          </div>
+          <h3>Protocol & Ingestion</h3>
+          <ul class="spec-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> SMPP v3.4 (TX, RX, TRX Binds)</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> SIP 2.0 (RFC 3261) Trunking</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> REST JSON API & Webhooks</li>
+          </ul>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3>Carrier Security & NOC</h3>
+          <ul class="spec-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 24/7/365 Tier-3 NOC Desk</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Anti-Spam & FAS Fraud Detection</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> ISO 27001 & GDPR Certified</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Large Trust Testimonial -->
+  <section style="padding: 40px 0;">
+    <div class="container">
+      <div class="testimonial-box">
+        <div class="testimonial-quote">
+          &ldquo;Kimosha Telecom has given our carrier network 99.99% delivery fidelity across the Middle East and African markets. Their SMPP 3.4 throughput and sub-second DLR reporting are best-in-class.&rdquo;
+        </div>
+        <div class="testimonial-author">Tariq Al-Mansoor</div>
+        <div class="testimonial-role">VP of Interconnect & Wholesale Carrier Relations</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Orange Gradient CTA Banner -->
+  <section class="cta-banner-section">
+    <div class="container">
+      <h2>Ready to Interconnect Your Carrier Network?</h2>
+      <p>Receive our complete A-Z wholesale SMS and voice rate deck within 60 minutes.</p>
+      <a href="#contact" class="btn btn-white" style="padding: 14px 36px; font-size: 15px;">Request Interconnect Rate Deck &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Centered Contact Form (No Split) -->
+  <section id="contact" style="background: var(--bg-alt);">
+    <div class="container">
+      <div class="section-header-centered">
+        <span class="section-pill">Interconnect Request</span>
+        <h2 class="section-title">Open Carrier Bilateral Channel</h2>
+        <p class="section-subtitle">Submit your technical specifications to initialize carrier testing.</p>
+      </div>
+
+      <div class="contact-centered-wrap">
+        <form onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="cName">Your Name & Title</label>
+            <input type="text" id="cName" class="form-control" placeholder="Jane Smith — Carrier Relations Manager" required>
+          </div>
+          <div class="form-group">
+            <label for="cEmail">Corporate Carrier Email</label>
+            <input type="email" id="cEmail" class="form-control" placeholder="jane@telco-global.com" required>
+          </div>
+          <div class="form-group">
+            <label for="cCarrier">Company / Operator Name</label>
+            <input type="text" id="cCarrier" class="form-control" placeholder="Global Telco Communications" required>
+          </div>
+          <div class="form-group">
+            <label for="cType">Primary Interconnect Interest</label>
+            <select id="cType" class="form-control">
+              <option>Wholesale SMS Termination (A-Z)</option>
+              <option>VoIP / SIP Voice Minutes</option>
+              <option>A2P OTP Direct Binds</option>
+              <option>SMS Hubbing Agreement</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cDest">Target Destinations & Expected TPS</label>
+            <textarea id="cDest" class="form-control" rows="3" placeholder="List target countries, expected TPS, and route quality requirements..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; border-radius: var(--radius-sm); padding: 14px;">Submit Interconnect Request</button>
+          <div id="formFeedback" class="form-feedback">
+            ✓ Carrier interconnect request logged. A dedicated NOC engineer will send test credentials shortly.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-Column Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid-3">
+        <div>
+          <div class="brand-logo" style="font-size: 20px; margin-bottom: 12px;">
+            <span>kimosha</span><span class="dot">telco</span>
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted); max-width: 320px; line-height: 1.6;">
+            Global wholesale SMS termination, voice routing hub, and high-capacity CPaaS infrastructure serving 500+ carrier interconnects worldwide.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Carrier Services</h4>
+          <ul>
+            <li><a href="#services">Wholesale SMS</a></li>
+            <li><a href="#services">SIP Voice Termination</a></li>
+            <li><a href="#services">A2P OTP Messaging</a></li>
+            <li><a href="#services">SMS Hubbing & Aggregation</a></li>
+            <li><a href="#specs">Carrier Standards</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Interconnect NOC</h4>
+          <ul>
+            <li><a href="mailto:noc@kimoshatelco.com">noc@kimoshatelco.com</a></li>
+            <li><a href="mailto:sales@kimoshatelco.com">sales@kimoshatelco.com</a></li>
+            <li><a href="#network">Network Coverage Map</a></li>
+            <li><a href="#contact">Request Rate Deck</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Kimosha Telecom FZ-LLC. All rights reserved.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#">Carrier Agreement</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">NOC Escalation Matrix</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function showMapTooltip(title, desc) {
+      const tooltip = document.getElementById('mapTooltip');
+      tooltip.innerHTML = '<strong>' + title + '</strong><br><span style="color:var(--brand);">' + desc + '</span>';
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      document.getElementById('formFeedback').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('formFeedback').style.display = 'none';
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

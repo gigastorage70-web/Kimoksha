@@ -1,0 +1,162 @@
+{
+  "company_profile": {
+    "name": "Kimosha Telecom",
+    "legal_name": "Kimosha Telecom FZ-LLC",
+    "brand_tagline": "Carrier-Grade Wholesale SMS & Voice Connectivity",
+    "industry": "Wholesale Telecommunications & CPaaS Aggregation",
+    "headquarters": "Dubai Internet City, Dubai, UAE",
+    "operating_regions": ["Middle East & GCC", "Europe", "North America", "APAC", "LATAM", "Africa"],
+    "support_availability": "24/7/365 NOC (Network Operations Center)",
+    "contact": {
+      "sales": "sales@kimoshatelco.com",
+      "support": "support@kimoshatelco.com",
+      "noc": "noc@kimoshatelco.com",
+      "interconnect": "interconnect@kimoshatelco.com"
+    },
+    "key_metrics": {
+      "connected_countries": "200+",
+      "direct_operator_interconnects": "500+",
+      "platform_uptime_sla": "99.99%",
+      "peak_throughput_tps": "12,500+ TPS",
+      "monthly_message_volume": "3.5B+",
+      "avg_sms_delivery_latency": "< 1.2s",
+      "voice_answer_seizure_ratio": "68.4%",
+      "avg_call_pdd": "< 1.5s"
+    }
+  },
+  "core_services": [
+    {
+      "id": "wholesale-sms-termination",
+      "service_name": "Wholesale SMS Termination",
+      "short_description": "High-capacity global A2P and P2P SMS termination over Tier-1 direct SS7/SIGTRAN and SMPP carrier interconnects.",
+      "detailed_overview": "Kimosha Telecom operates direct bilateral routing agreements with 500+ mobile network operators (MNOs) worldwide. Our least-cost routing (LCR) engine dynamically selects optimized delivery paths based on real-time delivery rates, latency thresholds, and route quality scores.",
+      "key_features": [
+        "Direct SS7/SIGTRAN and SMPP 3.4 connectivity",
+        "Dynamic Least Cost Routing (LCR) with quality-first fallback",
+        "Real-time handset Delivery Receipts (DLR) with error code mapping",
+        "Unicode, concatenated long messages (UDH), and GSM 03.38 alphabet support",
+        "Dynamic Sender ID registration and alpha-tag management",
+        "Adaptive throttling and burst traffic buffering up to 15,000 TPS"
+      ],
+      "route_types": [
+        {
+          "type": "Direct 1-Hop Routes",
+          "description": "Direct interconnects with MNO SMSCs ensuring 100% handset DLRs and guaranteed CLI/Alphanumeric sender preservation.",
+          "sla_delivery": "99.5%",
+          "avg_speed": "< 1.1s"
+        },
+        {
+          "type": "Standard Wholesale Routes",
+          "description": "Optimized cost-effective paths for marketing blasts and non-time-sensitive notifications.",
+          "sla_delivery": "96.0%",
+          "avg_speed": "< 2.8s"
+        }
+      ],
+      "target_audience": ["Carriers", "Aggregators", "Enterprise CPaaS Platforms", "Fintech & Banking Institutions"]
+    },
+    {
+      "id": "wholesale-voice-termination",
+      "service_name": "Wholesale Voice Termination (VoIP & SIP Trunking)",
+      "short_description": "Crystal-clear global voice termination with guaranteed CLI pass-through, low Post-Dial Delay (PDD), and Tier-1 interconnects.",
+      "detailed_overview": "Carrier-grade SIP trunking infrastructure supporting G.711 (alaw/ulaw), G.729, and Opus codecs. Our geographically distributed Session Border Controllers (SBCs) in Frankfurt, Dubai, London, and Singapore guarantee sub-50ms jitter and high Answer-Seizure-Ratios (ASR).",
+      "key_features": [
+        "Guaranteed True CLI (Calling Line Identification) route pass-through",
+        "Support for SIP (RFC 3261), TLS, and SRTP secure voice transport",
+        "Low Post-Dial Delay (PDD < 1.5s) and high Average Call Duration (ACD)",
+        "Automated fraud mitigation, FAS (False Answer Supervision) detection",
+        "Dedicated interconnects: SIP IP auth or Digest Authentication",
+        "Comprehensive CDR (Call Detail Record) extraction via API or SFTP"
+      ],
+      "specs": {
+        "protocols": ["SIP 2.0", "H.323", "ISUP/SS7"],
+        "codecs": ["G.711a", "G.711u", "G.729a/b", "G.722 HD", "Opus"],
+        "dtmf_relay": ["RFC 2833", "SIP INFO", "In-band"]
+      },
+      "target_audience": ["International Telecom Carriers", "Call Centers & BPOs", "PBX & VoIP Providers", "Enterprise Contact Centers"]
+    },
+    {
+      "id": "a2p-enterprise-messaging",
+      "service_name": "A2P Enterprise Messaging (OTP & Alerts)",
+      "short_description": "Mission-critical, ultra-low latency transactional messaging for OTPs, two-factor authentication (2FA), banking alerts, and system notices.",
+      "detailed_overview": "Engineered for zero-drop performance. Transactional messages bypass standard marketing queues through dedicated priority lanes, ensuring verification codes reach end-users in under 2 seconds globally.",
+      "key_features": [
+        "Priority queue processing with < 1.2s global delivery",
+        "Built-in Number Lookup (HLR/MNP) for carrier validation and ported numbers",
+        "Adaptive routing that automatically re-routes OTPs on MNO congestion",
+        "End-to-end TLS 1.3 encryption and full GDPR/HIPAA compliance",
+        "Webhooks for instant delivery receipts and read confirmations",
+        "Smart retry logic with channel fallback"
+      ],
+      "use_cases": [
+        "2FA & Multi-Factor Login Verification",
+        "Financial & Banking Transaction Alerts",
+        "E-commerce Order & Delivery Notifications",
+        "Healthcare Appointment Reminders & Emergency Dispatches"
+      ]
+    },
+    {
+      "id": "smpp-http-api-platform",
+      "service_name": "SMPP & RESTful API Platform",
+      "short_description": "Developer-friendly communication APIs and robust high-throughput SMPP 3.4 binds for effortless enterprise integration.",
+      "detailed_overview": "Connect via binary SMPP 3.4 protocols for maximum raw throughput or use modern RESTful JSON APIs with comprehensive SDKs in Python, Node.js, PHP, Java, and Go.",
+      "key_features": [
+        "SMPP 3.4 Transceiver, Transmitter, and Receiver bind support",
+        "REST API with JSON payloads, OpenAPI 3.0 specs, and Postman collections",
+        "Real-time bidirectional Webhooks for status reports and inbound MO SMS",
+        "Granular IP whitelisting, API keys, and OAuth2 security",
+        "Comprehensive sandbox test environment with simulated carrier responses",
+        "Detailed developer documentation and live request debugger"
+      ],
+      "supported_protocols": ["SMPP v3.4", "REST JSON API", "SOAP / XML", "WebSocket DLR stream"]
+    },
+    {
+      "id": "sms-hubbing-aggregation",
+      "service_name": "SMS Hubbing & Global Aggregation",
+      "short_description": "Single-point-of-contact hubbing connecting mobile operators, Tier-1 aggregators, and enterprise clients to over 800 networks.",
+      "detailed_overview": "Eliminate the administrative and technical overhead of maintaining hundreds of individual bilateral agreements. Kimosha's SMS Hub aggregates traffic flows, performs real-time monetization, and protects against grey route leakage and SMS fraud.",
+      "key_features": [
+        "Single commercial agreement for worldwide 800+ mobile network reach",
+        "Automated Least Cost Routing with dynamic quality grading",
+        "Integrated firewall and spam filtering protecting MNO networks",
+        "Bilateral and unilateral interconnect settlements",
+        "Multi-currency billing (USD, EUR, GBP, AED)",
+        "Real-time traffic analytics and QoS dashboard"
+      ]
+    },
+    {
+      "id": "voice-broadcasting-ivr",
+      "service_name": "Voice Broadcasting & Automated IVR",
+      "short_description": "High-volume automated outbound voice broadcast campaigns with multi-level interactive DTMF menus and speech synthesis.",
+      "detailed_overview": "Broadcast emergency notifications, debt collection reminders, or customer satisfaction surveys to tens of thousands of recipients simultaneously with smart call sequencing and live agent transfer.",
+      "key_features": [
+        "Concurrent outbound calling handling 10,000+ simultaneous channels",
+        "Dynamic Text-to-Speech (TTS) in 40+ languages and accents",
+        "Pre-recorded audio upload with WAV/MP3 conversion",
+        "Interactive DTMF key-press menu captures and webhook integration",
+        "Answering Machine Detection (AMD) to optimize message delivery",
+        "Warm transfer to live agent or external call queues"
+      ]
+    }
+  ],
+  "technical_specifications": {
+    "network_infrastructure": {
+      "data_centers": ["Equinix DX1 (Dubai)", "Equinix FR2 (Frankfurt)", "Equinix LD4 (London)", "Equinix SG1 (Singapore)"],
+      "redundancy": "Active-Active geo-redundant cluster architecture with automatic failover (<50ms)",
+      "connectivity": "Direct cross-connects to Tier-1 IP transit providers and carrier IXPs",
+      "security_compliance": ["ISO/IEC 27001:2022", "GDPR Compliant", "SOC 2 Type II", "PCI-DSS Level 1"]
+    },
+    "smpp_specifications": {
+      "version": "SMPP v3.4",
+      "supported_pdus": ["bind_transceiver", "submit_sm", "deliver_sm", "enquire_link", "unbind"],
+      "throughput_per_bind": "Up to 500 TPS per TCP session (multi-bind supported)",
+      "window_size": 50,
+      "enquire_link_interval": "30 seconds"
+    },
+    "rest_api_specifications": {
+      "base_url": "https://api.kimoshatelco.com/v1",
+      "authentication": "Bearer BearerToken / Basic Auth",
+      "format": "application/json",
+      "rate_limit": "10,000 requests / minute per API key"
+    }
+  }
+}

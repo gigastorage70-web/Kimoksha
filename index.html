@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimosha Telecom &bull; 5 Modern Light-Theme Redesigns Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F8F9FB;
+      --panel: #FFFFFF;
+      --brand: #F26522;
+      --brand-hover: #E05A1A;
+      --brand-light: #FFF3EB;
+      --brand-soft: #FDEADB;
+      --brand-dark: #A8420E;
+      --text: #1A1A2E;
+      --text-muted: #5A6370;
+      --text-soft: #8D95A0;
+      --border: #E5E7EB;
+      --shadow: 0 4px 20px rgba(26, 26, 46, 0.08);
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-display);
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Showcase Top Header */
+    .showcase-header {
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      z-index: 50;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--brand);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      box-shadow: 0 2px 8px rgba(242, 101, 34, 0.3);
+    }
+    .brand-title {
+      font-size: 15.5px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .brand-subtitle {
+      font-size: 11.5px;
+      color: var(--brand-dark);
+      font-weight: 700;
+      background: var(--brand-light);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+    }
+
+    /* 5-Option Tab Switcher */
+    .option-tabs {
+      display: flex;
+      background: var(--bg);
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      gap: 4px;
+      overflow-x: auto;
+    }
+    .opt-btn {
+      padding: 7px 15px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .opt-btn:hover { color: var(--text); }
+    .opt-btn.active {
+      background: #FFFFFF;
+      color: var(--brand);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Viewport Simulator Controls */
+    .viewport-controls {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg);
+      padding: 3px 6px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .view-btn {
+      padding: 6px 10px;
+      border: none;
+      background: transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+    .view-btn:hover { color: var(--text); }
+    .view-btn.active {
+      background: #FFFFFF;
+      color: var(--text);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Action Links */
+    .action-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-action {
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-action-primary {
+      background: var(--brand);
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(242, 101, 34, 0.25);
+    }
+    .btn-action-primary:hover {
+      background: var(--brand-hover);
+      transform: translateY(-1px);
+    }
+    .btn-action-outline {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-action-outline:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+      background: var(--brand-light);
+    }
+
+    /* Showcase Preview Stage */
+    .preview-stage {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      background: #ECEEF2;
+      overflow: hidden;
+    }
+    .iframe-wrapper {
+      width: 100%;
+      height: 100%;
+      background: #FFFFFF;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Viewport Dimensions */
+    .viewport-desktop { width: 100%; max-width: 100%; }
+    .viewport-tablet { width: 768px; max-width: 100%; }
+    .viewport-mobile { width: 390px; max-width: 100%; }
+
+    @media (max-width: 1100px) {
+      .showcase-header { padding: 10px 16px; }
+      .brand-title { font-size: 14px; }
+      .opt-btn { font-size: 12px; padding: 6px 12px; }
+    }
+    @media (max-width: 767px) {
+      body { height: auto; overflow: auto; }
+      .preview-stage { height: calc(100vh - 140px); }
+      .viewport-controls { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="showcase-header">
+    <div class="brand-area">
+      <div class="logo-badge">KT</div>
+      <div>
+        <div class="brand-title">Kimosha Telecom Redesign Showcase</div>
+        <span class="brand-subtitle">6 Unique Light-Theme Designs + Elementor JSON</span>
+      </div>
+    </div>
+
+    <!-- 6 Option Tabs -->
+    <div class="option-tabs">
+      <button class="opt-btn active" onclick="loadOption(1, this)">1. Enterprise CPaaS</button>
+      <button class="opt-btn" onclick="loadOption(2, this)">2. Global Carrier Hub</button>
+      <button class="opt-btn" onclick="loadOption(3, this)">3. Minimal Voice+SMS</button>
+      <button class="opt-btn" onclick="loadOption(4, this)">4. Bento Grid</button>
+      <button class="opt-btn" onclick="loadOption(5, this)">5. Routing Studio</button>
+      <button class="opt-btn" onclick="loadOption(6, this)">6. Liquid Spatial OS</button>
+    </div>
+
+    <!-- Responsive Viewport Simulator -->
+    <div class="viewport-controls">
+      <button class="view-btn active" onclick="setViewport('desktop', this)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        Desktop
+      </button>
+      <button class="view-btn" onclick="setViewport('tablet', this)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+        Tablet
+      </button>
+      <button class="view-btn" onclick="setViewport('mobile', this)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+        Mobile
+      </button>
+    </div>
+
+    <!-- Action Links -->
+    <div class="action-links">
+      <a id="openTabLink" href="html-previews/preview-option-1.html" target="_blank" class="btn-action btn-action-primary">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        Open Standalone
+      </a>
+    </div>
+  </header>
+
+  <!-- Interactive Preview Stage -->
+  <main class="preview-stage">
+    <div class="iframe-wrapper viewport-desktop" id="frameWrapper">
+      <iframe id="previewFrame" src="html-previews/preview-option-1.html"></iframe>
+    </div>
+  </main>
+
+  <script>
+    const options = {
+      1: { preview: 'html-previews/preview-option-1.html' },
+      2: { preview: 'html-previews/preview-option-2.html' },
+      3: { preview: 'html-previews/preview-option-3.html' },
+      4: { preview: 'html-previews/preview-option-4.html' },
+      5: { preview: 'html-previews/preview-option-5.html' },
+      6: { preview: 'html-previews/preview-option-6.html' },
+    };
+
+    function loadOption(num, btn) {
+      document.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const opt = options[num];
+      document.getElementById('previewFrame').src = opt.preview;
+      document.getElementById('openTabLink').href = opt.preview;
+    }
+
+    function setViewport(type, btn) {
+      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('frameWrapper').className = 'iframe-wrapper viewport-' + type;
+    }
+  </script>
+</body>
+</html>

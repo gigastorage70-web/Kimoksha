@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimosha Telecom | Option 5: Routing Studio & Telemetry Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #F26522;
+      --brand-hover: #D84E0F;
+      --brand-dark: #8C3105;
+      --brand-light: #FFF1E8;
+      --brand-soft: #FDE2D2;
+      --brand-border: #F9BC96;
+      --navy: #0F172A;
+      --navy-light: #1E293B;
+      --navy-tint: #F1F5F9;
+      --bg-studio: #FAF9F6;
+      --bg-surface: #FFFFFF;
+      --bg-elevated: #F3F1EC;
+      --text-main: #0F172A;
+      --text-sub: #334155;
+      --text-muted: #64748B;
+      --border-subtle: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.04);
+      --shadow-studio: 0 16px 36px -12px rgba(15, 23, 42, 0.08), 0 4px 16px rgba(242, 101, 34, 0.06);
+      --shadow-hover: 0 20px 48px -10px rgba(15, 23, 42, 0.12);
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-title: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg-studio);
+      color: var(--text-main);
+      font-family: var(--font-display);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: 100%; max-width: 1220px; margin: 0 auto; padding: 0 24px; }
+
+    /* Studio Master Ticker Top Bar with Deep Cobalt Navy Styling */
+    .studio-top-ticker {
+      background: var(--navy);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      padding: 8px 24px;
+      color: #94A3B8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .ticker-pills {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .status-dot-green {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 8px #10B981;
+      display: inline-block;
+      margin-right: 6px;
+    }
+    .timezone-clocks {
+      display: flex;
+      gap: 14px;
+      color: #64748B;
+    }
+    .timezone-clocks span strong { color: #F8FAFC; }
+
+    /* Artisanal Navigation */
+    header.studio-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 249, 246, 0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-title);
+      font-weight: 700;
+      font-size: 21px;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+    }
+    .brand-pill {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      background: var(--navy);
+      color: #FFFFFF;
+      border: 1px solid var(--navy-light);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-sub);
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a:hover { color: var(--brand); }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: var(--brand);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(242, 101, 34, 0.25);
+    }
+    .btn-primary:hover {
+      background: var(--brand-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(242, 101, 34, 0.35);
+    }
+    .btn-outline {
+      background: #FFFFFF;
+      color: var(--navy);
+      border-color: var(--border-strong);
+    }
+    .btn-outline:hover {
+      border-color: var(--navy);
+      color: var(--navy);
+      background: var(--navy-tint);
+    }
+
+    /* Hero: Editorial Studio Layout (55 / 45 Split with Telemetry Deck) */
+    .hero-studio {
+      padding: 70px 0 60px 0;
+      position: relative;
+    }
+    .hero-studio-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .editorial-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-strong);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-sub);
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .editorial-badge .badge-tag {
+      background: var(--brand);
+      color: #FFF;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 9.5px;
+    }
+    .hero-studio h1 {
+      font-family: var(--font-title);
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      color: var(--text-main);
+    }
+    .hero-studio h1 span {
+      color: var(--brand);
+      position: relative;
+      display: inline-block;
+    }
+    .hero-studio p {
+      font-size: 17.5px;
+      color: var(--text-sub);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 540px;
+    }
+    .hero-action-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .hero-spec-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .spec-item .spec-val {
+      font-family: var(--font-title);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .spec-item .spec-lbl {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Right Column: Interactive Telemetry & Route Testing Studio Deck */
+    .telemetry-deck {
+      background: #FFFFFF;
+      border: 1px solid var(--border-strong);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: var(--shadow-studio);
+      position: relative;
+    }
+    .deck-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+    .deck-title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--brand-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .route-selector-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .route-btn {
+      flex: 1;
+      padding: 8px 12px;
+      background: var(--bg-studio);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-sub);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .route-btn.active {
+      background: var(--brand-light);
+      border-color: var(--brand-border);
+      color: var(--brand-dark);
+    }
+    .telemetry-screen {
+      background: #FAF9F6;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 18px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border-subtle);
+    }
+    .telemetry-row:last-child { border-bottom: none; }
+    .telemetry-row .label { color: var(--text-muted); }
+    .telemetry-row .val { font-weight: 700; color: var(--text-main); }
+    .telemetry-row .val.green { color: #059669; }
+    .telemetry-row .val.orange { color: var(--brand); }
+
+    /* Live Waveform Audio / DLR Visualizer */
+    .waveform-visual {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 36px;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .wave-bar {
+      flex: 1;
+      background: var(--brand-border);
+      border-radius: 2px;
+      height: 20%;
+      animation: wavePulse 1.8s ease-in-out infinite alternate;
+    }
+    .wave-bar:nth-child(2n) { animation-delay: 0.2s; background: var(--brand); }
+    .wave-bar:nth-child(3n) { animation-delay: 0.4s; }
+    .wave-bar:nth-child(4n) { animation-delay: 0.6s; }
+    .wave-bar:nth-child(5n) { animation-delay: 0.8s; }
+    @keyframes wavePulse {
+      0% { height: 15%; }
+      50% { height: 85%; }
+      100% { height: 35%; }
+    }
+    .deck-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Section Global Styles */
+    section { padding: 90px 0; }
+    .section-editorial-header {
+      margin-bottom: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-bottom: 2px solid var(--text-main);
+      padding-bottom: 20px;
+    }
+    .header-left .section-num {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brand);
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .header-left h2 {
+      font-family: var(--font-title);
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .header-right p {
+      font-size: 15.5px;
+      color: var(--text-sub);
+      max-width: 440px;
+      text-align: right;
+    }
+
+    /* Section 2: Route Physics & Telemetry Mosaic */
+    .physics-mosaic {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .physics-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .physics-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--brand);
+    }
+    .physics-card-top { margin-bottom: 24px; }
+    .physics-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      background: var(--brand-light);
+      padding: 3px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .physics-card h3 {
+      font-family: var(--font-title);
+      font-size: 21px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .physics-card p {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+    .physics-metric-box {
+      background: var(--bg-studio);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .physics-metric-box .val {
+      font-family: var(--font-title);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    .physics-metric-box .desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Section 3: Audio-Visual Codec & SMS Pipeline Inspector */
+    .pipeline-section {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .pipeline-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .pipeline-panel {
+      background: var(--bg-studio);
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      padding: 32px;
+    }
+    .panel-header-badge {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .pipeline-panel h3 {
+      font-family: var(--font-title);
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    .codec-comparator {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .codec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 13.5px;
+    }
+    .codec-row:last-child { border-bottom: none; }
+    .badge-audio {
+      background: #ECFDF5;
+      color: #065F46;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    /* Section 4: Bilateral Hubbing Grid */
+    .carrier-nodes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .node-hub-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .node-hub-card:hover {
+      border-color: var(--brand);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .node-hub-city {
+      font-family: var(--font-title);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .node-hub-type {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--brand);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .node-latency-pill {
+      display: inline-block;
+      background: var(--bg-studio);
+      border: 1px solid var(--border-subtle);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--text-sub);
+    }
+
+    /* Section 5: Artisanal Interconnect Onboarding Desk */
+    .onboarding-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border: 1px solid var(--border-strong);
+      border-radius: 20px;
+      padding: 48px;
+      box-shadow: var(--shadow-studio);
+    }
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      background: var(--bg-studio);
+      transition: all 0.2s;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--brand);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px var(--brand-soft);
+    }
+
+    /* Section 6: Editorial Studio Footer */
+    footer.studio-footer {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-strong);
+      padding: 70px 0 32px 0;
+    }
+    .footer-editorial-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-col h4 {
+      font-family: var(--font-title);
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul a {
+      font-size: 14px;
+      color: var(--text-sub);
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--brand); }
+    .footer-legal-bar {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-studio-grid { grid-template-columns: 1fr; }
+      .physics-mosaic { grid-template-columns: 1fr; }
+      .pipeline-split { grid-template-columns: 1fr; }
+      .carrier-nodes-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-editorial-grid { grid-template-columns: repeat(2, 1fr); }
+      .header-right p { text-align: left; }
+    }
+    @media (max-width: 767px) {
+      section { padding: 60px 0; }
+      .hero-studio h1 { font-size: 36px; }
+      .form-grid-2 { grid-template-columns: 1fr; }
+      .carrier-nodes-grid { grid-template-columns: 1fr; }
+      .footer-editorial-grid { grid-template-columns: 1fr; }
+      .footer-legal-bar { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Studio Master Ticker Top Bar -->
+  <div class="studio-top-ticker">
+    <div class="ticker-pills">
+      <span><span class="status-dot-green"></span>Core SS7 & SIP Engine: <strong>Operational</strong></span>
+      <span>Throughput: <strong style="color: var(--brand);">12,556 TPS</strong></span>
+    </div>
+    <div class="timezone-clocks">
+      <span>DXB <strong>04:22</strong></span>
+      <span>LON <strong>00:22</strong></span>
+      <span>NYC <strong>19:22</strong></span>
+      <span>SGP <strong>08:22</strong></span>
+    </div>
+  </div>
+
+  <!-- Artisanal Navigation -->
+  <header class="studio-nav">
+    <div class="container nav-inner">
+      <a href="#" class="brand-mark">
+        <span>kimosha</span><span style="color: var(--brand);">telco</span>
+        <span class="brand-pill">STUDIO v2.6</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#physics">Route Physics</a></li>
+        <li><a href="#pipeline">Packet Pipeline</a></li>
+        <li><a href="#nodes">Global PoPs</a></li>
+        <li><a href="#desk">Carrier Desk</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="#desk" class="btn btn-outline">Rate Deck</a>
+        <a href="#desk" class="btn btn-primary">Initialize Bind</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section: Editorial Studio Layout -->
+  <section class="hero-studio">
+    <div class="container hero-studio-grid">
+      <div>
+        <div class="editorial-badge">
+          <span class="badge-tag">ENGINEERING</span>
+          <span>Next-Gen Wholesale Routing Core</span>
+        </div>
+        <h1>Routing Intelligence for <span>Global Operators.</span></h1>
+        <p>
+          Bespoke telecommunication pathways across 200+ territories. Sub-50ms SS7 packet delivery, crystal-clear SIP trunking, and algorithmic Least-Cost Routing tailored to carrier volume.
+        </p>
+        <div class="hero-action-row">
+          <a href="#desk" class="btn btn-primary" style="padding: 13px 28px;">Open Carrier Account</a>
+          <a href="#pipeline" class="btn btn-outline">Explore Pipeline Specs</a>
+        </div>
+        <div class="hero-spec-strip">
+          <div class="spec-item">
+            <div class="spec-val">0.68s</div>
+            <div class="spec-lbl">Average Handset Ping</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-val">500+</div>
+            <div class="spec-lbl">Direct MNO Interconnects</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-val">99.99%</div>
+            <div class="spec-lbl">Contractual SLA Uptime</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Route Testing Studio Deck -->
+      <div class="telemetry-deck">
+        <div class="deck-header">
+          <span class="deck-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            Live Route Inspector
+          </span>
+          <span style="font-family: var(--font-mono); font-size: 11px; background:#ECFDF5; color:#065F46; padding:2px 8px; border-radius:4px; font-weight:700;">● Active Stream</span>
+        </div>
+
+        <div class="route-selector-row">
+          <button class="route-btn active" onclick="setRouteProfile('uae', this)">UAE (+971)</button>
+          <button class="route-btn" onclick="setRouteProfile('ksa', this)">KSA (+966)</button>
+          <button class="route-btn" onclick="setRouteProfile('uk', this)">UK (+44)</button>
+          <button class="route-btn" onclick="setRouteProfile('usa', this)">USA (+1)</button>
+        </div>
+
+        <div class="telemetry-screen" id="telemetryScreen">
+          <div class="telemetry-row">
+            <span class="label">Destination Carrier</span>
+            <span class="val" id="telCarrier">Etisalat / du Direct Tier-1</span>
+          </div>
+          <div class="telemetry-row">
+            <span class="label">Interconnect Protocol</span>
+            <span class="val" id="telProtocol">Direct 1-Hop SS7 / SIGTRAN</span>
+          </div>
+          <div class="telemetry-row">
+            <span class="label">Average Latency</span>
+            <span class="val green" id="telLatency">0.62 seconds</span>
+          </div>
+          <div class="telemetry-row">
+            <span class="label">CLI Handset Pass-through</span>
+            <span class="val orange" id="telCLI">100% True CLI Guaranteed</span>
+          </div>
+          <div class="waveform-visual">
+            <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+          </div>
+        </div>
+
+        <div class="deck-actions">
+          <a href="#desk" class="btn btn-primary" style="flex:1; padding:10px;">Test This Route &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Route Physics & Telemetry Mosaic -->
+  <section id="physics">
+    <div class="container">
+      <div class="section-editorial-header">
+        <div class="header-left">
+          <div class="section-num">01 / ARCHITECTURAL INTEGRITY</div>
+          <h2>Carrier Route Physics</h2>
+        </div>
+        <div class="header-right">
+          <p>Engineered for high-volume telecommunication exchanges where packets cannot afford queue jitter or false supervision.</p>
+        </div>
+      </div>
+
+      <div class="physics-mosaic">
+        <!-- Card 1 -->
+        <div class="physics-card">
+          <div class="physics-card-top">
+            <span class="physics-tag">SS7 / SIGTRAN CORE</span>
+            <h3>Sub-Second Handset Ingestion</h3>
+            <p>Direct operator signaling layers circumvent intermediate transit hops to provide instant DLR callbacks with cryptographic verification.</p>
+          </div>
+          <div class="physics-metric-box">
+            <span class="desc">Transit Speed</span>
+            <span class="val">&lt; 700ms</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="physics-card">
+          <div class="physics-card-top">
+            <span class="physics-tag">SIP 2.0 / TDM TRUNKS</span>
+            <h3>True CLI Preservation</h3>
+            <p>100% Calling Line Identification fidelity ensures caller trust and minimizes Post-Dial Delay (PDD) on both wholesale and conversational routes.</p>
+          </div>
+          <div class="physics-metric-box">
+            <span class="desc">PDD Standard</span>
+            <span class="val">&lt; 1.4s</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="physics-card">
+          <div class="physics-card-top">
+            <span class="physics-tag">ALGORITHMIC LCR</span>
+            <h3>Dynamic Path Re-Routing</h3>
+            <p>Automated telemetry continuously monitors MNO delivery rates and shifts traffic to backup Tier-1 paths in under 120 milliseconds during outages.</p>
+          </div>
+          <div class="physics-metric-box">
+            <span class="desc">Failover Latency</span>
+            <span class="val">120ms</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Audio-Visual Codec & SMS Pipeline Inspector -->
+  <section id="pipeline" class="pipeline-section">
+    <div class="container">
+      <div class="section-editorial-header">
+        <div class="header-left">
+          <div class="section-num">02 / CODEC & PROTOCOL FIDELITY</div>
+          <h2>The Telecommunications Pipeline</h2>
+        </div>
+        <div class="header-right">
+          <p>Compare wholesale voice compression profiles and binary SMS transceiver specifications side-by-side.</p>
+        </div>
+      </div>
+
+      <div class="pipeline-split">
+        <!-- Voice Pipeline Panel -->
+        <div class="pipeline-panel">
+          <div class="panel-header-badge">
+            <span style="font-family: var(--font-mono); font-size:12px; font-weight:700; color:var(--brand);">VOICE ENGINE</span>
+            <span class="badge-audio">HD Crystal Audio</span>
+          </div>
+          <h3>Carrier-Grade SIP Trunking</h3>
+          <p style="font-size:14px; color:var(--text-sub);">Geo-distributed Session Border Controllers in Frankfurt, London, and Dubai maintaining high Answer Seizure Ratios.</p>
+          
+          <div class="codec-comparator">
+            <div class="codec-row">
+              <span><strong>Opus HD / G.711a</strong></span>
+              <span class="badge-audio">MOS Score 4.4 / 5.0</span>
+            </div>
+            <div class="codec-row">
+              <span><strong>Jitter Buffer Optimization</strong></span>
+              <span style="font-family:var(--font-mono); font-weight:700; color:var(--brand);">&lt; 18ms</span>
+            </div>
+            <div class="codec-row">
+              <span><strong>FAS Fraud Detection</strong></span>
+              <span style="color:#059669; font-weight:700;">Zero FAS Guarantee</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SMS Pipeline Panel -->
+        <div class="pipeline-panel">
+          <div class="panel-header-badge">
+            <span style="font-family: var(--font-mono); font-size:12px; font-weight:700; color:var(--brand);">MESSAGING ENGINE</span>
+            <span class="badge-audio">500 TPS / Bind</span>
+          </div>
+          <h3>SMPP 3.4 & REST Platform</h3>
+          <p style="font-size:14px; color:var(--text-sub);">Binary transceivers and high-capacity webhook emitters designed for high-frequency OTP delivery and banking alerts.</p>
+          
+          <div class="codec-comparator">
+            <div class="codec-row">
+              <span><strong>Bind Modes</strong></span>
+              <span style="font-family:var(--font-mono); font-weight:700;">TRX / TX / RX</span>
+            </div>
+            <div class="codec-row">
+              <span><strong>Window Size Capacity</strong></span>
+              <span style="font-family:var(--font-mono); font-weight:700; color:var(--brand);">Up to 100 PDUs</span>
+            </div>
+            <div class="codec-row">
+              <span><strong>DLR Stream Webhook</strong></span>
+              <span style="color:#059669; font-weight:700;">Real-Time JSON Handshake</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Global Point of Presence PoPs -->
+  <section id="nodes">
+    <div class="container">
+      <div class="section-editorial-header">
+        <div class="header-left">
+          <div class="section-num">03 / GLOBAL EDGE BACKBONE</div>
+          <h2>Strategic PoP Routing Locations</h2>
+        </div>
+        <div class="header-right">
+          <p>Equinix and Interxion data center nodes interconnected via private dark fiber links.</p>
+        </div>
+      </div>
+
+      <div class="carrier-nodes-grid">
+        <div class="node-hub-card">
+          <div class="node-hub-city">Dubai Internet City</div>
+          <div class="node-hub-type">Equinix DX1 &bull; Master Core</div>
+          <div class="node-latency-pill">0.4ms Core Latency</div>
+        </div>
+        <div class="node-hub-card">
+          <div class="node-hub-city">Frankfurt am Main</div>
+          <div class="node-hub-type">Equinix FR2 &bull; European Exchange</div>
+          <div class="node-latency-pill">0.6ms European Interconnect</div>
+        </div>
+        <div class="node-hub-card">
+          <div class="node-hub-city">London Slough</div>
+          <div class="node-hub-type">Equinix LD4 &bull; UK & Atlantic Gate</div>
+          <div class="node-latency-pill">0.8ms Core Latency</div>
+        </div>
+        <div class="node-hub-card">
+          <div class="node-hub-city">Singapore Central</div>
+          <div class="node-hub-type">Equinix SG1 &bull; APAC Gateway</div>
+          <div class="node-latency-pill">0.7ms Asian Interconnect</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Artisanal Interconnect Desk -->
+  <section id="desk">
+    <div class="container">
+      <div class="section-editorial-header">
+        <div class="header-left">
+          <div class="section-num">04 / CARRIER ONBOARDING</div>
+          <h2>Establish Interconnect Bilateral</h2>
+        </div>
+        <div class="header-right">
+          <p>Provision test binds, test route quality, and receive customized rate sheets within 60 minutes.</p>
+        </div>
+      </div>
+
+      <div class="onboarding-wrap">
+        <form onsubmit="handleStudioForm(event)">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="stName">Operator Representative Name</label>
+              <input type="text" id="stName" class="form-control" placeholder="Sarah Jenkins" required>
+            </div>
+            <div class="form-group">
+              <label for="stEmail">Carrier Work Email</label>
+              <input type="email" id="stEmail" class="form-control" placeholder="s.jenkins@operator.com" required>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="stCompany">Telecom Company / Enterprise</label>
+              <input type="text" id="stCompany" class="form-control" placeholder="Apex Telco Network" required>
+            </div>
+            <div class="form-group">
+              <label for="stProtocol">Required Interconnect Interface</label>
+              <select id="stProtocol" class="form-control">
+                <option>SMPP 3.4 Direct Transceiver Bind</option>
+                <option>RESTful HTTPS JSON API</option>
+                <option>SIP 2.0 Voice Trunk (G.711 / G.729)</option>
+                <option>Both Wholesale SMS & Voice</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="stDest">Target Destination Markets & Expected Monthly Volumes</label>
+            <textarea id="stDest" class="form-control" rows="3" placeholder="Target countries (e.g. GCC, UK, Europe), expected TPS requirements, and CLI needs..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 15px;">Submit Carrier Interconnect Application &rarr;</button>
+          <div id="studioFeedback" style="display:none; padding:14px; background:#ECFDF5; color:#065F46; border-radius:8px; font-weight:700; margin-top:14px; text-align:center;">
+            ✓ Interconnect credentials initiated. Our carrier trading desk will dispatch sandbox parameters shortly.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Studio Footer -->
+  <footer class="studio-footer">
+    <div class="container">
+      <div class="footer-editorial-grid">
+        <div>
+          <div class="brand-mark" style="font-size:20px; margin-bottom:12px;">
+            <span>kimosha</span><span style="color: var(--brand);">telco</span>
+          </div>
+          <p style="font-size:13.5px; color:var(--text-sub); line-height:1.65; max-width:280px;">
+            Telecommunications routing studio providing wholesale SMS termination, SIP voice trunking, and carrier gateway infrastructure.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Interconnects</h4>
+          <ul>
+            <li><a href="#pipeline">Wholesale SMS</a></li>
+            <li><a href="#pipeline">Voice Termination</a></li>
+            <li><a href="#pipeline">A2P OTP Gateway</a></li>
+            <li><a href="#pipeline">SMPP Binds</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>PoP Network</h4>
+          <ul>
+            <li><a href="#nodes">Dubai Core (DX1)</a></li>
+            <li><a href="#nodes">Frankfurt (FR2)</a></li>
+            <li><a href="#nodes">London (LD4)</a></li>
+            <li><a href="#nodes">Singapore (SG1)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>NOC & Desk</h4>
+          <ul>
+            <li><a href="mailto:noc@kimoshatelco.com">noc@kimoshatelco.com</a></li>
+            <li><a href="mailto:sales@kimoshatelco.com">sales@kimoshatelco.com</a></li>
+            <li><a href="#desk">Rate Deck Request</a></li>
+            <li><a href="#physics">Routing SLA</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-legal-bar">
+        <div>&copy; 2026 Kimosha Telecom FZ-LLC. All rights reserved.</div>
+        <div style="display:flex; gap:20px;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Carrier Agreement</a>
+          <a href="#">Security Statement</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const routeProfiles = {
+      uae: { carrier: 'Etisalat / du Direct Tier-1', protocol: 'Direct 1-Hop SS7 / SIGTRAN', latency: '0.62 seconds', cli: '100% True CLI Guaranteed' },
+      ksa: { carrier: 'STC / Mobily Direct MNO', protocol: 'Direct Bilateral Route', latency: '0.68 seconds', cli: '100% True CLI Guaranteed' },
+      uk: { carrier: 'Vodafone / EE Direct SS7', protocol: 'Direct Tier-1 Equinix LD4', latency: '0.85 seconds', cli: 'Full Alphanumeric Pass-through' },
+      usa: { carrier: 'AT&T / Verizon Direct', protocol: '10DLC / Toll-Free Ingestion', latency: '1.04 seconds', cli: 'Verified Campaign Routing' },
+    };
+
+    function setRouteProfile(country, btn) {
+      document.querySelectorAll('.route-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const p = routeProfiles[country];
+      document.getElementById('telCarrier').textContent = p.carrier;
+      document.getElementById('telProtocol').textContent = p.protocol;
+      document.getElementById('telLatency').textContent = p.latency;
+      document.getElementById('telCLI').textContent = p.cli;
+    }
+
+    function handleStudioForm(e) {
+      e.preventDefault();
+      document.getElementById('studioFeedback').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('studioFeedback').style.display = 'none';
+      }, 5000);
+    }
+  </script>
+</body>
+</html>

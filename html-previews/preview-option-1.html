@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimosha Telecom | Option 1: Enterprise CPaaS Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #F26522;
+      --brand-hover: #E05A1A;
+      --brand-light: #FFF3EB;
+      --brand-soft: #FDEADB;
+      --brand-border: #F9C9A6;
+      --brand-dark: #A8420E;
+      --text: #1A1A2E;
+      --text-muted: #5A6370;
+      --text-soft: #8D95A0;
+      --bg: #FFFFFF;
+      --bg-alt: #F8F9FB;
+      --bg-warm: #FEFCFA;
+      --border: #E5E7EB;
+      --border-light: #F0F1F4;
+      --panel: #FFFFFF;
+      --shadow-sm: 0 2px 8px rgba(26, 26, 46, 0.04);
+      --shadow-md: 0 8px 24px rgba(26, 26, 46, 0.06);
+      --shadow-lg: 0 16px 40px rgba(26, 26, 46, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 999px;
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      color: var(--text);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Top Announcement Bar */
+    .announcement-bar {
+      background: var(--brand-light);
+      border-bottom: 1px solid var(--brand-border);
+      padding: 8px 24px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brand-dark);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+    .announcement-badge {
+      background: var(--brand);
+      color: #fff;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Navigation */
+    header.site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .brand-logo .dot {
+      color: var(--brand);
+    }
+    .brand-logo .tag {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--brand-dark);
+      background: var(--brand-light);
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--brand); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: var(--brand);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(242, 101, 34, 0.25);
+    }
+    .btn-primary:hover {
+      background: var(--brand-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(242, 101, 34, 0.35);
+    }
+    .btn-outline {
+      background: #FFFFFF;
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+      background: var(--brand-light);
+    }
+
+    /* Section Styles */
+    section { padding: 80px 0; }
+    .section-bg-alt { background: var(--bg-alt); }
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 56px auto;
+    }
+    .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--brand-light);
+      color: var(--brand-dark);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 16px;
+      border: 1px solid var(--brand-border);
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .section-subtitle {
+      font-size: 17px;
+      color: var(--text-muted);
+    }
+
+    /* Hero Section: 55/45 Split */
+    .hero-section {
+      padding: 80px 0 60px 0;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FB 100%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-content h1 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero-content h1 span { color: var(--brand); }
+    .hero-description {
+      font-size: 17.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .hero-trust-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .trust-item svg { color: var(--brand); }
+
+    /* Interactive World Carrier Network Visual Widget (Light Theme) */
+    .fm-hero-visual, .fm-hero-visual * { box-sizing: border-box; }
+    .fm-hero-visual {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      height: 480px;
+      font-family: var(--font-display);
+    }
+    .fm-map-frame {
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(160deg, #FFFFFF 0%, #FFF8F4 100%);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg), 0 20px 50px rgba(242, 101, 34, 0.08);
+    }
+    .fm-map-caption {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      z-index: 3;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--brand-dark);
+      background: var(--brand-light);
+      border: 1px solid var(--brand-border);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .fm-map-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .fm-basedot {
+      fill: #E8ECE9;
+    }
+    .fm-route {
+      fill: none;
+      stroke: url(#fmRouteGrad);
+      stroke-width: 1.2;
+      opacity: 0.38;
+      transition: opacity 0.25s ease, stroke-width 0.25s ease;
+    }
+    .fm-route.fm-active {
+      opacity: 1;
+      stroke-width: 2.2;
+    }
+    .fm-route.fm-dim {
+      opacity: 0.1;
+    }
+    .fm-packet {
+      fill: var(--brand);
+      filter: drop-shadow(0 0 4px rgba(242, 101, 34, 0.6));
+    }
+    .fm-node {
+      cursor: pointer;
+      outline: none;
+    }
+    .fm-node-halo {
+      fill: url(#fmNodeGlow);
+      opacity: 0.5;
+      transition: opacity 0.25s ease;
+    }
+    .fm-node-dot {
+      fill: var(--brand);
+      stroke: #FFFFFF;
+      stroke-width: 1.6;
+      transition: r 0.2s ease, fill 0.2s ease;
+    }
+    .fm-node-hub .fm-node-dot {
+      fill: var(--brand-dark);
+    }
+    .fm-node.fm-active .fm-node-dot {
+      fill: var(--brand-hover);
+    }
+    .fm-node.fm-dim .fm-node-halo {
+      opacity: 0.15;
+    }
+    .fm-node.fm-dim .fm-node-dot {
+      opacity: 0.35;
+    }
+    .fm-pulse-ring {
+      fill: none;
+      stroke: var(--brand);
+      stroke-width: 1.2;
+      opacity: 0;
+      animation: fmradar 3.2s ease-out infinite;
+    }
+    .fm-pulse-ring.r2 { animation-delay: 1.05s; }
+    .fm-pulse-ring.r3 { animation-delay: 2.1s; }
+    @keyframes fmradar {
+      0% { opacity: 0.6; transform: scale(0.4); transform-origin: center; }
+      100% { opacity: 0; transform: scale(2.4); transform-origin: center; }
+    }
+    .fm-tooltip {
+      position: absolute;
+      z-index: 10;
+      background: #FFFFFF;
+      border: 1px solid var(--brand-border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(-50%, calc(-100% - 14px)) scale(0.96);
+      transition: opacity 0.16s ease, transform 0.16s ease;
+      box-shadow: 0 16px 32px -10px rgba(242, 101, 34, 0.18), 0 4px 12px rgba(0,0,0,0.06);
+      white-space: nowrap;
+    }
+    .fm-tooltip.fm-show {
+      opacity: 1;
+      transform: translate(-50%, calc(-100% - 18px)) scale(1);
+    }
+    .fm-tt-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .fm-tt-tag {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--brand);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-top: 2px;
+    }
+    .fm-tt-meta {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    .fm-stat-card {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 14px 28px -10px rgba(26, 26, 46, 0.1);
+      z-index: 4;
+    }
+    .fm-num {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 19px;
+      display: block;
+      line-height: 1.1;
+      color: var(--text);
+    }
+    .fm-num--accent {
+      color: var(--brand);
+    }
+    .fm-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .fm-stat--countries { top: 8%; left: 6%; }
+    .fm-stat--uptime { top: 8%; right: 6%; }
+    .fm-stat--live {
+      bottom: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 18px;
+    }
+    .fm-stat--live .fm-num {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      color: var(--brand);
+      font-weight: 700;
+    }
+    .fm-live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+      flex: none;
+      animation: fmlivedot 1.4s ease-in-out infinite;
+    }
+    @keyframes fmlivedot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+    @media (max-width: 1024px) {
+      .fm-hero-visual { height: 420px; }
+    }
+    @media (max-width: 767px) {
+      .fm-hero-visual { height: 360px; }
+      .fm-map-frame { border-radius: 16px; }
+      .fm-stat-card { padding: 8px 12px; border-radius: 10px; }
+      .fm-num { font-size: 15px; }
+      .fm-lbl { font-size: 10px; }
+      .fm-stat--countries { top: 6%; left: 4%; }
+      .fm-stat--uptime { top: 6%; right: 4%; }
+      .fm-stat--live { bottom: 6%; padding: 8px 12px; gap: 8px; }
+      .fm-map-caption { display: none; }
+      .fm-tooltip { display: none; }
+    }
+
+    /* Stats Ribbon */
+    .stats-ribbon {
+      padding: 30px 0;
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .stat-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--brand);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* 2x2 Services Grid */
+    .services-grid-2x2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .service-card-2x2 {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--brand);
+      border-radius: var(--radius-md);
+      padding: 36px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .service-card-2x2:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .service-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .service-num {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brand);
+      background: var(--brand-light);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+    }
+    .service-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand);
+    }
+    .service-card-2x2 h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .service-card-2x2 p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .service-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Comparison Table Section */
+    .comparison-table-wrap {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      overflow-x: auto;
+    }
+    table.comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14.5px;
+    }
+    table.comp-table th, table.comp-table td {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    table.comp-table th {
+      background: var(--bg-alt);
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--text);
+    }
+    table.comp-table th.highlight-col, table.comp-table td.highlight-col {
+      background: var(--brand-light);
+      color: var(--brand-dark);
+      font-weight: 700;
+      border-left: 2px solid var(--brand);
+      border-right: 2px solid var(--brand);
+    }
+    table.comp-table tr:last-child td { border-bottom: none; }
+
+    /* About Section: 50/50 Split */
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .about-quote {
+      border-left: 4px solid var(--brand);
+      padding-left: 20px;
+      margin: 24px 0;
+      font-style: italic;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .pillars-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pillar-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .pillar-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--brand-light);
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pillar-info h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .pillar-info p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Contact Section: 45/55 Split */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 40px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      box-shadow: var(--shadow-md);
+    }
+    .contact-info-card {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--brand-light);
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .info-text h4 { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+    .info-text p, .info-text a { font-size: 14px; color: var(--text-muted); }
+    .info-text a:hover { color: var(--brand); }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 14px;
+      background: var(--bg-alt);
+      transition: border-color 0.2s;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--brand);
+      background: #FFFFFF;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-feedback {
+      display: none;
+      padding: 12px;
+      background: #ECFDF5;
+      color: #065F46;
+      border-radius: var(--radius-sm);
+      font-size: 13.5px;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+
+    /* Footer: 4-Column */
+    footer.site-footer {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      padding: 64px 0 32px 0;
+    }
+    .footer-grid-4 {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-col h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul a {
+      font-size: 14px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--brand); }
+    .footer-about p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-soft);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-split { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; padding: 32px; }
+      .footer-grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 767px) {
+      section { padding: 56px 0; }
+      .nav-links { display: none; }
+      .hero-content h1 { font-size: 34px; }
+      .services-grid-2x2 { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid-4 { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <span class="announcement-badge">NEW</span>
+    <span>Direct SMPP 3.4 & Tier-1 SS7 Interconnects now live in 200+ countries with sub-second delivery.</span>
+    <a href="#contact" style="text-decoration: underline; color: var(--brand);">Request Interconnect &rarr;</a>
+  </div>
+
+  <!-- Sticky Navigation -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a href="#" class="brand-logo">
+        <span>kimosha</span><span class="dot">telco</span>
+        <span class="tag">CPaaS</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#comparison">Why Kimosha</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary">Start Integration</a>
+    </div>
+  </header>
+
+  <!-- Hero Section (55/45 Split with API Terminal) -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="eyebrow-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          Enterprise Telecom Infrastructure
+        </div>
+        <h1>Wholesale SMS & Voice <span>Built for Scale.</span></h1>
+        <p class="hero-description">
+          Kimosha Telecom delivers carrier-grade wholesale SMS termination, crystal-clear voice routes, and developer-first APIs across 200+ countries with direct operator interconnects and 99.99% SLA.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Get Rate Card</a>
+          <a href="#services" class="btn btn-outline">Explore Services</a>
+        </div>
+        <div class="hero-trust-row">
+          <div class="trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            500+ MNO Direct Binds
+          </div>
+          <div class="trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Sub-1.2s Delivery
+          </div>
+          <div class="trust-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            24/7 Tier-3 NOC
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Carrier Network World Animation (Light Theme) -->
+      <div class="fm-hero-visual">
+        <div class="fm-map-frame">
+          <div class="fm-map-caption">Live Carrier Network &middot; Hover a Hub</div>
+          <svg viewBox="0 0 662 327" preserveAspectRatio="xMidYMid meet" class="fm-map-svg">
+            <defs>
+              <linearGradient id="fmRouteGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#F26522"/>
+                <stop offset="100%" stop-color="#E05A1A"/>
+              </linearGradient>
+              <radialGradient id="fmNodeGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#F26522" stop-opacity="0.45"/>
+                <stop offset="100%" stop-color="#F26522" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <g class="fm-basegrid"><circle class="fm-basedot" cx="25.9" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="99.9" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="107.3" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="114.7" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="122.1" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="144.3" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="159.1" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="166.5" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="173.9" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="181.3" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="233.1" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="240.5" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="247.9" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="255.3" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="262.7" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="270.1" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="277.5" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="284.9" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="469.9" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="499.5" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="506.9" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="514.3" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="551.3" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="588.3" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="595.7" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="610.5" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="617.9" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="625.3" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="632.7" cy="0.0" r="1.7"/><circle class="fm-basedot" cx="14.8" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="22.2" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="29.6" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="37.0" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="44.4" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="74.0" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="81.4" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="103.6" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="111.0" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="118.4" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="125.8" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="148.0" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="170.2" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="229.4" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="236.8" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="244.2" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="251.6" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="259.0" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="266.4" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="273.8" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="281.2" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="473.6" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="495.8" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="503.2" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="510.6" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="518.0" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="525.4" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="547.6" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="555.0" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="569.8" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="584.6" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="592.0" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="599.4" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="606.8" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="614.2" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="621.6" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="629.0" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="636.4" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="643.8" cy="6.4" r="1.7"/><circle class="fm-basedot" cx="3.7" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="11.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="18.5" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="25.9" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="33.3" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="40.7" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="48.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="55.5" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="62.9" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="70.3" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="77.7" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="85.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="92.5" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="99.9" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="114.7" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="122.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="151.7" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="166.5" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="233.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="240.5" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="247.9" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="255.3" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="262.7" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="270.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="277.5" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="455.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="462.5" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="469.9" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="477.3" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="499.5" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="506.9" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="514.3" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="551.3" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="588.3" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="595.7" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="610.5" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="617.9" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="625.3" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="632.7" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="640.1" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="647.5" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="654.9" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="662.3" cy="12.8" r="1.7"/><circle class="fm-basedot" cx="7.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="14.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="22.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="29.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="37.0" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="44.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="51.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="59.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="66.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="74.0" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="81.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="88.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="96.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="103.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="111.0" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="118.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="125.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="133.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="140.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="148.0" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="155.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="162.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="170.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="229.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="236.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="244.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="251.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="259.0" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="266.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="429.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="436.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="444.0" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="451.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="458.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="466.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="473.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="495.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="503.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="510.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="518.0" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="525.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="547.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="555.0" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="569.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="584.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="592.0" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="599.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="606.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="614.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="621.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="629.0" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="636.4" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="643.8" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="651.2" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="658.6" cy="19.2" r="1.7"/><circle class="fm-basedot" cx="18.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="25.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="33.3" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="40.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="48.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="55.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="62.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="70.3" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="77.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="85.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="92.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="99.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="107.3" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="114.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="122.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="129.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="136.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="144.3" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="151.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="159.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="233.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="240.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="247.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="255.3" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="299.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="432.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="447.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="455.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="462.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="469.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="477.3" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="499.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="506.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="514.3" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="551.3" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="588.3" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="595.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="610.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="617.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="625.3" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="632.7" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="640.1" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="647.5" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="654.9" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="662.3" cy="25.6" r="1.7"/><circle class="fm-basedot" cx="7.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="14.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="22.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="29.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="37.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="44.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="51.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="59.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="66.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="74.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="81.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="88.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="96.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="103.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="111.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="118.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="125.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="133.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="140.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="148.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="155.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="162.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="236.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="244.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="251.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="288.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="296.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="303.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="355.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="414.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="429.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="436.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="444.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="451.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="458.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="466.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="473.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="495.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="503.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="510.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="518.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="525.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="547.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="555.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="569.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="584.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="592.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="599.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="606.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="614.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="621.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="629.0" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="636.4" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="643.8" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="651.2" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="658.6" cy="32.0" r="1.7"/><circle class="fm-basedot" cx="18.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="25.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="33.3" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="40.7" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="48.1" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="55.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="62.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="70.3" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="77.7" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="85.1" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="92.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="99.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="107.3" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="114.7" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="122.1" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="129.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="136.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="144.3" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="151.7" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="233.1" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="240.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="247.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="351.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="432.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="447.7" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="455.1" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="462.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="469.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="477.3" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="499.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="506.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="514.3" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="551.3" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="588.3" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="595.7" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="610.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="617.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="625.3" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="632.7" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="640.1" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="647.5" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="654.9" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="662.3" cy="38.5" r="1.7"/><circle class="fm-basedot" cx="7.4" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="14.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="22.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="29.6" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="37.0" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="44.4" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="51.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="59.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="66.6" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="74.0" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="81.4" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="88.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="96.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="103.6" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="111.0" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="118.4" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="125.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="133.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="140.6" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="148.0" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="236.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="244.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="347.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="355.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="414.4" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="429.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="436.6" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="444.0" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="451.4" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="458.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="466.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="473.6" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="495.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="503.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="510.6" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="518.0" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="525.4" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="547.6" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="555.0" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="569.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="584.6" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="592.0" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="599.4" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="606.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="614.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="621.6" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="629.0" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="636.4" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="643.8" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="651.2" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="658.6" cy="44.9" r="1.7"/><circle class="fm-basedot" cx="11.1" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="18.5" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="25.9" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="33.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="48.1" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="55.5" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="62.9" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="70.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="77.7" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="85.1" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="92.5" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="99.9" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="107.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="114.7" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="122.1" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="129.5" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="136.9" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="144.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="181.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="344.1" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="351.5" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="432.9" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="447.7" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="455.1" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="462.5" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="469.9" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="477.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="499.5" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="506.9" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="514.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="551.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="588.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="595.7" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="610.5" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="617.9" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="625.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="632.7" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="640.1" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="654.9" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="662.3" cy="51.3" r="1.7"/><circle class="fm-basedot" cx="22.2" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="59.2" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="66.6" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="74.0" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="81.4" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="88.8" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="96.2" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="103.6" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="111.0" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="118.4" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="125.8" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="133.2" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="140.6" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="148.0" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="177.6" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="207.2" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="347.8" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="355.2" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="414.4" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="429.2" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="436.6" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="444.0" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="451.4" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="458.8" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="466.2" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="473.6" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="495.8" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="503.2" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="510.6" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="518.0" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="525.4" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="547.6" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="555.0" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="569.8" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="584.6" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="592.0" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="599.4" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="606.8" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="651.2" cy="57.7" r="1.7"/><circle class="fm-basedot" cx="18.5" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="70.3" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="77.7" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="85.1" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="92.5" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="99.9" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="107.3" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="114.7" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="122.1" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="129.5" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="136.9" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="144.3" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="151.7" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="181.3" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="210.9" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="321.9" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="351.5" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="432.9" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="447.7" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="455.1" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="462.5" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="469.9" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="477.3" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="499.5" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="506.9" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="514.3" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="551.3" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="588.3" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="595.7" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="647.5" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="654.9" cy="64.1" r="1.7"/><circle class="fm-basedot" cx="74.0" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="81.4" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="88.8" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="96.2" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="103.6" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="111.0" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="118.4" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="125.8" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="133.2" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="140.6" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="148.0" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="155.4" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="162.8" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="207.2" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="214.6" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="325.6" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="414.4" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="429.2" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="436.6" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="444.0" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="451.4" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="458.8" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="466.2" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="473.6" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="495.8" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="503.2" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="510.6" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="518.0" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="525.4" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="547.6" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="555.0" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="569.8" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="584.6" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="592.0" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="599.4" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="643.8" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="651.2" cy="70.5" r="1.7"/><circle class="fm-basedot" cx="70.3" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="77.7" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="85.1" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="92.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="99.9" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="107.3" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="114.7" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="122.1" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="129.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="136.9" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="144.3" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="151.7" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="159.1" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="166.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="181.3" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="210.9" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="218.3" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="314.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="329.3" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="344.1" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="351.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="432.9" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="447.7" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="455.1" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="462.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="469.9" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="477.3" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="499.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="506.9" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="514.3" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="551.3" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="588.3" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="595.7" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="610.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="647.5" cy="76.9" r="1.7"/><circle class="fm-basedot" cx="81.4" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="88.8" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="96.2" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="103.6" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="111.0" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="118.4" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="125.8" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="133.2" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="140.6" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="148.0" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="155.4" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="162.8" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="170.2" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="177.6" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="207.2" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="214.6" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="222.0" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="325.6" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="333.0" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="340.4" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="347.8" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="355.2" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="414.4" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="429.2" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="436.6" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="444.0" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="451.4" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="458.8" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="466.2" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="473.6" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="495.8" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="503.2" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="510.6" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="518.0" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="525.4" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="547.6" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="555.0" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="569.8" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="584.6" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="592.0" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="599.4" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="606.8" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="643.8" cy="83.3" r="1.7"/><circle class="fm-basedot" cx="85.1" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="92.5" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="99.9" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="107.3" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="114.7" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="122.1" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="129.5" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="136.9" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="144.3" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="151.7" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="159.1" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="166.5" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="173.9" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="181.3" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="218.3" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="225.7" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="336.7" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="344.1" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="351.5" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="432.9" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="447.7" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="455.1" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="462.5" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="469.9" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="477.3" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="499.5" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="506.9" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="514.3" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="551.3" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="588.3" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="595.7" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="610.5" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="617.9" cy="89.7" r="1.7"/><circle class="fm-basedot" cx="88.8" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="96.2" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="103.6" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="111.0" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="118.4" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="125.8" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="133.2" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="140.6" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="148.0" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="155.4" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="162.8" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="170.2" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="177.6" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="333.0" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="340.4" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="347.8" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="355.2" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="414.4" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="429.2" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="436.6" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="444.0" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="451.4" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="458.8" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="466.2" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="473.6" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="495.8" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="503.2" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="510.6" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="518.0" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="525.4" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="547.6" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="555.0" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="569.8" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="584.6" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="592.0" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="599.4" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="606.8" cy="96.1" r="1.7"/><circle class="fm-basedot" cx="92.5" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="99.9" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="107.3" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="114.7" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="122.1" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="129.5" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="136.9" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="144.3" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="151.7" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="159.1" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="166.5" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="173.9" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="181.3" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="336.7" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="344.1" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="351.5" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="447.7" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="455.1" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="462.5" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="469.9" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="477.3" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="499.5" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="506.9" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="514.3" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="551.3" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="588.3" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="595.7" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="102.5" r="1.7"/><circle class="fm-basedot" cx="88.8" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="96.2" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="103.6" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="111.0" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="118.4" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="125.8" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="133.2" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="140.6" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="148.0" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="155.4" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="162.8" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="170.2" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="177.6" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="318.2" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="325.6" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="333.0" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="444.0" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="451.4" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="458.8" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="466.2" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="473.6" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="495.8" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="503.2" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="510.6" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="518.0" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="525.4" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="547.6" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="555.0" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="569.8" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="584.6" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="592.0" cy="108.9" r="1.7"/><circle class="fm-basedot" cx="92.5" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="99.9" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="107.3" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="114.7" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="122.1" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="129.5" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="136.9" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="144.3" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="151.7" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="159.1" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="166.5" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="173.9" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="181.3" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="321.9" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="329.3" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="351.5" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="447.7" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="455.1" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="462.5" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="469.9" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="477.3" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="499.5" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="506.9" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="514.3" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="551.3" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="610.5" cy="115.4" r="1.7"/><circle class="fm-basedot" cx="96.2" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="103.6" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="111.0" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="118.4" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="125.8" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="133.2" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="140.6" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="148.0" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="155.4" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="162.8" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="170.2" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="177.6" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="318.2" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="325.6" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="414.4" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="429.2" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="444.0" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="451.4" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="458.8" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="466.2" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="473.6" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="495.8" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="503.2" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="510.6" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="518.0" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="525.4" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="547.6" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="555.0" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="584.6" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="606.8" cy="121.8" r="1.7"/><circle class="fm-basedot" cx="99.9" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="107.3" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="114.7" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="122.1" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="129.5" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="136.9" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="144.3" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="151.7" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="159.1" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="166.5" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="173.9" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="321.9" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="329.3" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="336.7" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="344.1" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="351.5" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="432.9" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="447.7" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="455.1" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="462.5" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="469.9" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="477.3" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="499.5" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="506.9" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="514.3" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="551.3" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="595.7" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="128.2" r="1.7"/><circle class="fm-basedot" cx="103.6" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="111.0" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="118.4" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="125.8" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="133.2" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="140.6" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="148.0" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="155.4" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="162.8" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="170.2" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="318.2" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="325.6" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="333.0" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="340.4" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="347.8" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="355.2" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="414.4" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="429.2" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="436.6" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="444.0" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="451.4" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="458.8" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="466.2" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="473.6" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="495.8" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="503.2" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="510.6" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="518.0" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="525.4" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="547.6" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="555.0" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="569.8" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="592.0" cy="134.6" r="1.7"/><circle class="fm-basedot" cx="107.3" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="114.7" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="122.1" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="129.5" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="136.9" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="144.3" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="314.5" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="321.9" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="329.3" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="336.7" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="344.1" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="351.5" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="447.7" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="455.1" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="462.5" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="469.9" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="477.3" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="499.5" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="506.9" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="514.3" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="551.3" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="141.0" r="1.7"/><circle class="fm-basedot" cx="111.0" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="118.4" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="125.8" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="133.2" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="310.8" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="318.2" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="325.6" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="333.0" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="340.4" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="347.8" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="355.2" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="414.4" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="429.2" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="451.4" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="458.8" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="466.2" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="473.6" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="495.8" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="503.2" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="510.6" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="518.0" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="525.4" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="547.6" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="555.0" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="569.8" cy="147.4" r="1.7"/><circle class="fm-basedot" cx="114.7" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="122.1" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="129.5" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="136.9" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="307.1" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="314.5" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="321.9" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="329.3" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="336.7" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="344.1" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="351.5" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="432.9" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="447.7" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="469.9" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="477.3" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="499.5" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="506.9" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="514.3" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="551.3" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="153.8" r="1.7"/><circle class="fm-basedot" cx="125.8" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="133.2" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="140.6" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="155.4" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="303.4" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="310.8" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="318.2" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="325.6" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="333.0" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="340.4" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="347.8" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="355.2" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="414.4" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="429.2" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="436.6" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="444.0" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="495.8" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="503.2" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="518.0" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="525.4" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="160.2" r="1.7"/><circle class="fm-basedot" cx="136.9" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="144.3" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="151.7" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="307.1" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="314.5" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="321.9" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="329.3" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="336.7" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="344.1" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="351.5" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="432.9" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="440.3" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="492.1" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="521.7" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="166.6" r="1.7"/><circle class="fm-basedot" cx="155.4" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="162.8" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="303.4" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="310.8" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="318.2" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="325.6" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="333.0" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="340.4" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="347.8" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="355.2" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="414.4" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="481.0" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="488.4" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="540.2" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="547.6" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="173.0" r="1.7"/><circle class="fm-basedot" cx="166.5" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="210.9" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="307.1" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="314.5" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="321.9" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="329.3" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="336.7" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="344.1" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="351.5" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="432.9" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="484.7" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="529.1" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="543.9" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="179.4" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="207.2" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="214.6" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="310.8" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="318.2" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="325.6" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="333.0" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="340.4" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="347.8" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="355.2" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="414.4" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="429.2" cy="185.8" r="1.7"/><circle class="fm-basedot" cx="181.3" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="210.9" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="218.3" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="225.7" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="351.5" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="418.1" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="192.3" r="1.7"/><circle class="fm-basedot" cx="177.6" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="207.2" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="214.6" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="222.0" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="229.4" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="355.2" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="414.4" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="532.8" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="555.0" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="198.7" r="1.7"/><circle class="fm-basedot" cx="173.9" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="181.3" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="210.9" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="218.3" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="225.7" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="233.1" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="240.5" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="536.5" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="558.7" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="610.5" cy="205.1" r="1.7"/><circle class="fm-basedot" cx="177.6" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="207.2" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="214.6" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="222.0" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="229.4" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="236.8" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="244.2" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="251.6" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="259.0" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="599.4" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="606.8" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="614.2" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="621.6" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="629.0" cy="211.5" r="1.7"/><circle class="fm-basedot" cx="181.3" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="210.9" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="218.3" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="225.7" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="233.1" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="240.5" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="247.9" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="255.3" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="262.7" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="625.3" cy="217.9" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="207.2" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="214.6" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="222.0" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="229.4" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="236.8" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="244.2" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="251.6" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="407.0" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="599.4" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="614.2" cy="224.3" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="210.9" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="218.3" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="225.7" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="233.1" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="240.5" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="247.9" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="255.3" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="358.9" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="403.3" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="410.7" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="432.9" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="588.3" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="595.7" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="617.9" cy="230.7" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="207.2" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="214.6" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="222.0" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="229.4" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="236.8" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="244.2" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="251.6" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="429.2" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="584.6" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="592.0" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="599.4" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="606.8" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="614.2" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="621.6" cy="237.1" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="210.9" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="218.3" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="225.7" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="233.1" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="240.5" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="247.9" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="425.5" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="588.3" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="595.7" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="610.5" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="617.9" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="625.3" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="662.3" cy="243.5" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="207.2" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="214.6" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="222.0" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="229.4" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="236.8" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="362.6" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="399.6" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="421.8" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="569.8" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="584.6" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="592.0" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="599.4" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="606.8" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="614.2" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="621.6" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="629.0" cy="249.9" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="210.9" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="218.3" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="225.7" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="233.1" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="366.3" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="388.5" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="395.9" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="580.9" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="588.3" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="595.7" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="610.5" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="617.9" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="625.3" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="632.7" cy="256.3" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="207.2" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="214.6" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="222.0" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="229.4" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="370.0" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="377.4" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="384.8" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="392.2" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="562.4" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="569.8" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="577.2" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="584.6" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="592.0" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="599.4" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="606.8" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="614.2" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="621.6" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="629.0" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="636.4" cy="262.8" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="210.9" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="218.3" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="225.7" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="373.7" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="381.1" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="566.1" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="573.5" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="603.1" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="610.5" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="617.9" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="625.3" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="632.7" cy="269.2" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="275.6" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="275.6" r="1.7"/><circle class="fm-basedot" cx="207.2" cy="275.6" r="1.7"/><circle class="fm-basedot" cx="214.6" cy="275.6" r="1.7"/><circle class="fm-basedot" cx="614.2" cy="275.6" r="1.7"/><circle class="fm-basedot" cx="621.6" cy="275.6" r="1.7"/><circle class="fm-basedot" cx="629.0" cy="275.6" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="282.0" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="282.0" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="282.0" r="1.7"/><circle class="fm-basedot" cx="210.9" cy="282.0" r="1.7"/><circle class="fm-basedot" cx="617.9" cy="282.0" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="288.4" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="288.4" r="1.7"/><circle class="fm-basedot" cx="207.2" cy="288.4" r="1.7"/><circle class="fm-basedot" cx="621.6" cy="288.4" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="294.8" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="294.8" r="1.7"/><circle class="fm-basedot" cx="203.5" cy="294.8" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="301.2" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="301.2" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="307.6" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="307.6" r="1.7"/><circle class="fm-basedot" cx="185.0" cy="314.0" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="314.0" r="1.7"/><circle class="fm-basedot" cx="188.7" cy="320.4" r="1.7"/><circle class="fm-basedot" cx="196.1" cy="320.4" r="1.7"/><circle class="fm-basedot" cx="192.4" cy="326.8" r="1.7"/><circle class="fm-basedot" cx="199.8" cy="326.8" r="1.7"/></g>
+            <g class="fm-routes"><path id="fmarc1" class="fm-route" data-city="London" d="M444.0,147.4 Q388.5,87.2 333.0,83.3"/><path id="fmarc2" class="fm-route" data-city="Singapore" d="M444.0,147.4 Q492.1,149.1 540.2,198.7"/><path id="fmarc3" class="fm-route" data-city="Lagos" d="M444.0,147.4 Q392.2,142.3 340.4,185.8"/><path id="fmarc4" class="fm-route" data-city="Sao Paulo" d="M444.0,147.4 Q344.1,149.2 244.2,249.9"/><path id="fmarc5" class="fm-route" data-city="New York" d="M444.0,147.4 Q316.4,74.8 188.7,115.4"/><path id="fmarc6" class="fm-route" data-city="Johannesburg" d="M444.0,147.4 Q416.2,175.0 388.5,256.3"/><path id="fmarc7" class="fm-route" data-city="Manila" d="M444.0,147.4 Q506.9,132.0 569.8,173.0"/></g>
+            <g class="fm-packets"><circle r="2.2" class="fm-packet"><animateMotion dur="5.3s" repeatCount="indefinite"><mpath href="#fmarc1"/></animateMotion></circle><circle r="2.2" class="fm-packet"><animateMotion dur="5.0s" repeatCount="indefinite"><mpath href="#fmarc2"/></animateMotion></circle><circle r="2.2" class="fm-packet"><animateMotion dur="5.0s" repeatCount="indefinite"><mpath href="#fmarc3"/></animateMotion></circle><circle r="2.2" class="fm-packet"><animateMotion dur="6.9s" repeatCount="indefinite"><mpath href="#fmarc4"/></animateMotion></circle><circle r="2.2" class="fm-packet"><animateMotion dur="7.5s" repeatCount="indefinite"><mpath href="#fmarc5"/></animateMotion></circle><circle r="2.2" class="fm-packet"><animateMotion dur="5.2s" repeatCount="indefinite"><mpath href="#fmarc6"/></animateMotion></circle><circle r="2.2" class="fm-packet"><animateMotion dur="5.3s" repeatCount="indefinite"><mpath href="#fmarc7"/></animateMotion></circle></g>
+            <g class="fm-nodes"><g class="fm-node fm-node-hub" data-city="Dubai" data-tag="Global HQ" data-meta="Network operations center" data-x="444.0" data-y="147.4" tabindex="0"><circle class="fm-pulse-ring" cx="444.0" cy="147.4" r="8"/><circle class="fm-pulse-ring r2" cx="444.0" cy="147.4" r="8"/><circle class="fm-pulse-ring r3" cx="444.0" cy="147.4" r="8"/><circle class="fm-node-halo" cx="444.0" cy="147.4" r="12"/><circle class="fm-node-dot" cx="444.0" cy="147.4" r="6.5"/></g><g class="fm-node" data-city="London" data-tag="Europe Hub" data-meta="Direct operator routes" data-x="333.0" data-y="83.3" tabindex="0"><circle class="fm-node-halo" cx="333.0" cy="83.3" r="9"/><circle class="fm-node-dot" cx="333.0" cy="83.3" r="4"/></g><g class="fm-node" data-city="Singapore" data-tag="Asia-Pacific Hub" data-meta="High-density urban traffic" data-x="540.2" data-y="198.7" tabindex="0"><circle class="fm-node-halo" cx="540.2" cy="198.7" r="9"/><circle class="fm-node-dot" cx="540.2" cy="198.7" r="4"/></g><g class="fm-node" data-city="Lagos" data-tag="West Africa Hub" data-meta="Fast-growing mobile market" data-x="340.4" data-y="185.8" tabindex="0"><circle class="fm-node-halo" cx="340.4" cy="185.8" r="9"/><circle class="fm-node-dot" cx="340.4" cy="185.8" r="4"/></g><g class="fm-node" data-city="Sao Paulo" data-tag="LATAM Hub" data-meta="Banking & fintech messaging" data-x="244.2" data-y="249.9" tabindex="0"><circle class="fm-node-halo" cx="244.2" cy="249.9" r="9"/><circle class="fm-node-dot" cx="244.2" cy="249.9" r="4"/></g><g class="fm-node" data-city="New York" data-tag="Americas Hub" data-meta="Enterprise & OTP traffic" data-x="188.7" data-y="115.4" tabindex="0"><circle class="fm-node-halo" cx="188.7" cy="115.4" r="9"/><circle class="fm-node-dot" cx="188.7" cy="115.4" r="4"/></g><g class="fm-node" data-city="Johannesburg" data-tag="Southern Africa Hub" data-meta="Cross-border connectivity" data-x="388.5" data-y="256.3" tabindex="0"><circle class="fm-node-halo" cx="388.5" cy="256.3" r="9"/><circle class="fm-node-dot" cx="388.5" cy="256.3" r="4"/></g><g class="fm-node" data-city="Manila" data-tag="Southeast Asia Hub" data-meta="High-volume A2P delivery" data-x="569.8" data-y="173.0" tabindex="0"><circle class="fm-node-halo" cx="569.8" cy="173.0" r="9"/><circle class="fm-node-dot" cx="569.8" cy="173.0" r="4"/></g></g>
+          </svg>
+          <div class="fm-tooltip" id="fmTooltip">
+            <div class="fm-tt-name" id="fmTtName">Dubai</div>
+            <div class="fm-tt-tag" id="fmTtTag">Global HQ</div>
+            <div class="fm-tt-meta" id="fmTtMeta">Network operations center</div>
+          </div>
+        </div>
+        <div class="fm-stat-card fm-stat--countries"><span class="fm-num">200+</span><span class="fm-lbl">Countries Connected</span></div>
+        <div class="fm-stat-card fm-stat--uptime"><span class="fm-num fm-num--accent">99.99%</span><span class="fm-lbl">Network Uptime</span></div>
+        <div class="fm-stat-card fm-stat--live">
+          <span class="fm-live-dot"></span>
+          <div><span class="fm-num" id="fmLiveCounter">12,556</span><span class="fm-lbl">Msgs Routed / sec</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Ribbon (4 Cards) -->
+  <div class="stats-ribbon">
+    <div class="container stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">200+</div>
+        <div class="stat-label">Connected Countries</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">99.99%</div>
+        <div class="stat-label">Network Uptime SLA</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">12,500+</div>
+        <div class="stat-label">Peak TPS Throughput</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">24/7/365</div>
+        <div class="stat-label">Dedicated NOC Support</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Section: 2x2 Equal Card Grid -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow-pill">Core Telecommunication Services</div>
+        <h2 class="section-title">High-Capacity Telecom Infrastructure</h2>
+        <p class="section-subtitle">Engineered for telecommunications carriers, SMS aggregators, and enterprise platforms demanding zero-downtime reliability.</p>
+      </div>
+
+      <div class="services-grid-2x2">
+        <!-- Service 1 -->
+        <div class="service-card-2x2">
+          <div>
+            <div class="service-top">
+              <span class="service-num">01 / A2P CORE</span>
+              <div class="service-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              </div>
+            </div>
+            <h3>Wholesale SMS Termination</h3>
+            <p>Direct operator routes across 200+ countries with dynamic Least-Cost Routing (LCR), guaranteed alphanumeric sender ID preservation, and real-time handset delivery receipts (DLR).</p>
+          </div>
+          <div class="service-tags">
+            <span class="service-tag">Direct SS7/SMPP</span>
+            <span class="service-tag">LCR Engine</span>
+            <span class="service-tag">Sub-Second DLR</span>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card-2x2">
+          <div>
+            <div class="service-top">
+              <span class="service-num">02 / VOICE SIP</span>
+              <div class="service-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+            </div>
+            <h3>Voice Termination (VoIP & SIP)</h3>
+            <p>Premium wholesale voice minutes with guaranteed CLI transparency, ultra-low Post-Dial Delay (PDD &lt; 1.5s), and high Answer Seizure Ratios (ASR) via global Session Border Controllers.</p>
+          </div>
+          <div class="service-tags">
+            <span class="service-tag">SIP 2.0 / SRTP</span>
+            <span class="service-tag">Guaranteed CLI</span>
+            <span class="service-tag">G.711 / G.729 HD</span>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card-2x2">
+          <div>
+            <div class="service-top">
+              <span class="service-num">03 / TRANSACTIONAL</span>
+              <div class="service-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+            </div>
+            <h3>A2P Enterprise Messaging & OTP</h3>
+            <p>Mission-critical verification messaging engineered for banking OTPs, 2FA codes, security alerts, and transactional notifications with zero queue congestion.</p>
+          </div>
+          <div class="service-tags">
+            <span class="service-tag">Priority Queues</span>
+            <span class="service-tag">99.9% Delivery</span>
+            <span class="service-tag">TLS 1.3 Encrypted</span>
+          </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card-2x2">
+          <div>
+            <div class="service-top">
+              <span class="service-num">04 / DEVELOPER API</span>
+              <div class="service-icon-box">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+            </div>
+            <h3>SMPP 3.4 & RESTful API Platform</h3>
+            <p>Enterprise-grade SMPP binds supporting Transceiver/Receiver modes alongside modern REST APIs, webhooks, detailed SDKs, and granular IP authentication.</p>
+          </div>
+          <div class="service-tags">
+            <span class="service-tag">SMPP v3.4</span>
+            <span class="service-tag">REST / JSON</span>
+            <span class="service-tag">Real-Time Webhooks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section id="comparison" class="section-bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow-pill">Competitive Superiority</div>
+        <h2 class="section-title">Kimosha Direct vs Standard Aggregators</h2>
+        <p class="section-subtitle">See why tier-1 carriers and enterprise CPaaS providers migrate their critical traffic to Kimosha Telecom.</p>
+      </div>
+
+      <div class="comparison-table-wrap">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Feature Capability</th>
+              <th class="highlight-col">Kimosha Telecom Direct</th>
+              <th>Standard Grey Aggregators</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Route Architecture</strong></td>
+              <td class="highlight-col">100% 1-Hop Direct MNO Interconnects</td>
+              <td>Multi-hop Grey / Resold Paths</td>
+            </tr>
+            <tr>
+              <td><strong>Average Delivery Speed</strong></td>
+              <td class="highlight-col">&lt; 1.2 seconds globally</td>
+              <td>8 - 45 seconds (delayed queues)</td>
+            </tr>
+            <tr>
+              <td><strong>CLI & Alphanumeric Sender ID</strong></td>
+              <td class="highlight-col">Guaranteed True Pass-Through</td>
+              <td>Random / Overwritten local numbers</td>
+            </tr>
+            <tr>
+              <td><strong>Handset Delivery Receipts (DLR)</strong></td>
+              <td class="highlight-col">Real-time Handset Level (SS7 Ack)</td>
+              <td>Fake / Generated platform DLRs</td>
+            </tr>
+            <tr>
+              <td><strong>Protocol Flexibility</strong></td>
+              <td class="highlight-col">SMPP 3.4, REST, SIP Trunking, Webhooks</td>
+              <td>Basic HTTP API only</td>
+            </tr>
+            <tr>
+              <td><strong>NOC & Technical Support</strong></td>
+              <td class="highlight-col">24/7/365 Dedicated Telecom Engineers</td>
+              <td>Email ticket queue (business hours only)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section: 50/50 Split -->
+  <section id="about">
+    <div class="container about-split">
+      <div>
+        <div class="eyebrow-pill">About Kimosha Telecom</div>
+        <h2 class="section-title">Built for Global Connectivity & Trust</h2>
+        <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 16px;">
+          Headquartered in Dubai with points of presence in Frankfurt, London, and Singapore, Kimosha Telecom bridges global enterprises and telecommunication carriers with high-throughput routing solutions.
+        </p>
+        <div class="about-quote">
+          &ldquo;Our mission is to eliminate friction in international telecommunications by providing transparent, carrier-grade SMS and voice connectivity backed by real SLAs and 24/7 engineering support.&rdquo;
+        </div>
+        <p style="font-size: 15px; color: var(--text-muted);">
+          Whether you need 10 million OTPs delivered per month or wholesale voice minutes routed across emerging markets, Kimosha delivers unmatched routing fidelity and direct interconnect economics.
+        </p>
+      </div>
+
+      <!-- Right Column: 4 Stacked Pillar Cards -->
+      <div class="pillars-stack">
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <div class="pillar-info">
+            <h4>Carrier-Grade Reliability</h4>
+            <p>Active-Active geo-redundant clusters guarantee 99.99% uptime with sub-second failover.</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <div class="pillar-info">
+            <h4>Complete Route Transparency</h4>
+            <p>Real-time delivery receipts, CDR extracts, and zero false-answer supervision (FAS).</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <div class="pillar-info">
+            <h4>Dynamic Least Cost Routing</h4>
+            <p>AI-driven path selection optimizes message throughput and wholesale voice pricing per second.</p>
+          </div>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <div class="pillar-info">
+            <h4>Direct NOC Engineering Team</h4>
+            <p>Direct communication with tier-3 telecom routing engineers via dedicated channels.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section: 45/55 Split -->
+  <section id="contact" class="section-bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow-pill">Start Interconnect</div>
+        <h2 class="section-title">Connect with Kimosha Telecom</h2>
+        <p class="section-subtitle">Request our latest wholesale A-Z rate card or spin up a sandbox SMPP bind in minutes.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-card">
+          <div>
+            <h3 style="font-size: 24px; margin-bottom: 8px;">Direct Carrier Inquiries</h3>
+            <p style="font-size: 15px; color: var(--text-muted);">Reach out to our global routing team for interconnect agreements and custom wholesale volume tiers.</p>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="info-text">
+              <h4>Sales & Interconnect</h4>
+              <p><a href="mailto:sales@kimoshatelco.com">sales@kimoshatelco.com</a></p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <div class="info-text">
+              <h4>24/7 Network Operations (NOC)</h4>
+              <p><a href="mailto:noc@kimoshatelco.com">noc@kimoshatelco.com</a></p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div class="info-text">
+              <h4>Headquarters</h4>
+              <p>Dubai Internet City, Building 4, Dubai, UAE</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <form onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" class="form-control" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="workEmail">Business Email</label>
+              <input type="email" id="workEmail" class="form-control" placeholder="john@company.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="companyName">Company / Carrier Name</label>
+              <input type="text" id="companyName" class="form-control" placeholder="Telecom Ltd" required>
+            </div>
+            <div class="form-group">
+              <label for="serviceInterest">Service Needed</label>
+              <select id="serviceInterest" class="form-control">
+                <option>Wholesale SMS Termination</option>
+                <option>Voice Termination (VoIP/SIP)</option>
+                <option>A2P Enterprise Messaging</option>
+                <option>SMPP 3.4 Direct Bind</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="monthlyVolume">Estimated Monthly Volume</label>
+            <input type="text" id="monthlyVolume" class="form-control" placeholder="e.g. 500k - 5M messages / minutes">
+          </div>
+          <div class="form-group">
+            <label for="messageText">Project Details / Target Destinations</label>
+            <textarea id="messageText" class="form-control" rows="3" placeholder="Specify countries and route requirements..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; border-radius: var(--radius-sm);">Submit Interconnect Request</button>
+          <div id="formFeedback" class="form-feedback">
+            ✓ Request submitted successfully. A Kimosha carrier specialist will contact you within 2 hours.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (4-Column) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid-4">
+        <div class="footer-about">
+          <div class="brand-logo" style="font-size: 20px;">
+            <span>kimosha</span><span class="dot">telco</span>
+          </div>
+          <p>Carrier-grade wholesale SMS termination and crystal-clear voice connectivity powered by direct MNO interconnects and high-capacity routing infrastructure.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Core Services</h4>
+          <ul>
+            <li><a href="#services">Wholesale SMS</a></li>
+            <li><a href="#services">Voice Termination</a></li>
+            <li><a href="#services">A2P Messaging</a></li>
+            <li><a href="#services">SMPP 3.4 Platform</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Kimosha</a></li>
+            <li><a href="#comparison">Why Choose Us</a></li>
+            <li><a href="#contact">Carrier NOC</a></li>
+            <li><a href="#contact">Contact Sales</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Telecom Updates</h4>
+          <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 10px;">Subscribe to monthly rate adjustments and route notifications.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your work email" class="form-control" style="font-size: 13px;">
+            <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;">Join</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Kimosha Telecom FZ-LLC. All rights reserved.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Acceptable Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Interactive Carrier Network Map Logic
+    (function(){
+      var scope = document.querySelector('.fm-hero-visual');
+      if(!scope) return;
+      var svg = scope.querySelector('.fm-map-svg');
+      var frame = scope.querySelector('.fm-map-frame');
+      var tooltip = scope.querySelector('#fmTooltip');
+      var ttName = scope.querySelector('#fmTtName');
+      var ttTag = scope.querySelector('#fmTtTag');
+      var ttMeta = scope.querySelector('#fmTtMeta');
+      var nodes = scope.querySelectorAll('.fm-node');
+      var routes = scope.querySelectorAll('.fm-route');
+
+      function activate(node){
+        var city = node.getAttribute('data-city');
+        nodes.forEach(function(n){ n.classList.toggle('fm-dim', n !== node); n.classList.remove('fm-active'); });
+        node.classList.add('fm-active');
+        routes.forEach(function(r){
+          var match = r.getAttribute('data-city') === city;
+          r.classList.toggle('fm-active', match);
+          r.classList.toggle('fm-dim', !match);
+        });
+        ttName.textContent = city;
+        ttTag.textContent = node.getAttribute('data-tag');
+        ttMeta.textContent = node.getAttribute('data-meta');
+
+        var pt = svg.createSVGPoint();
+        pt.x = parseFloat(node.getAttribute('data-x'));
+        pt.y = parseFloat(node.getAttribute('data-y'));
+        var ctm = svg.getScreenCTM();
+        if(ctm){
+          var screenPt = pt.matrixTransform(ctm);
+          var frameRect = frame.getBoundingClientRect();
+          tooltip.style.left = (screenPt.x - frameRect.left) + 'px';
+          tooltip.style.top = (screenPt.y - frameRect.top) + 'px';
+        }
+        tooltip.classList.add('fm-show');
+      }
+      function reset(){
+        nodes.forEach(function(n){ n.classList.remove('fm-active','fm-dim'); });
+        routes.forEach(function(r){ r.classList.remove('fm-active','fm-dim'); });
+        tooltip.classList.remove('fm-show');
+      }
+      nodes.forEach(function(node){
+        node.addEventListener('pointerenter', function(){ activate(node); });
+        node.addEventListener('pointerleave', function(){ reset(); });
+        node.addEventListener('focus', function(){ activate(node); });
+        node.addEventListener('blur', function(){ reset(); });
+        node.addEventListener('click', function(e){
+          e.stopPropagation();
+          if(node.classList.contains('fm-active')){ reset(); } else { activate(node); }
+        });
+      });
+      document.addEventListener('click', reset);
+
+      var el = document.getElementById('fmLiveCounter');
+      if(el){
+        var base = 12556;
+        setInterval(function(){
+          base += Math.round((Math.random() - 0.42) * 260);
+          base = Math.max(9800, Math.min(15600, base));
+          el.textContent = base.toLocaleString('en-US');
+        }, 1400);
+      }
+    })();
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      document.getElementById('formFeedback').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('formFeedback').style.display = 'none';
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
