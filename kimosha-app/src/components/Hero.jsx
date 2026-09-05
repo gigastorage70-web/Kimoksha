@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Hero() {
   return (
     <section className="hero-centered">
@@ -26,10 +28,23 @@ export default function Hero() {
         <p>
           Connecting Tier-1 telecom operators, international mobile networks, and enterprise aggregators across 200+ countries with dynamic least-cost routing and sub-second delivery SLAs.
         </p>
-        <div>
-          <a href="#contact" className="btn btn-primary" style={{ padding: '14px 34px', fontSize: '15px' }}>
+        <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Link href="/contact" className="btn btn-primary" style={{ padding: '14px 34px', fontSize: '15px' }}>
             Establish Carrier Interconnect
-          </a>
+          </Link>
+          <Link
+            href="/services"
+            className="btn"
+            style={{
+              padding: '14px 28px',
+              fontSize: '15px',
+              background: '#FFFFFF',
+              color: 'var(--text)',
+              border: '1px solid var(--border)',
+            }}
+          >
+            Explore Services &rarr;
+          </Link>
         </div>
 
         <div className="hero-metrics-pill">

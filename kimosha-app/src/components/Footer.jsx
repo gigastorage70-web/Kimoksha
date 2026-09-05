@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Footer() {
   return (
     <footer className="site-footer">
@@ -9,28 +11,34 @@ export default function Footer() {
               <span className="dot">telco</span>
             </div>
             <p style={{ fontSize: '14px', color: 'var(--text-muted)', maxWidth: '320px', lineHeight: '1.6' }}>
-              Global wholesale SMS termination, voice routing hub, and high-capacity CPaaS infrastructure serving 500+ carrier interconnects worldwide.
+              Global wholesale SMS termination, voice routing hub, and high-capacity carrier infrastructure headquartered in Dubai Internet City, serving 500+ direct interconnects worldwide.
             </p>
+            <div style={{ marginTop: '16px', fontSize: '12px', color: 'var(--text-soft)' }}>
+              Equinix DX1 (Dubai) &bull; Equinix FR2 (Frankfurt) &bull; Equinix LD4 (London) &bull; Equinix SG1 (Singapore)
+            </div>
           </div>
 
           <div className="footer-col">
-            <h4>Carrier Services</h4>
+            <h4>Carrier Solutions</h4>
             <ul>
-              <li><a href="#services">Wholesale SMS</a></li>
-              <li><a href="#services">SIP Voice Termination</a></li>
-              <li><a href="#services">A2P OTP Messaging</a></li>
-              <li><a href="#services">SMS Hubbing & Aggregation</a></li>
-              <li><a href="#specs">Carrier Standards</a></li>
+              <li><Link href="/services">Wholesale SMS Termination</Link></li>
+              <li><Link href="/services">SIP Voice & VoIP Minutes</Link></li>
+              <li><Link href="/services">A2P Enterprise Messaging</Link></li>
+              <li><Link href="/services">SMPP 3.4 & RESTful API</Link></li>
+              <li><Link href="/services">SMS Hubbing & Aggregation</Link></li>
+              <li><Link href="/services">Voice Broadcasting & IVR</Link></li>
             </ul>
           </div>
 
           <div className="footer-col">
-            <h4>Interconnect NOC</h4>
+            <h4>Operations & Desk</h4>
             <ul>
-              <li><a href="mailto:noc@kimoshatelco.com">noc@kimoshatelco.com</a></li>
+              <li><Link href="/about">About Kimosha Telecom</Link></li>
+              <li><Link href="/contact">Bilateral Interconnect Request</Link></li>
               <li><a href="mailto:sales@kimoshatelco.com">sales@kimoshatelco.com</a></li>
-              <li><a href="#network">Network Coverage Map</a></li>
-              <li><a href="#contact">Request Rate Deck</a></li>
+              <li><a href="mailto:noc@kimoshatelco.com">noc@kimoshatelco.com</a></li>
+              <li><Link href="/contact">NOC Escalation Matrix</Link></li>
+              <li><Link href="/contact">Request Rate Deck</Link></li>
             </ul>
           </div>
         </div>
@@ -38,9 +46,9 @@ export default function Footer() {
         <div className="footer-bottom">
           <div>&copy; {new Date().getFullYear()} Kimosha Telecom FZ-LLC. All rights reserved.</div>
           <div style={{ display: 'flex', gap: '20px' }}>
-            <a href="#">Carrier Agreement</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">NOC Escalation Matrix</a>
+            <Link href="/about">Carrier Standards</Link>
+            <Link href="/contact">Privacy Statement</Link>
+            <Link href="/contact">Interconnect Agreement</Link>
           </div>
         </div>
       </div>

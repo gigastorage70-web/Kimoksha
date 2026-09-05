@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function ServicesGrid() {
   const services = [
     {
@@ -66,6 +68,23 @@ export default function ServicesGrid() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: '40px' }}>
+          <Link
+            href="/services"
+            className="btn"
+            style={{
+              padding: '12px 28px',
+              fontSize: '14.5px',
+              background: '#FFFFFF',
+              color: 'var(--brand-dark)',
+              border: '1px solid var(--brand-border)',
+              fontWeight: 700,
+            }}
+          >
+            Explore Detailed Service Specifications &rarr;
+          </Link>
         </div>
       </div>
     </section>
