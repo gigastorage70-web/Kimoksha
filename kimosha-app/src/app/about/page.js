@@ -109,20 +109,7 @@ export default function AboutPage() {
           </div>
 
           {/* Operational Numbers */}
-          <div
-            style={{
-              background: '#FFFFFF',
-              border: '1px solid var(--border)',
-              borderRadius: 'var(--radius-lg)',
-              padding: '36px',
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '24px',
-              textAlign: 'center',
-              boxShadow: 'var(--shadow-sm)',
-              marginBottom: '60px',
-            }}
-          >
+          <div className="about-stats-grid">
             <div>
               <div style={{ fontFamily: 'var(--font-display)', fontSize: '36px', fontWeight: 800, color: 'var(--brand)' }}>
                 200+
