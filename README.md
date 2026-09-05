@@ -1,63 +1,71 @@
-# Kimosha Telecom — 6 Unique Website Redesign Showcase & Elementor MVP
+# Kimosha Telecom — Global Carrier Hub (Next.js)
 
-Professional MVP deliverables for **Kimosha Telecom** (Wholesale SMS & Voice Provider).
-
-This repository contains **6 completely unique, independently designed website options**, available as:
-1. **Interactive Standalone HTML Previews** (self-contained, responsive, zero build step).
-2. **WordPress Elementor-Importable JSON Templates** (tested against Elementor 3.x+ flexbox container schema).
-3. **Unified Meta-Showcase (`index.html`)** with live 6-tab switcher, responsive viewport simulator (Desktop / Tablet / Mobile), and direct JSON download buttons.
+Official Next.js production web application for **Kimosha Telecom** (Wholesale SMS & Voice Provider), built based on the client-approved **Option 2: Global Carrier Hub** architecture.
 
 ---
 
-## 📁 Repository Directory Structure
+## 📁 Repository Structure
 
 ```
 KImosha/
-├── index.html                                        # Unified Client Approval Meta-Showcase (6 Options)
-├── vercel.json                                       # Vercel Deployment Configuration
+├── kimosha-app/                                      # Next.js Production Web Application
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── layout.js                             # Root layout, Google Fonts & SEO metadata
+│   │   │   ├── page.js                               # Assembled Global Carrier Hub page
+│   │   │   └── globals.css                           # Vanilla CSS design system tokens & animations
+│   │   └── components/
+│   │       ├── Navbar.jsx                            # Sticky navigation & Connect NOC CTA
+│   │       ├── Hero.jsx                              # Full-width centered hero with SVG carrier network
+│   │       ├── CarrierMarquee.jsx                    # Infinite CSS ticker of regional routes
+│   │       ├── ServicesGrid.jsx                      # 3x2 wholesale services portfolio grid
+│   │       ├── CarrierNetworkMap.jsx                 # Interactive SVG PoP Map with live node tooltips
+│   │       ├── TechnicalSpecs.jsx                    # 3-column carrier telecom compliance standards
+│   │       ├── Testimonial.jsx                       # Wholesale carrier partner quote
+│   │       ├── CtaBanner.jsx                         # High-contrast orange gradient banner
+│   │       ├── InterconnectForm.jsx                  # Interactive bilateral onboarding form
+│   │       └── Footer.jsx                            # 3-column telecom footer
+│   ├── public/                                       # Static assets (Kimosha-logo.png)
+│   ├── package.json                                  # Next.js app package manifest
+│   └── next.config.mjs                               # Next.js configuration
+│
+├── package.json                                      # Root monorepo workspace manifest
+├── vercel.json                                       # Vercel deployment configuration
 ├── README.md                                         # Master Project Documentation
-├── Kimosha-logo.png                                  # Official Brand Logo
-├── Kimosha-Telecom-Build-Guide.md                    # Master Build Specification Guide
+├── Kimosha-logo.png                                  # Brand Logo
+├── Kimosha-Telecom-Build-Guide.md                    # Domain Build Specification Guide
 │
-├── html-previews/                                    # Standalone Self-Contained HTML Previews
-│   ├── preview-option-1.html                         # Option 1: Enterprise CPaaS Platform
-│   ├── preview-option-2.html                         # Option 2: Global Carrier Network Hub
-│   ├── preview-option-3.html                         # Option 3: Minimal Voice + SMS
-│   ├── preview-option-4.html                         # Option 4: Modern Bento Grid
-│   ├── preview-option-5.html                         # Option 5: Routing Studio & Telemetry Deck
-│   └── preview-option-6.html                         # Option 6: Liquid Spatial CPaaS (iOS 26 / One UI 9)
-│
-├── elementor-json/                                   # Elementor 3.x+ JSON Templates (WordPress)
-│   ├── Kimosha-Telecom-Option-1-Enterprise-CPaaS.json
-│   ├── Kimosha-Telecom-Option-2-Global-Carrier-Hub.json
-│   ├── Kimosha-Telecom-Option-3-Minimal-Voice-SMS.json
-│   ├── Kimosha-Telecom-Option-4-Bento-Grid-Modern.json
-│   ├── Kimosha-Telecom-Option-5-Routing-Studio.json
-│   └── Kimosha-Telecom-Option-6-Liquid-Spatial.json
-│
-├── scripts/                                          # Automation & Template Builders
-│   ├── generate_elementor_templates.py               # Generates all 6 Elementor JSON templates
-│   └── extract_content.py                            # Elementor JSON hierarchy inspection tool
-│
-├── test/                                             # Automated QA & Validation Test Suite
-│   ├── validate_json_schema.py                       # Validates Elementor 0.4 JSON schema & rules
-│   ├── test_previews.py                              # Validates HTML preview files & brand tokens
-│   └── test_uniqueness_matrix.py                     # Validates 100% uniqueness across 6 designs
-│
-├── data/                                             # Telecom Domain Data & Reference Research
+├── data/                                             # Telecom Domain Data & Research
 │   ├── telecom_services_elaborated.json              # Deep domain specifications (A2P, SMPP, CLI, DLR)
-│   └── reference_sites_analysis.md                   # Structural design analysis of reference sites
+│   └── reference_sites_analysis.md                   # Structural analysis of reference sites
 │
-└── waste/                                            # Scratchpad, logs, and deprecated notes
-    └── scrap_notes.md                                # Archive scratchpad
+└── waste/                                            # Legacy archive & scratchpad
+    └── legacy-showcase/                              # Archived 6-option demo showcase & HTML previews
 ```
 
 ---
 
-## 🎨 6 Unique Design Breakdown
+## 🚀 Running Locally
 
-| Option | Style DNA | Hero Layout | Services Pattern | Signature Interactive Widget | Footer Style |
-|---|---|---|---|---|---|
+```bash
+# From the root directory:
+npm run dev
+
+# Or directly in kimosha-app:
+cd kimosha-app
+npm run dev
+```
+
+Visit `http://localhost:3000` to view the application.
+
+---
+
+## ⚡ Deploying to Vercel
+
+1. Push to GitHub: `https://github.com/gigastorage70-web/Kimosha-demo.git`
+2. In Vercel, import the project.
+3. Vercel automatically builds and deploys the Next.js application using the root `package.json` and `vercel.json` configuration.
+
 | **Option 1** | Enterprise CPaaS (Sinch / Twilio) | 55/45 Split | 2x2 equal grid with orange left border | Interactive World Carrier Network Visual (Light theme, animated packets, Dubai HQ pulses) | 4-Column Grid |
 | **Option 2** | Global Carrier Hub (Fortuna Messaging / Telnyx) | Centered full-width with world mesh | 3x2 numbered grid with top accent | Interactive SVG Map with 7 hoverable latency nodes | 3-Column Minimal |
 | **Option 3** | Precision Voice & SMS Engine (Orange + Navy + Slate) | 55/45 Split | 3-Card Transactional SMS Pipeline Grid | Interactive Live SMS Ingestion Simulator & HD Voice Waveform Spectrogram | 4-Column Deep Navy Footer |

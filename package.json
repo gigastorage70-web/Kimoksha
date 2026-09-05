@@ -1,0 +1,13 @@
+{
+  "name": "kimosha-telecom",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "kimosha-app"
+  ],
+  "scripts": {
+    "dev": "npm --workspace=kimosha-app run dev",
+    "build": "npm --workspace=kimosha-app run build",
+    "start": "npm --workspace=kimosha-app run start"
+  }
+}

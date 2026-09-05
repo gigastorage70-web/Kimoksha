@@ -12,7 +12,11 @@ __pycache__/
 *.pyo
 .pytest_cache/
 
-# Node
+# Node & Next.js
 node_modules/
 dist/
 build/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
