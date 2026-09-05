@@ -3,8 +3,19 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
 export const metadata = {
-  title: 'Carrier Services & Interconnect Routes | Kimosha Telecom',
-  description: 'Detailed specifications for wholesale SMS termination, SIP voice trunking, A2P OTP messaging, SMPP 3.4 binds, and global SMS hubbing.',
+  title: 'Carrier Services & Wholesale Solutions | Kimosha Telecom',
+  description:
+    'Comprehensive telecommunication carrier solutions: wholesale SMS termination, SIP voice trunking, high-priority A2P OTP messaging, SMPP v3.4 binds, global SMS hubbing, and voice broadcasting with guaranteed SLAs.',
+  alternates: {
+    canonical: '/services',
+  },
+  openGraph: {
+    title: 'Carrier Services & Wholesale Solutions | Kimosha Telecom',
+    description:
+      'Explore Kimosha Telecom wholesale SMS termination, SIP voice trunking, SMPP 3.4 binds, and carrier route SLA metrics.',
+    url: 'https://www.kimokshatelco.com/services',
+    images: ['/kimoksha-logo-clean.png'],
+  },
 };
 
 export default function ServicesPage() {
@@ -126,8 +137,9 @@ export default function ServicesPage() {
   ];
 
   return (
-    <main>
+    <>
       <Navbar />
+      <main id="main-content">
 
       {/* Page Header Banner */}
       <section className="page-header-banner">
@@ -305,7 +317,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

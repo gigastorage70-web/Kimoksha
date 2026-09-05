@@ -3,8 +3,19 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
 export const metadata = {
-  title: 'About Kimosha Telecom | Carrier Infrastructure & Network Pedigree',
-  description: 'Learn about Kimosha Telecom FZ-LLC, our Dubai headquarters, global Equinix data center points of presence, and 24/7 carrier Network Operations Center.',
+  title: 'About Our Global Carrier Network & Infrastructure | Kimosha Telecom',
+  description:
+    'Learn about Kimosha Telecom FZ-LLC, our Dubai Internet City headquarters, global Equinix data center points of presence (DX1, FR2, LD4, SG1), and 24/7 proactive carrier Network Operations Center.',
+  alternates: {
+    canonical: '/about',
+  },
+  openGraph: {
+    title: 'About Our Global Carrier Network & Infrastructure | Kimosha Telecom',
+    description:
+      'Learn about Kimosha Telecom FZ-LLC, our Dubai headquarters, global Equinix PoPs, and carrier-grade NOC operations.',
+    url: 'https://www.kimokshatelco.com/about',
+    images: ['/kimoksha-logo-clean.png'],
+  },
 };
 
 export default function AboutPage() {
@@ -59,8 +70,9 @@ export default function AboutPage() {
   ];
 
   return (
-    <main>
+    <>
       <Navbar />
+      <main id="main-content">
 
       {/* Page Header Banner */}
       <section className="page-header-banner">
@@ -252,7 +264,8 @@ export default function AboutPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

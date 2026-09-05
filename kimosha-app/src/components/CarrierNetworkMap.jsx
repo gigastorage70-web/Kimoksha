@@ -1,138 +1,290 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+const NODES = [
+  {
+    id: 'dubai',
+    city: 'Dubai (DX1 Core)',
+    tag: 'Global Master Hub',
+    meta: 'Primary Signaling Core & Bilateral Middle East Gateway',
+    specs: 'Status: Active Master Core | Latency: 0.2ms | Peering: 500+ MNOs',
+    protocols: 'SS7 / SIGTRAN / SMPP v3.4 / SIP RFC 3261',
+    x: 444.0,
+    y: 147.4,
+    isPrimary: true,
+  },
+  {
+    id: 'london',
+    city: 'London (LD4)',
+    tag: 'Western Europe Core',
+    meta: 'Equinix Slough Hub & Tier-1 Direct Carrier Peering',
+    specs: 'Status: Operational | Latency: 18ms | Capacity: 10 Gbps BGP',
+    protocols: 'SMPP v3.4 / SIP RFC 3261 / REST CPaaS',
+    x: 333.0,
+    y: 83.3,
+  },
+  {
+    id: 'frankfurt',
+    city: 'Frankfurt (FR2)',
+    tag: 'Central European Core',
+    meta: 'Direct Peering with DE-CIX & Continental Voice Exchangers',
+    specs: 'Status: Operational | Latency: 16ms | Capacity: 10 Gbps BGP',
+    protocols: 'SS7 SIGTRAN / SMPP v3.4 / Opus / G.711',
+    x: 352.0,
+    y: 90.0,
+  },
+  {
+    id: 'singapore',
+    city: 'Singapore (SG1)',
+    tag: 'Asia-Pacific Core',
+    meta: 'High-Density APAC Hub for ASEAN Mobile Operators',
+    specs: 'Status: Operational | Latency: 24ms | Capacity: 10 Gbps BGP',
+    protocols: 'SMPP v3.4 / REST CPaaS / Priority OTP Queue',
+    x: 540.2,
+    y: 198.7,
+  },
+  {
+    id: 'newyork',
+    city: 'New York (NY4)',
+    tag: 'North America Gateway',
+    meta: 'Direct Peering for 10DLC, Toll-Free & Shortcode Hubbing',
+    specs: 'Status: Operational | Latency: 22ms | Transatlantic Backbone',
+    protocols: 'SMPP v3.4 / 10DLC Registry / SIP Trunking',
+    x: 188.7,
+    y: 115.4,
+  },
+  {
+    id: 'johannesburg',
+    city: 'Johannesburg',
+    tag: 'Pan-Africa Core',
+    meta: 'High-Capacity Southern Africa Cross-Border SMS Gateway',
+    specs: 'Status: Operational | Latency: 32ms | Direct MNO Interconnect',
+    protocols: 'SS7 / SMPP v3.4 / Wholesale Voice',
+    x: 388.5,
+    y: 256.3,
+  },
+  {
+    id: 'saopaulo',
+    city: 'Sao Paulo',
+    tag: 'LATAM Regional Hub',
+    meta: 'High-Security Banking & Enterprise A2P OTP Interchange',
+    specs: 'Status: Operational | Latency: 28ms | Multi-Carrier Mesh',
+    protocols: 'SMPP v3.4 / RESTful Webhooks',
+    x: 244.2,
+    y: 249.9,
+  },
+  {
+    id: 'tokyo',
+    city: 'Tokyo / Manila',
+    tag: 'East Asia Gateway',
+    meta: 'Subsea Cable Peering for High-Volume Messaging Delivery',
+    specs: 'Status: Operational | Latency: 26ms | Low PDD Routing',
+    protocols: 'SMPP v3.4 / SIP RFC 3261',
+    x: 569.8,
+    y: 173.0,
+  },
+];
+
+const ROUTES = [
+  { id: 'arc-london', target: 'london', d: 'M444.0,147.4 Q388.5,87.2 333.0,83.3', dur: '5.2s' },
+  { id: 'arc-frankfurt', target: 'frankfurt', d: 'M444.0,147.4 Q402.0,98.0 352.0,90.0', dur: '4.8s' },
+  { id: 'arc-singapore', target: 'singapore', d: 'M444.0,147.4 Q492.1,149.1 540.2,198.7', dur: '5.0s' },
+  { id: 'arc-newyork', target: 'newyork', d: 'M444.0,147.4 Q316.4,74.8 188.7,115.4', dur: '7.2s' },
+  { id: 'arc-johannesburg', target: 'johannesburg', d: 'M444.0,147.4 Q416.2,175.0 388.5,256.3', dur: '5.4s' },
+  { id: 'arc-saopaulo', target: 'saopaulo', d: 'M444.0,147.4 Q344.1,149.2 244.2,249.9', dur: '6.8s' },
+  { id: 'arc-tokyo', target: 'tokyo', d: 'M444.0,147.4 Q506.9,132.0 569.8,173.0', dur: '5.6s' },
+  { id: 'arc-transatlantic', target: 'newyork', d: 'M333.0,83.3 Q260.0,60.0 188.7,115.4', dur: '6.0s' },
+  { id: 'arc-eurasia', target: 'singapore', d: 'M352.0,90.0 Q450.0,95.0 540.2,198.7', dur: '5.8s' },
+];
 
 export default function CarrierNetworkMap() {
-  const nodes = [
-    {
-      id: 'dubai',
-      name: 'Dubai HQ',
-      fullTitle: 'Dubai HQ Core (DX1)',
-      desc: 'Status: Active Master Hub | Latency: 0.2ms | Routes: 500+ Direct MNOs',
-      left: '58%',
-      top: '48%',
-      isPrimary: true,
-    },
-    {
-      id: 'london',
-      name: 'London',
-      fullTitle: 'London PoP (LD4)',
-      desc: 'Status: Operational | Latency: 18ms | Routes: Western Europe Tier-1',
-      left: '44%',
-      top: '28%',
-    },
-    {
-      id: 'frankfurt',
-      name: 'Frankfurt',
-      fullTitle: 'Frankfurt PoP (FR2)',
-      desc: 'Status: Operational | Latency: 16ms | Routes: Central Europe & Balkans',
-      left: '48%',
-      top: '30%',
-    },
-    {
-      id: 'singapore',
-      name: 'Singapore',
-      fullTitle: 'Singapore PoP (SG1)',
-      desc: 'Status: Operational | Latency: 24ms | Routes: APAC & ASEAN Direct',
-      left: '78%',
-      top: '60%',
-    },
-    {
-      id: 'newyork',
-      name: 'New York',
-      fullTitle: 'New York PoP (NY4)',
-      desc: 'Status: Operational | Latency: 22ms | Routes: North America 10DLC & SS7',
-      left: '22%',
-      top: '35%',
-    },
-    {
-      id: 'johannesburg',
-      name: 'Johannesburg',
-      fullTitle: 'Johannesburg Hub',
-      desc: 'Status: Operational | Latency: 32ms | Routes: Pan-Africa Wholesale SMS',
-      left: '56%',
-      top: '78%',
-    },
-    {
-      id: 'saopaulo',
-      name: 'Sao Paulo',
-      fullTitle: 'Sao Paulo PoP',
-      desc: 'Status: Operational | Latency: 28ms | Routes: LATAM Wholesale Gateway',
-      left: '32%',
-      top: '72%',
-    },
-  ];
+  const [activeNode, setActiveNode] = useState(NODES[0]);
+  const [liveTps, setLiveTps] = useState(12556);
 
-  const [activeTooltip, setActiveTooltip] = useState({
-    title: 'Dubai HQ Core (DX1)',
-    desc: 'Status: Active Master Hub | Latency: 0.2ms | Routes: 500+ Direct MNOs',
-  });
+  // Live fluctuating throughput telemetry
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLiveTps((prev) => {
+        const delta = Math.round((Math.random() - 0.48) * 180);
+        return Math.max(11850, Math.min(14200, prev + delta));
+      });
+    }, 1500);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section id="network" className="network-map-section">
+    <section id="network" className="network-map-section" aria-label="Global Carrier Routing Matrix">
       <div className="container">
         <div className="section-header-centered">
-          <span className="section-pill">Carrier Reach</span>
-          <h2 className="section-title">Global Carrier Network Backbone</h2>
+          <span className="section-pill">Global Backbone</span>
+          <h2 className="section-title">Global Carrier Peering Matrix</h2>
           <p className="section-subtitle">
-            Geographically distributed routing hubs ensuring sub-50ms packet transmission and 99.99% carrier SLA.
+            Direct, geographically distributed Points of Presence (PoPs) connected via low-latency subsea routes and BGP Anycast routing.
           </p>
         </div>
 
-        <div className="map-container-card">
-          <div className="map-header">
+        <div className="carrier-map-card">
+          <div className="carrier-map-header">
             <div>
-              <h3 style={{ fontSize: '20px' }}>Interactive Point of Presence (PoP) Map</h3>
-              <p style={{ fontSize: '14px', color: 'var(--text-muted)' }}>
-                Hover or click over any node to inspect live interconnect latency and route status.
+              <div className="carrier-map-headline">
+                <span className="carrier-pulse-indicator"></span>
+                <span>Interactive Carrier Network Topography</span>
+              </div>
+              <p className="carrier-map-sub">
+                Hover or select any exchange node to inspect live interconnect status, latency metrics, and protocols.
               </p>
             </div>
-            <div className="live-throughput-badge">
-              <span
-                style={{
-                  display: 'inline-block',
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  background: 'var(--brand)',
-                }}
-              ></span>
-              Live Core Throughput: 11,420 TPS
+            <div className="carrier-live-chip">
+              <span className="chip-dot"></span>
+              <span className="chip-value">{liveTps.toLocaleString('en-US')}</span>
+              <span className="chip-label">TPS Core Throughput</span>
             </div>
           </div>
 
-          <div className="map-svg-wrap" id="mapStage">
-            {/* Background SVG World Map Graphic Simulation */}
-            <svg width="100%" height="100%" viewBox="0 0 1000 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M150 120 Q 300 80 400 130 T 600 140 T 850 160" stroke="#E5E7EB" strokeWidth="2" strokeDasharray="4 4" />
-              <path d="M220 220 Q 400 240 600 220 T 800 280" stroke="#E5E7EB" strokeWidth="2" strokeDasharray="4 4" />
-              <line x1="580" y1="190" x2="480" y2="120" stroke="#F9C9A6" strokeWidth="1.5" />
-              <line x1="580" y1="190" x2="440" y2="110" stroke="#F9C9A6" strokeWidth="1.5" />
-              <line x1="580" y1="190" x2="780" y2="240" stroke="#F9C9A6" strokeWidth="1.5" />
-              <line x1="580" y1="190" x2="220" y2="140" stroke="#F9C9A6" strokeWidth="1.5" />
-              <line x1="580" y1="190" x2="560" y2="310" stroke="#F9C9A6" strokeWidth="1.5" />
+          <div className="carrier-map-stage">
+            {/* SVG Interactive Canvas */}
+            <svg
+              viewBox="0 0 662 327"
+              preserveAspectRatio="xMidYMid meet"
+              className="carrier-map-svg"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <linearGradient id="carrierRouteGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#F26522" stopOpacity="0.8" />
+                  <stop offset="50%" stopColor="#FA8C4C" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="#E05A1A" stopOpacity="0.8" />
+                </linearGradient>
+
+                <radialGradient id="carrierNodeGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#F26522" stopOpacity="0.45" />
+                  <stop offset="100%" stopColor="#F26522" stopOpacity="0" />
+                </radialGradient>
+
+                <filter id="carrierPacketGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feDropShadow dx="0" dy="0" stdDeviation="1.5" floodColor="#F26522" floodOpacity="0.8" />
+                </filter>
+              </defs>
+
+              {/* Background World Dot Matrix Map */}
+              <image
+                href="/world-carrier-grid.svg"
+                x="0"
+                y="0"
+                width="662"
+                height="327"
+                opacity="0.88"
+                style={{ pointerEvents: 'none' }}
+              />
+
+              {/* Curved Carrier Routes */}
+              <g className="carrier-routes-group">
+                {ROUTES.map((route) => {
+                  const isHighlighted = activeNode && (activeNode.id === route.target || activeNode.id === 'dubai');
+                  const isDimmed = activeNode && !isHighlighted && activeNode.id !== 'dubai';
+                  return (
+                    <path
+                      key={route.id}
+                      id={route.id}
+                      className={`carrier-route-line ${isHighlighted ? 'active' : ''} ${isDimmed ? 'dim' : ''}`}
+                      d={route.d}
+                    />
+                  );
+                })}
+              </g>
+
+              {/* Animated Glowing Packet Pulses */}
+              <g className="carrier-packets-group">
+                {ROUTES.map((route) => (
+                  <circle
+                    key={`packet-${route.id}`}
+                    r="2.2"
+                    className="carrier-packet-dot"
+                    filter="url(#carrierPacketGlow)"
+                  >
+                    <animateMotion dur={route.dur} repeatCount="indefinite">
+                      <mpath href={`#${route.id}`} />
+                    </animateMotion>
+                  </circle>
+                ))}
+              </g>
+
+              {/* Interactive Point of Presence Nodes */}
+              <g className="carrier-nodes-group">
+                {NODES.map((node) => {
+                  const isActive = activeNode?.id === node.id;
+                  const isDimmed = activeNode && activeNode.id !== node.id && !isActive;
+
+                  return (
+                    <g
+                      key={node.id}
+                      className={`carrier-node-item ${node.isPrimary ? 'is-hub' : ''} ${isActive ? 'is-active' : ''} ${isDimmed ? 'is-dim' : ''}`}
+                      onClick={() => setActiveNode(node)}
+                      onMouseEnter={() => setActiveNode(node)}
+                      tabIndex={0}
+                      aria-label={`${node.city} - ${node.tag}`}
+                      style={{ cursor: 'pointer', outline: 'none' }}
+                    >
+                      {/* Radar Rings for Dubai HQ */}
+                      {node.isPrimary && (
+                        <>
+                          <circle className="carrier-radar-ring r1" cx={node.x} cy={node.y} r="8" />
+                          <circle className="carrier-radar-ring r2" cx={node.x} cy={node.y} r="8" />
+                          <circle className="carrier-radar-ring r3" cx={node.x} cy={node.y} r="8" />
+                        </>
+                      )}
+
+                      {/* Halo Glow */}
+                      <circle
+                        className="carrier-node-halo"
+                        cx={node.x}
+                        cy={node.y}
+                        r={node.isPrimary ? 13 : 9}
+                      />
+
+                      {/* Solid Center Dot */}
+                      <circle
+                        className="carrier-node-dot"
+                        cx={node.x}
+                        cy={node.y}
+                        r={node.isPrimary ? 6 : 4}
+                      />
+                    </g>
+                  );
+                })}
+              </g>
             </svg>
 
-            {/* Interactive Regional Nodes */}
-            {nodes.map((node) => (
-              <div
-                key={node.id}
-                className={`map-node ${node.isPrimary ? 'hub-primary' : ''}`}
-                style={{ left: node.left, top: node.top }}
-                onMouseEnter={() => setActiveTooltip({ title: node.fullTitle, desc: node.desc })}
-                onClick={() => setActiveTooltip({ title: node.fullTitle, desc: node.desc })}
-                aria-label={node.fullTitle}
-              >
-                <span className="node-label">{node.name}</span>
-              </div>
-            ))}
-
-            {/* Dynamic Tooltip */}
-            <div className="map-tooltip" id="mapTooltip">
-              <strong>{activeTooltip.title}</strong>
-              <br />
-              <span style={{ color: 'var(--brand)', fontSize: '12px' }}>{activeTooltip.desc}</span>
+            {/* Floating Live Telemetry Cards */}
+            <div className="carrier-stat-badge stat-countries">
+              <span className="stat-value">190+</span>
+              <span className="stat-caption">Countries Connected</span>
             </div>
+
+            <div className="carrier-stat-badge stat-uptime">
+              <span className="stat-value text-orange">99.99%</span>
+              <span className="stat-caption">Carrier SLA Uptime</span>
+            </div>
+
+            {/* Responsive Active Node Telemetry HUD Panel */}
+            {activeNode && (
+              <div className="carrier-node-hud" role="region" aria-live="polite">
+                <div className="hud-header">
+                  <div className="hud-city-group">
+                    <span className="hud-pulse-mini"></span>
+                    <strong className="hud-city-name">{activeNode.city}</strong>
+                  </div>
+                  <span className="hud-tag-pill">{activeNode.tag}</span>
+                </div>
+                <div className="hud-meta">{activeNode.meta}</div>
+                <div className="hud-specs-bar">
+                  <span className="hud-spec-item">{activeNode.specs}</span>
+                  <span className="hud-spec-divider">&bull;</span>
+                  <span className="hud-spec-protocol">{activeNode.protocols}</span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

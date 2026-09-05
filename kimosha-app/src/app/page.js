@@ -11,17 +11,19 @@ import Footer from '../components/Footer';
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Navbar />
-      <Hero />
-      <CarrierMarquee />
-      <ServicesGrid />
-      <CarrierNetworkMap />
-      <TechnicalSpecs />
-      <Testimonial />
-      <CtaBanner />
-      <InterconnectForm />
+      <main id="main-content">
+        <Hero />
+        <CarrierMarquee />
+        <ServicesGrid />
+        <CarrierNetworkMap />
+        <TechnicalSpecs />
+        <Testimonial />
+        <CtaBanner />
+        <InterconnectForm />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

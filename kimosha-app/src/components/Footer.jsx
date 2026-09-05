@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -6,10 +7,15 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid-3">
           <div>
-            <div className="brand-logo" style={{ fontSize: '20px', marginBottom: '12px' }}>
-              <span>kimosha</span>
-              <span className="dot">telco</span>
-            </div>
+            <Link href="/" aria-label="Kimoksha Telco Home" style={{ display: 'inline-block', marginBottom: '14px' }}>
+              <Image
+                src="/kimoksha-logo-clean.png"
+                alt="Kimoksha Telco"
+                width={150}
+                height={45}
+                style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }}
+              />
+            </Link>
             <p style={{ fontSize: '14px', color: 'var(--text-muted)', maxWidth: '320px', lineHeight: '1.6' }}>
               Global wholesale SMS termination, voice routing hub, and high-capacity carrier infrastructure headquartered in Dubai Internet City, serving 500+ direct interconnects worldwide.
             </p>

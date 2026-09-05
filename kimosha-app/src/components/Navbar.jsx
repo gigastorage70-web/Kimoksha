@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import Image from 'next/image';
+
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -18,9 +20,15 @@ export default function Navbar() {
   return (
     <header className="site-nav">
       <div className="container nav-inner">
-        <Link href="/" className="brand-logo" onClick={() => setMobileOpen(false)}>
-          <span>kimosha</span>
-          <span className="dot">telco</span>
+        <Link href="/" className="brand-logo" onClick={() => setMobileOpen(false)} aria-label="Kimoksha Telco Home">
+          <Image
+            src="/kimoksha-logo-clean.png"
+            alt="Kimoksha Telco"
+            width={150}
+            height={45}
+            style={{ height: '38px', width: 'auto', display: 'block', objectFit: 'contain' }}
+            priority
+          />
           <span className="tag">GLOBAL HUB</span>
         </Link>
 
