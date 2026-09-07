@@ -17,10 +17,10 @@ export default function Footer() {
               />
             </Link>
             <p style={{ fontSize: '14px', color: 'var(--text-muted)', maxWidth: '320px', lineHeight: '1.6' }}>
-              Global wholesale SMS termination, voice routing hub, and high-capacity carrier infrastructure headquartered in Dubai Internet City, serving 500+ direct interconnects worldwide.
+              Global wholesale SMS termination, voice routing hub, and high-capacity carrier infrastructure headquartered in Northampton, United Kingdom, serving 500+ direct interconnects worldwide.
             </p>
             <div style={{ marginTop: '16px', fontSize: '12px', color: 'var(--text-soft)' }}>
-              Equinix DX1 (Dubai) &bull; Equinix FR2 (Frankfurt) &bull; Equinix LD4 (London) &bull; Equinix SG1 (Singapore)
+              Equinix LD4 (London) &bull; Equinix FR2 (Frankfurt) &bull; Equinix DX1 (Dubai) &bull; Equinix SG1 (Singapore)
             </div>
           </div>
 
@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <div>&copy; {new Date().getFullYear()} Kimoksha Telecom FZ-LLC. All rights reserved.</div>
+          <div>&copy; {new Date().getFullYear()} Kimoksha Telecom. All rights reserved.</div>
           <div style={{ display: 'flex', gap: '20px' }}>
             <Link href="/about">Carrier Standards</Link>
             <Link href="/contact">Privacy Statement</Link>

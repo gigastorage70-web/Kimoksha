@@ -5,14 +5,14 @@ import Footer from '../../components/Footer';
 export const metadata = {
   title: 'About Our Global Carrier Network & Infrastructure | Kimoksha Telecom',
   description:
-    'Learn about Kimoksha Telecom FZ-LLC, our Dubai Internet City headquarters, global Equinix data center points of presence (DX1, FR2, LD4, SG1), and 24/7 proactive carrier Network Operations Center.',
+    'Learn about Kimoksha Telecom, our Northampton, United Kingdom headquarters, global Equinix data center points of presence (LD4, FR2, DX1, SG1), and 24/7 proactive carrier Network Operations Center.',
   alternates: {
     canonical: '/about',
   },
   openGraph: {
     title: 'About Our Global Carrier Network & Infrastructure | Kimoksha Telecom',
     description:
-      'Learn about Kimoksha Telecom FZ-LLC, our Dubai headquarters, global Equinix PoPs, and carrier-grade NOC operations.',
+      'Learn about Kimoksha Telecom, our UK headquarters, global Equinix PoPs, and carrier-grade NOC operations.',
     url: 'https://www.kimokshatelco.com/about',
     images: ['/kimoksha-logo-clean.png'],
   },
@@ -21,25 +21,25 @@ export const metadata = {
 export default function AboutPage() {
   const popLocations = [
     {
-      code: 'EQUINIX DX1',
-      city: 'Dubai, UAE',
-      role: 'Master Signaling & Routing Hub',
+      code: 'EQUINIX LD4',
+      city: 'London, United Kingdom',
+      role: 'Master Signaling Hub & Executive UK Core',
       latency: '0.2ms Core Cross-Connect',
-      details: 'Houses our primary SS7 signalling engine and bilateral Middle East exchange switches, situated in Dubai Internet City.',
+      details: 'Houses our primary global signaling engine and high-capacity bilateral carrier interconnect switches, operating from the Slough carrier campus in London.',
     },
     {
       code: 'EQUINIX FR2',
       city: 'Frankfurt, Germany',
       role: 'European Exchange Core',
-      latency: '16ms Pan-European Transit',
+      latency: '14ms Pan-European Transit',
       details: 'Directly peered with major European mobile operators, DE-CIX exchange points, and Tier-1 voice carriers.',
     },
     {
-      code: 'EQUINIX LD4',
-      city: 'London, United Kingdom',
-      role: 'Transatlantic Voice Gateway',
-      latency: '18ms Transatlantic Link',
-      details: 'Slough carrier campus cross-connect managing high-capacity SIP trunking and transatlantic A2P messaging volumes.',
+      code: 'EQUINIX DX1',
+      city: 'Dubai, UAE',
+      role: 'Middle East Regional Gateway',
+      latency: '18ms Regional Cross-Connect',
+      details: 'Strategic regional exchange switch managing bilateral Middle East operator routing and voice transit.',
     },
     {
       code: 'EQUINIX SG1',
@@ -86,7 +86,7 @@ export default function AboutPage() {
             Built on <span>Direct Telecom Infrastructure</span>
           </h1>
           <p className="page-description">
-            Headquartered in Dubai Internet City, Kimoksha Telecom FZ-LLC provides wholesale carrier routing, direct operator interconnects, and mission-critical voice transmission worldwide.
+            Headquartered in Northampton, United Kingdom, Kimoksha Telecom provides wholesale carrier routing, direct operator interconnects, and mission-critical voice transmission worldwide.
           </p>
         </div>
       </section>
@@ -101,7 +101,7 @@ export default function AboutPage() {
               Telecommunication connectivity should be reliable, transparent, and direct. In an industry often clouded by multi-hop aggregators, grey routes, and uncertain delivery receipts, Kimoksha Telecom was founded on a simple premise: establish direct bilateral interconnects with licensed mobile network operators and provide carrier partners with verified, sub-second transmission.
             </p>
             <p>
-              From our operational headquarters in Dubai Internet City, UAE, we oversee a global signaling core that processes more than 3.5 billion messages and millions of voice minutes every month. We serve international carriers, telecommunication aggregators, financial institutions, and global enterprise platforms that cannot afford dropped packets, artificial delivery reports, or degraded call quality.
+              From our operational headquarters in the United Kingdom, we oversee a global signaling core that processes more than 3.5 billion messages and millions of voice minutes every month. We serve international carriers, telecommunication aggregators, financial institutions, and global enterprise platforms that cannot afford dropped packets, artificial delivery reports, or degraded call quality.
             </p>
             <p>
               Our infrastructure is active-active, fully geo-redundant, and deployed in Tier-3 Equinix data center facilities across four continents. When your traffic enters our network, our least-cost routing engine evaluates latency and operator health scores in real time, routing each message and voice call through the cleanest available path.
@@ -196,7 +196,7 @@ export default function AboutPage() {
             <span className="service-badge-pill">OPERATIONS</span>
             <h3>24/7/365 Network Operations Center</h3>
             <p>
-              Telecommunications does not pause for weekends or holidays. Our centralized Network Operations Center in Dubai operates continuously with senior telecommunication engineers monitoring traffic flows, operator latency anomalies, and route degradation.
+              Telecommunications does not pause for weekends or holidays. Our centralized Network Operations Center operates continuously around the clock with senior telecommunication engineers monitoring traffic flows, operator latency anomalies, and route degradation across our global network hubs.
             </p>
             <p>
               Every bilateral interconnect is monitored through automated synthetic probes dispatching test packets every thirty seconds. If an operator SMSC experiences a sudden queue backup or an intermediate transit link introduces jitter, our routing core automatically reroutes traffic to our secondary Tier-1 partner in less than 50 milliseconds.

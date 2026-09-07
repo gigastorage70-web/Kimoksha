@@ -73,22 +73,22 @@ export default function ContactClient() {
 
   const regionalFacilities = [
     {
-      location: 'Dubai HQ Core (DX1)',
-      address: 'Building 14, Dubai Internet City, Dubai, United Arab Emirates',
-      contact: '+971 4 000 0000',
-      type: 'Executive Headquarters & Primary Signalling Core',
-    },
-    {
-      location: 'London Operations (LD4)',
-      address: 'Slough Data Campus, Buckinghamshire, United Kingdom',
+      location: 'London Master Core & UK HQ (LD4)',
+      address: '90 West Street, Upton, Northampton & Slough Data Campus, UK',
       contact: '+44 20 7946 0000',
-      type: 'Western Europe Carrier Exchange & Voice Peering Center',
+      type: 'Executive UK Headquarters & Primary Global Signaling Core',
     },
     {
-      location: 'Frankfurt Node (FR2)',
+      location: 'Frankfurt Exchange (FR2)',
       address: 'Kleyerstrasse 90, Frankfurt am Main, Germany',
       contact: '+49 69 0000 0000',
       type: 'Central European Core Transit & DE-CIX Peering',
+    },
+    {
+      location: 'Dubai Gateway Node (DX1)',
+      address: 'Building 14, Dubai Internet City, Dubai, United Arab Emirates',
+      contact: '+971 4 000 0000',
+      type: 'Middle East Regional Peering & Carrier Exchange Node',
     },
     {
       location: 'Singapore Gateway (SG1)',

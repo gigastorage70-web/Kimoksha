@@ -44,7 +44,7 @@ export default function ServicesPage() {
       tag: '02 / VOICE INFRASTRUCTURE',
       title: 'Voice Termination & SIP Trunking',
       overview:
-        'Carrier-grade SIP trunking infrastructure supporting G.711, G.729, and Opus HD codecs. Our geographically distributed Session Border Controllers in Frankfurt, Dubai, London, and Singapore guarantee sub-50ms jitter and high Answer Seizure Ratios for international call centers and enterprise dialers.',
+        'Carrier-grade SIP trunking infrastructure supporting G.711, G.729, and Opus HD codecs. Our geographically distributed Session Border Controllers in London, Frankfurt, Dubai, and Singapore guarantee sub-50ms jitter and high Answer Seizure Ratios for international call centers and enterprise dialers.',
       features: [
         'Guaranteed Calling Line Identification pass-through across premium routes',
         'Full compliance with SIP RFC 3261, TLS transport, and SRTP voice encryption',

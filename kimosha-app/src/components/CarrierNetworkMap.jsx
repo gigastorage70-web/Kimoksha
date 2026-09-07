@@ -4,25 +4,15 @@ import { useState, useEffect } from 'react';
 
 const NODES = [
   {
-    id: 'dubai',
-    city: 'Dubai (DX1 Core)',
-    tag: 'Global Master Hub',
-    meta: 'Primary Signaling Core & Bilateral Middle East Gateway',
-    specs: 'Status: Active Master Core | Latency: 0.2ms | Peering: 500+ MNOs',
-    protocols: 'SS7 / SIGTRAN / SMPP v3.4 / SIP RFC 3261',
-    x: 444.0,
-    y: 147.4,
-    isPrimary: true,
-  },
-  {
     id: 'london',
-    city: 'London (LD4)',
-    tag: 'Western Europe Core',
-    meta: 'Equinix Slough Hub & Tier-1 Direct Carrier Peering',
-    specs: 'Status: Operational | Latency: 18ms | Capacity: 10 Gbps BGP',
-    protocols: 'SMPP v3.4 / SIP RFC 3261 / REST CPaaS',
+    city: 'London & UK HQ',
+    tag: 'Global Master Hub & HQ',
+    meta: 'Executive UK Headquarters & Primary Global Signaling Core',
+    specs: 'Status: Active Master Core | Latency: 0.2ms | Peering: 500+ MNOs',
+    protocols: 'SS7 / SIGTRAN / SMPP v3.4 / SIP RFC 3261 / REST CPaaS',
     x: 333.0,
     y: 83.3,
+    isPrimary: true,
   },
   {
     id: 'frankfurt',
@@ -33,6 +23,16 @@ const NODES = [
     protocols: 'SS7 SIGTRAN / SMPP v3.4 / Opus / G.711',
     x: 352.0,
     y: 90.0,
+  },
+  {
+    id: 'dubai',
+    city: 'Dubai (DX1 Core)',
+    tag: 'Middle East Regional Gateway',
+    meta: 'Equinix DX1 Core & Bilateral Middle East Carrier Gateway',
+    specs: 'Status: Operational | Latency: 18ms | Capacity: 10 Gbps BGP',
+    protocols: 'SS7 / SIGTRAN / SMPP v3.4 / SIP RFC 3261',
+    x: 444.0,
+    y: 147.4,
   },
   {
     id: 'singapore',
@@ -87,15 +87,15 @@ const NODES = [
 ];
 
 const ROUTES = [
-  { id: 'arc-london', target: 'london', d: 'M444.0,147.4 Q388.5,87.2 333.0,83.3', dur: '5.2s' },
-  { id: 'arc-frankfurt', target: 'frankfurt', d: 'M444.0,147.4 Q402.0,98.0 352.0,90.0', dur: '4.8s' },
-  { id: 'arc-singapore', target: 'singapore', d: 'M444.0,147.4 Q492.1,149.1 540.2,198.7', dur: '5.0s' },
-  { id: 'arc-newyork', target: 'newyork', d: 'M444.0,147.4 Q316.4,74.8 188.7,115.4', dur: '7.2s' },
-  { id: 'arc-johannesburg', target: 'johannesburg', d: 'M444.0,147.4 Q416.2,175.0 388.5,256.3', dur: '5.4s' },
-  { id: 'arc-saopaulo', target: 'saopaulo', d: 'M444.0,147.4 Q344.1,149.2 244.2,249.9', dur: '6.8s' },
-  { id: 'arc-tokyo', target: 'tokyo', d: 'M444.0,147.4 Q506.9,132.0 569.8,173.0', dur: '5.6s' },
-  { id: 'arc-transatlantic', target: 'newyork', d: 'M333.0,83.3 Q260.0,60.0 188.7,115.4', dur: '6.0s' },
-  { id: 'arc-eurasia', target: 'singapore', d: 'M352.0,90.0 Q450.0,95.0 540.2,198.7', dur: '5.8s' },
+  { id: 'arc-frankfurt', target: 'frankfurt', d: 'M333.0,83.3 Q342.0,86.0 352.0,90.0', dur: '3.6s' },
+  { id: 'arc-dubai', target: 'dubai', d: 'M333.0,83.3 Q388.5,87.2 444.0,147.4', dur: '5.2s' },
+  { id: 'arc-newyork', target: 'newyork', d: 'M333.0,83.3 Q260.0,60.0 188.7,115.4', dur: '5.8s' },
+  { id: 'arc-singapore', target: 'singapore', d: 'M333.0,83.3 Q436.6,141.0 540.2,198.7', dur: '6.4s' },
+  { id: 'arc-johannesburg', target: 'johannesburg', d: 'M333.0,83.3 Q360.0,169.8 388.5,256.3', dur: '5.6s' },
+  { id: 'arc-saopaulo', target: 'saopaulo', d: 'M333.0,83.3 Q288.6,166.6 244.2,249.9', dur: '6.6s' },
+  { id: 'arc-tokyo', target: 'tokyo', d: 'M333.0,83.3 Q451.4,128.0 569.8,173.0', dur: '6.2s' },
+  { id: 'arc-dubai-singapore', target: 'singapore', d: 'M444.0,147.4 Q492.1,149.1 540.2,198.7', dur: '5.0s' },
+  { id: 'arc-frankfurt-dubai', target: 'dubai', d: 'M352.0,90.0 Q402.0,98.0 444.0,147.4', dur: '4.8s' },
 ];
 
 export default function CarrierNetworkMap() {
@@ -181,8 +181,8 @@ export default function CarrierNetworkMap() {
               {/* Curved Carrier Routes */}
               <g className="carrier-routes-group">
                 {ROUTES.map((route) => {
-                  const isHighlighted = activeNode && (activeNode.id === route.target || activeNode.id === 'dubai');
-                  const isDimmed = activeNode && !isHighlighted && activeNode.id !== 'dubai';
+                  const isHighlighted = activeNode && (activeNode.id === route.target || activeNode.id === 'london');
+                  const isDimmed = activeNode && !isHighlighted && activeNode.id !== 'london';
                   return (
                     <path
                       key={route.id}
@@ -226,7 +226,7 @@ export default function CarrierNetworkMap() {
                       aria-label={`${node.city} - ${node.tag}`}
                       style={{ cursor: 'pointer', outline: 'none' }}
                     >
-                      {/* Radar Rings for Dubai HQ */}
+                      {/* Radar Rings for UK Master HQ */}
                       {node.isPrimary && (
                         <>
                           <circle className="carrier-radar-ring r1" cx={node.x} cy={node.y} r="8" />

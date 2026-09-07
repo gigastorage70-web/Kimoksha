@@ -5,7 +5,7 @@ import ContactClient from './ContactClient';
 export const metadata = {
   title: 'Contact NOC & Bilateral Interconnect Onboarding | Kimoksha Telecom',
   description:
-    'Initiate bilateral carrier interconnect onboarding with Kimoksha Telecom. Access our 24/7 Network Operations Center (NOC) severity escalation matrix, request wholesale rate decks, or connect with our routing desks in Dubai, London, Frankfurt, and Singapore.',
+    'Initiate bilateral carrier interconnect onboarding with Kimoksha Telecom. Access our 24/7 Network Operations Center (NOC) severity escalation matrix, request wholesale rate decks, or connect with our routing desks in London, Frankfurt, Dubai, and Singapore.',
   alternates: {
     canonical: '/contact',
   },

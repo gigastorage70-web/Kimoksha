@@ -29,7 +29,7 @@ export const metadata = {
     template: '%s | Kimoksha Telecom',
   },
   description:
-    'International wholesale telecommunications carrier headquartered in Dubai Internet City. Providing Tier-1 SMS termination, SIP voice trunking, A2P OTP messaging, and high-throughput SMPP 3.4 APIs across 200+ countries with sub-second delivery SLAs.',
+    'International wholesale telecommunications carrier headquartered in Northampton, United Kingdom. Providing Tier-1 SMS termination, SIP voice trunking, A2P OTP messaging, and high-throughput SMPP 3.4 APIs across 200+ countries with sub-second delivery SLAs.',
   keywords: [
     'wholesale telecom carrier',
     'SMS termination',
@@ -39,17 +39,18 @@ export const metadata = {
     'OTP delivery',
     'SMPP 3.4 API',
     'CPaaS carrier',
-    'telecom hub Dubai',
-    'Equinix DX1',
+    'telecom hub London',
+    'telecom carrier UK',
     'Equinix LD4',
     'Equinix FR2',
+    'Equinix DX1',
     'Equinix SG1',
     'least cost routing',
     'carrier interconnect',
   ],
-  authors: [{ name: 'Kimoksha Telecom FZ-LLC' }],
-  creator: 'Kimoksha Telecom FZ-LLC',
-  publisher: 'Kimoksha Telecom FZ-LLC',
+  authors: [{ name: 'Kimoksha Telecom' }],
+  creator: 'Kimoksha Telecom',
+  publisher: 'Kimoksha Telecom',
   formatDetection: {
     email: false,
     address: false,
@@ -118,7 +119,7 @@ const jsonLd = {
       '@type': 'TelecommunicationsProvider',
       '@id': 'https://www.kimokshatelco.com/#organization',
       name: 'Kimoksha Telecom',
-      alternateName: ['Kimoksha Telco', 'Kimoksha Telecom FZ-LLC'],
+      alternateName: ['Kimoksha Telco', 'Kimoksha Telecom UK'],
       url: 'https://www.kimokshatelco.com',
       logo: {
         '@type': 'ImageObject',
@@ -127,12 +128,13 @@ const jsonLd = {
         height: 255,
       },
       description:
-        'International wholesale telecommunications provider operating high-capacity signaling and voice exchange hubs across Dubai, Frankfurt, London, and Singapore.',
+        'International wholesale telecommunications provider operating high-capacity signaling and voice exchange hubs across London, Frankfurt, Dubai, and Singapore.',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Building 14, Dubai Internet City',
-        addressLocality: 'Dubai',
-        addressCountry: 'AE',
+        streetAddress: '90 West Street, Upton',
+        addressLocality: 'Northampton',
+        postalCode: 'NN5 4XL',
+        addressCountry: 'GB',
       },
       contactPoint: [
         {
