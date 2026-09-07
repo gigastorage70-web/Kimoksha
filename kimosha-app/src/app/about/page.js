@@ -3,16 +3,16 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
 export const metadata = {
-  title: 'About Our Global Carrier Network & Infrastructure | Kimosha Telecom',
+  title: 'About Our Global Carrier Network & Infrastructure | Kimoksha Telecom',
   description:
-    'Learn about Kimosha Telecom FZ-LLC, our Dubai Internet City headquarters, global Equinix data center points of presence (DX1, FR2, LD4, SG1), and 24/7 proactive carrier Network Operations Center.',
+    'Learn about Kimoksha Telecom FZ-LLC, our Dubai Internet City headquarters, global Equinix data center points of presence (DX1, FR2, LD4, SG1), and 24/7 proactive carrier Network Operations Center.',
   alternates: {
     canonical: '/about',
   },
   openGraph: {
-    title: 'About Our Global Carrier Network & Infrastructure | Kimosha Telecom',
+    title: 'About Our Global Carrier Network & Infrastructure | Kimoksha Telecom',
     description:
-      'Learn about Kimosha Telecom FZ-LLC, our Dubai headquarters, global Equinix PoPs, and carrier-grade NOC operations.',
+      'Learn about Kimoksha Telecom FZ-LLC, our Dubai headquarters, global Equinix PoPs, and carrier-grade NOC operations.',
     url: 'https://www.kimokshatelco.com/about',
     images: ['/kimoksha-logo-clean.png'],
   },
@@ -86,7 +86,7 @@ export default function AboutPage() {
             Built on <span>Direct Telecom Infrastructure</span>
           </h1>
           <p className="page-description">
-            Headquartered in Dubai Internet City, Kimosha Telecom FZ-LLC provides wholesale carrier routing, direct operator interconnects, and mission-critical voice transmission worldwide.
+            Headquartered in Dubai Internet City, Kimoksha Telecom FZ-LLC provides wholesale carrier routing, direct operator interconnects, and mission-critical voice transmission worldwide.
           </p>
         </div>
       </section>
@@ -98,7 +98,7 @@ export default function AboutPage() {
             <span className="service-badge-pill">COMPANY PEDIGREE</span>
             <h3>Our Transmission Philosophy</h3>
             <p>
-              Telecommunication connectivity should be reliable, transparent, and direct. In an industry often clouded by multi-hop aggregators, grey routes, and uncertain delivery receipts, Kimosha Telecom was founded on a simple premise: establish direct bilateral interconnects with licensed mobile network operators and provide carrier partners with verified, sub-second transmission.
+              Telecommunication connectivity should be reliable, transparent, and direct. In an industry often clouded by multi-hop aggregators, grey routes, and uncertain delivery receipts, Kimoksha Telecom was founded on a simple premise: establish direct bilateral interconnects with licensed mobile network operators and provide carrier partners with verified, sub-second transmission.
             </p>
             <p>
               From our operational headquarters in Dubai Internet City, UAE, we oversee a global signaling core that processes more than 3.5 billion messages and millions of voice minutes every month. We serve international carriers, telecommunication aggregators, financial institutions, and global enterprise platforms that cannot afford dropped packets, artificial delivery reports, or degraded call quality.

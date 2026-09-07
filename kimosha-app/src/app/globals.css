@@ -1615,6 +1615,109 @@ footer.site-footer {
 }
 
 /* ===================================
+   Lets Connect Streamlined Form
+   =================================== */
+.lets-connect-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+}
+
+.lets-connect-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.lets-connect-subtitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin-bottom: 26px;
+}
+
+.lets-connect-form .form-group {
+  margin-bottom: 20px;
+}
+
+.lets-connect-form label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 7px;
+}
+
+.lets-connect-form .form-control {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 15px;
+  background: #FFFFFF;
+  color: var(--text);
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.lets-connect-form .form-control:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3.5px rgba(242, 101, 34, 0.15);
+  background: #FFFFFF;
+}
+
+.lets-connect-form textarea.form-control {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.lets-connect-submit {
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--brand);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(242, 101, 34, 0.25);
+  transition: all 0.2s ease;
+  margin-top: 6px;
+}
+
+.lets-connect-submit:hover {
+  background: var(--brand-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(242, 101, 34, 0.35);
+}
+
+.lets-connect-submit:active {
+  transform: translateY(0);
+}
+
+.lets-connect-alert {
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin-bottom: 22px;
+  color: #065F46;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* ===================================
    Responsive Media Queries
    =================================== */
 @media (max-width: 1024px) {

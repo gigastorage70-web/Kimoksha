@@ -25,8 +25,8 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata = {
   metadataBase: new URL('https://www.kimokshatelco.com'),
   title: {
-    default: 'Kimosha Telecom | Global Wholesale SMS & Voice Carrier Hub',
-    template: '%s | Kimosha Telecom',
+    default: 'Kimoksha Telecom | Global Wholesale SMS & Voice Carrier Hub',
+    template: '%s | Kimoksha Telecom',
   },
   description:
     'International wholesale telecommunications carrier headquartered in Dubai Internet City. Providing Tier-1 SMS termination, SIP voice trunking, A2P OTP messaging, and high-throughput SMPP 3.4 APIs across 200+ countries with sub-second delivery SLAs.',
@@ -47,9 +47,9 @@ export const metadata = {
     'least cost routing',
     'carrier interconnect',
   ],
-  authors: [{ name: 'Kimosha Telecom FZ-LLC' }],
-  creator: 'Kimosha Telecom FZ-LLC',
-  publisher: 'Kimosha Telecom FZ-LLC',
+  authors: [{ name: 'Kimoksha Telecom FZ-LLC' }],
+  creator: 'Kimoksha Telecom FZ-LLC',
+  publisher: 'Kimoksha Telecom FZ-LLC',
   formatDetection: {
     email: false,
     address: false,
@@ -59,17 +59,17 @@ export const metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Kimosha Telecom | Global Wholesale SMS & Voice Carrier Hub',
+    title: 'Kimoksha Telecom | Global Wholesale SMS & Voice Carrier Hub',
     description:
       'Connecting Tier-1 telecom operators and enterprise aggregators across 200+ countries with bilateral routing agreements and 99.99% network uptime SLA.',
     url: 'https://www.kimokshatelco.com',
-    siteName: 'Kimosha Telecom',
+    siteName: 'Kimoksha Telecom',
     images: [
       {
         url: '/kimoksha-logo-clean.png',
-        width: 466,
-        height: 139,
-        alt: 'Kimosha Telecom Official Logo',
+        width: 974,
+        height: 255,
+        alt: 'Kimoksha Telecom Official Logo',
       },
     ],
     locale: 'en_US',
@@ -77,7 +77,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kimosha Telecom | Wholesale SMS & Voice Carrier Hub',
+    title: 'Kimoksha Telecom | Wholesale SMS & Voice Carrier Hub',
     description:
       'International wholesale telecom carrier providing SMS termination, SIP trunking, and carrier CPaaS infrastructure.',
     images: ['/kimoksha-logo-clean.png'],
@@ -117,14 +117,14 @@ const jsonLd = {
     {
       '@type': 'TelecommunicationsProvider',
       '@id': 'https://www.kimokshatelco.com/#organization',
-      name: 'Kimosha Telecom',
-      alternateName: ['Kimoksha Telco', 'Kimosha Telecom FZ-LLC'],
+      name: 'Kimoksha Telecom',
+      alternateName: ['Kimoksha Telco', 'Kimoksha Telecom FZ-LLC'],
       url: 'https://www.kimokshatelco.com',
       logo: {
         '@type': 'ImageObject',
         url: 'https://www.kimokshatelco.com/kimoksha-logo-clean.png',
-        width: 466,
-        height: 139,
+        width: 974,
+        height: 255,
       },
       description:
         'International wholesale telecommunications provider operating high-capacity signaling and voice exchange hubs across Dubai, Frankfurt, London, and Singapore.',
@@ -138,25 +138,25 @@ const jsonLd = {
         {
           '@type': 'ContactPoint',
           contactType: 'technical support',
-          email: 'noc@kimoshatelco.com',
+          email: 'noc@kimokshatelco.com',
           availableLanguage: ['English', 'Arabic'],
         },
         {
           '@type': 'ContactPoint',
           contactType: 'sales',
-          email: 'sales@kimoshatelco.com',
+          email: 'sales@kimokshatelco.com',
           availableLanguage: ['English', 'Arabic'],
         },
       ],
       sameAs: [
-        'https://www.linkedin.com/company/kimosha-telecom',
+        'https://www.linkedin.com/company/kimoksha-telecom',
       ],
     },
     {
       '@type': 'WebSite',
       '@id': 'https://www.kimokshatelco.com/#website',
       url: 'https://www.kimokshatelco.com',
-      name: 'Kimosha Telecom',
+      name: 'Kimoksha Telecom',
       publisher: {
         '@id': 'https://www.kimokshatelco.com/#organization',
       },

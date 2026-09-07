@@ -39,10 +39,10 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Operations & Desk</h4>
             <ul>
-              <li><Link href="/about">About Kimosha Telecom</Link></li>
+              <li><Link href="/about">About Kimoksha Telecom</Link></li>
               <li><Link href="/contact">Bilateral Interconnect Request</Link></li>
-              <li><a href="mailto:sales@kimoshatelco.com">sales@kimoshatelco.com</a></li>
-              <li><a href="mailto:noc@kimoshatelco.com">noc@kimoshatelco.com</a></li>
+              <li><a href="mailto:sales@kimokshatelco.com">sales@kimokshatelco.com</a></li>
+              <li><a href="mailto:noc@kimokshatelco.com">noc@kimokshatelco.com</a></li>
               <li><Link href="/contact">NOC Escalation Matrix</Link></li>
               <li><Link href="/contact">Request Rate Deck</Link></li>
             </ul>
@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <div>&copy; {new Date().getFullYear()} Kimosha Telecom FZ-LLC. All rights reserved.</div>
+          <div>&copy; {new Date().getFullYear()} Kimoksha Telecom FZ-LLC. All rights reserved.</div>
           <div style={{ display: 'flex', gap: '20px' }}>
             <Link href="/about">Carrier Standards</Link>
             <Link href="/contact">Privacy Statement</Link>

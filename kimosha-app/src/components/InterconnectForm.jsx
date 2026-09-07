@@ -6,9 +6,8 @@ export default function InterconnectForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    carrier: '',
-    serviceType: 'Wholesale SMS Termination (A-Z)',
-    destinations: '',
+    subject: '',
+    message: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -16,31 +15,40 @@ export default function InterconnectForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    });
     setTimeout(() => {
       setSubmitted(false);
-    }, 6000);
+    }, 7000);
   };
 
   return (
-    <section id="contact" style={{ background: 'var(--bg-alt)' }}>
+    <section id="contact" style={{ background: 'var(--bg-alt)', padding: '80px 0' }}>
       <div className="container">
-        <div className="section-header-centered">
-          <span className="section-pill">Interconnect Request</span>
-          <h2 className="section-title">Open Carrier Bilateral Channel</h2>
-          <p className="section-subtitle">
-            Submit your technical specifications to initialize carrier testing.
+        <div className="lets-connect-card" style={{ maxWidth: '580px', margin: '0 auto' }}>
+          <h2 className="lets-connect-title">Lets Connect</h2>
+          <p className="lets-connect-subtitle">
+            Ready to enhance your telecom capabilities?Let&apos;s discuss your needs
           </p>
-        </div>
 
-        <div className="contact-centered-wrap">
-          <form onSubmit={handleSubmit}>
+          {submitted && (
+            <div className="lets-connect-alert" role="alert">
+              ✓ Thank you! Your message has been received. Our telecom specialists will connect with you shortly.
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="lets-connect-form">
             <div className="form-group">
-              <label htmlFor="cName">Your Name & Title</label>
+              <label htmlFor="home-name">Your name</label>
               <input
                 type="text"
-                id="cName"
+                id="home-name"
                 className="form-control"
-                placeholder="Jane Smith — Carrier Relations Manager"
+                placeholder="Enter your name"
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -48,12 +56,12 @@ export default function InterconnectForm() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="cEmail">Corporate Carrier Email</label>
+              <label htmlFor="home-email">Your email</label>
               <input
                 type="email"
-                id="cEmail"
+                id="home-email"
                 className="form-control"
-                placeholder="jane@telco-global.com"
+                placeholder="Enter your email"
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -61,58 +69,33 @@ export default function InterconnectForm() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="cCarrier">Company / Operator Name</label>
+              <label htmlFor="home-subject">Subject</label>
               <input
                 type="text"
-                id="cCarrier"
+                id="home-subject"
                 className="form-control"
-                placeholder="Global Telco Communications"
+                placeholder="Enter subject"
                 required
-                value={formData.carrier}
-                onChange={(e) => setFormData({ ...formData, carrier: e.target.value })}
+                value={formData.subject}
+                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="cType">Primary Interconnect Interest</label>
-              <select
-                id="cType"
-                className="form-control"
-                value={formData.serviceType}
-                onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-              >
-                <option>Wholesale SMS Termination (A-Z)</option>
-                <option>VoIP / SIP Voice Minutes</option>
-                <option>A2P OTP Direct Binds</option>
-                <option>SMS Hubbing Agreement</option>
-              </select>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="cDest">Target Destinations & Expected TPS</label>
+              <label htmlFor="home-message">Your message (optional)</label>
               <textarea
-                id="cDest"
+                id="home-message"
                 className="form-control"
-                rows={3}
-                placeholder="List target countries, expected TPS, and route quality requirements..."
-                value={formData.destinations}
-                onChange={(e) => setFormData({ ...formData, destinations: e.target.value })}
+                rows={5}
+                placeholder="Enter your message"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               />
             </div>
 
-            <button
-              type="submit"
-              className="btn btn-primary"
-              style={{ width: '100%', borderRadius: 'var(--radius-sm)', padding: '14px' }}
-            >
-              Submit Interconnect Request
+            <button type="submit" className="lets-connect-submit">
+              Submit
             </button>
-
-            {submitted && (
-              <div className="form-feedback" style={{ display: 'block' }}>
-                ✓ Carrier interconnect request logged. A dedicated NOC engineer will send test credentials shortly.
-              </div>
-            )}
           </form>
         </div>
       </div>

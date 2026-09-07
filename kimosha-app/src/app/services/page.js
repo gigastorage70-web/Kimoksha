@@ -3,16 +3,16 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
 export const metadata = {
-  title: 'Carrier Services & Wholesale Solutions | Kimosha Telecom',
+  title: 'Carrier Services & Wholesale Solutions | Kimoksha Telecom',
   description:
     'Comprehensive telecommunication carrier solutions: wholesale SMS termination, SIP voice trunking, high-priority A2P OTP messaging, SMPP v3.4 binds, global SMS hubbing, and voice broadcasting with guaranteed SLAs.',
   alternates: {
     canonical: '/services',
   },
   openGraph: {
-    title: 'Carrier Services & Wholesale Solutions | Kimosha Telecom',
+    title: 'Carrier Services & Wholesale Solutions | Kimoksha Telecom',
     description:
-      'Explore Kimosha Telecom wholesale SMS termination, SIP voice trunking, SMPP 3.4 binds, and carrier route SLA metrics.',
+      'Explore Kimoksha Telecom wholesale SMS termination, SIP voice trunking, SMPP 3.4 binds, and carrier route SLA metrics.',
     url: 'https://www.kimokshatelco.com/services',
     images: ['/kimoksha-logo-clean.png'],
   },
@@ -25,7 +25,7 @@ export default function ServicesPage() {
       tag: '01 / MESSAGING CORE',
       title: 'Wholesale SMS Termination',
       overview:
-        'Kimosha Telecom operates direct bilateral routing agreements with more than 500 mobile network operators worldwide. Our least-cost routing engine dynamically selects verified transmission paths based on real-time delivery performance, latency metrics, and operator route quality scores.',
+        'Kimoksha Telecom operates direct bilateral routing agreements with more than 500 mobile network operators worldwide. Our least-cost routing engine dynamically selects verified transmission paths based on real-time delivery performance, latency metrics, and operator route quality scores.',
       features: [
         'Direct SS7 and SIGTRAN carrier interconnects with binary SMPP 3.4 protocol support',
         'Dynamic Least Cost Routing with automatic fallback to high-priority Tier-1 paths',
@@ -101,7 +101,7 @@ export default function ServicesPage() {
       tag: '05 / GLOBAL INTERCONNECT',
       title: 'SMS Hubbing & Global Aggregation',
       overview:
-        'Simplify international operations through a single bilateral contract granting immediate access to over 800 mobile networks worldwide. Kimosha Telecom handles routing optimization, multi-currency settlements, and protocol conversion.',
+        'Simplify international operations through a single bilateral contract granting immediate access to over 800 mobile networks worldwide. Kimoksha Telecom handles routing optimization, multi-currency settlements, and protocol conversion.',
       features: [
         'Single master agreement eliminating the administrative overhead of hundreds of separate operator contracts',
         'Built-in carrier firewall rules and automated anti-spam filters protecting partner networks',

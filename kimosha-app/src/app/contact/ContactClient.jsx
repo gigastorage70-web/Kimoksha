@@ -6,13 +6,9 @@ import Link from 'next/link';
 export default function ContactClient() {
   const [formData, setFormData] = useState({
     name: '',
-    title: '',
     email: '',
-    company: '',
-    serviceInterest: 'Wholesale SMS Termination (A-Z)',
-    protocol: 'SMPP v3.4',
-    destinations: '',
-    expectedTps: '',
+    subject: '',
+    message: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -20,6 +16,12 @@ export default function ContactClient() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    });
     setTimeout(() => {
       setSubmitted(false);
     }, 7000);
@@ -28,22 +30,22 @@ export default function ContactClient() {
   const departments = [
     {
       title: 'Interconnect & Wholesale Sales',
-      email: 'sales@kimoshatelco.com',
+      email: 'sales@kimokshatelco.com',
       desc: 'Bilateral trading agreements, rate card requests, and enterprise volume pricing.',
     },
     {
       title: '24/7 Network Operations Center',
-      email: 'noc@kimoshatelco.com',
+      email: 'noc@kimokshatelco.com',
       desc: 'Live route diagnostics, SMPP session monitoring, and emergency technical troubleshooting.',
     },
     {
       title: 'Carrier Bilateral Relations',
-      email: 'interconnect@kimoshatelco.com',
+      email: 'interconnect@kimokshatelco.com',
       desc: 'Direct mobile network operator tie-ups, voice swap terms, and regulatory compliance.',
     },
     {
       title: 'Customer & Technical Support',
-      email: 'support@kimoshatelco.com',
+      email: 'support@kimokshatelco.com',
       desc: 'API integration guidance, webhook debugging, and account billing inquiries.',
     },
   ];
@@ -107,7 +109,7 @@ export default function ContactClient() {
             <span className="crumb-active">Contact Us</span>
           </div>
           <span className="section-pill">Interconnect & NOC Desk</span>
-          <h1 className="page-title">Connect with Kimosha Telecom</h1>
+          <h1 className="page-title">Connect with Kimoksha Telecom</h1>
           <p className="page-subtitle">
             Initiate bilateral carrier onboarding, request custom rate cards, or engage our 24/7 Network Operations Center directly.
           </p>
@@ -120,135 +122,71 @@ export default function ContactClient() {
           <div className="contact-grid-2">
             {/* Form Column */}
             <div className="contact-form-panel">
-              <div className="panel-badge">BILATERAL CARRIER ONBOARDING</div>
-              <h2>Interconnect Request Form</h2>
-              <p className="panel-desc">
-                Submit your carrier traffic profile below. Our routing engineering team typically provisions test binds and responds with rate decks within 4 business hours.
+              <h2 className="lets-connect-title" style={{ fontSize: '26px' }}>Lets Connect</h2>
+              <p className="lets-connect-subtitle">
+                Ready to enhance your telecom capabilities?Let&apos;s discuss your needs
               </p>
 
               {submitted && (
-                <div className="form-alert-success" role="alert">
-                  <strong>Interconnect Request Received.</strong>
-                  <p>
-                    A technical onboarding manager has been assigned to your ticket. Test SMPP/SIP credentials and our latest rate matrix will be dispatched shortly.
-                  </p>
+                <div className="lets-connect-alert" role="alert">
+                  ✓ Thank you! Your message has been received. Our telecom specialists will connect with you shortly.
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="onboarding-form">
-                <div className="form-row-2">
-                  <div className="form-group">
-                    <label htmlFor="name">Full Name *</label>
-                    <input
-                      id="name"
-                      type="text"
-                      className="form-control"
-                      placeholder="e.g. Alexander Wright"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="title">Job Title</label>
-                    <input
-                      id="title"
-                      type="text"
-                      className="form-control"
-                      placeholder="e.g. Head of Wholesale Routing"
-                      value={formData.title}
-                      onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    />
-                  </div>
+              <form onSubmit={handleSubmit} className="lets-connect-form">
+                <div className="form-group">
+                  <label htmlFor="contact-name">Your name</label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter your name"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  />
                 </div>
 
-                <div className="form-row-2">
-                  <div className="form-group">
-                    <label htmlFor="email">Corporate Email *</label>
-                    <input
-                      id="email"
-                      type="email"
-                      className="form-control"
-                      placeholder="name@company.com"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="company">Company / Operator Name *</label>
-                    <input
-                      id="company"
-                      type="text"
-                      className="form-control"
-                      placeholder="e.g. Global Telco Services Ltd"
-                      required
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    />
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="contact-email">Your email</label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    className="form-control"
+                    placeholder="Enter your email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  />
                 </div>
 
-                <div className="form-row-2">
-                  <div className="form-group">
-                    <label htmlFor="serviceInterest">Service Interest *</label>
-                    <select
-                      id="serviceInterest"
-                      className="form-control"
-                      value={formData.serviceInterest}
-                      onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
-                    >
-                      <option>Wholesale SMS Termination (A-Z)</option>
-                      <option>SIP Voice & VoIP Termination</option>
-                      <option>A2P High-Priority OTP Messaging</option>
-                      <option>SMPP v3.4 Direct Bind / API</option>
-                      <option>Global SMS Hubbing & Swap Agreement</option>
-                      <option>High-Capacity Voice Broadcasting</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="protocol">Technical Interconnect Protocol *</label>
-                    <select
-                      id="protocol"
-                      className="form-control"
-                      value={formData.protocol}
-                      onChange={(e) => setFormData({ ...formData, protocol: e.target.value })}
-                    >
-                      <option>SMPP v3.4 Transceiver</option>
-                      <option>SIP RFC 3261 Trunking</option>
-                      <option>RESTful HTTPS CPaaS API</option>
-                      <option>SS7 / SIGTRAN (Carrier Level)</option>
-                    </select>
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="contact-subject">Subject</label>
+                  <input
+                    id="contact-subject"
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter subject"
+                    required
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  />
                 </div>
 
-                <div className="form-row-2">
-                  <div className="form-group">
-                    <label htmlFor="destinations">Target Traffic Corridors</label>
-                    <input
-                      id="destinations"
-                      type="text"
-                      className="form-control"
-                      placeholder="e.g. GCC, Western Europe, North America"
-                      value={formData.destinations}
-                      onChange={(e) => setFormData({ ...formData, destinations: e.target.value })}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="expectedTps">Estimated Peak Volume (TPS / Monthly Minutes)</label>
-                    <input
-                      id="expectedTps"
-                      type="text"
-                      className="form-control"
-                      placeholder="e.g. 250 TPS or 2.5M Minutes / month"
-                      value={formData.expectedTps}
-                      onChange={(e) => setFormData({ ...formData, expectedTps: e.target.value })}
-                    />
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="contact-message">Your message (optional)</label>
+                  <textarea
+                    id="contact-message"
+                    className="form-control"
+                    rows={5}
+                    placeholder="Enter your message"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  />
                 </div>
 
-                <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '10px' }}>
-                  Submit Bilateral Interconnect Request &rarr;
+                <button type="submit" className="lets-connect-submit">
+                  Submit
                 </button>
               </form>
             </div>
