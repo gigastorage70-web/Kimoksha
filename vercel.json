@@ -1,6 +1,0 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd kimosha-app && npm run build",
-  "outputDirectory": "kimosha-app/.next",
-  "framework": "nextjs"
-}
