@@ -2,80 +2,6 @@ import { NextResponse } from 'next/server';
 import { getCurrentOperator, logSecurityAudit } from '@/lib/auth';
 import { supabaseServer, isSupabaseConfigured } from '@/lib/supabaseServer';
 
-let mockAuditLogs = [
-  {
-    id: 'log-001',
-    operator_username: 'admin',
-    ip_address: '192.168.1.45',
-    user_agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/128.0',
-    action: 'LOGIN_SUCCESS',
-    status: 'SUCCESS',
-    details: '{"session_duration": 1800}',
-    created_at: new Date(Date.now() - 1000 * 60 * 12).toISOString(),
-  },
-  {
-    id: 'log-002',
-    operator_username: 'admin',
-    ip_address: '192.168.1.45',
-    user_agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/128.0',
-    action: 'CMS_CONTENT_UPDATE',
-    status: 'SUCCESS',
-    details: '{"section": "hero_counters"}',
-    created_at: new Date(Date.now() - 1000 * 60 * 35).toISOString(),
-  },
-  {
-    id: 'log-003',
-    operator_username: 'unknown_bot',
-    ip_address: '185.220.101.5',
-    user_agent: 'python-requests/2.31.0',
-    action: 'LOGIN_FAILED',
-    status: 'WARNING',
-    details: '{"reason": "Invalid credentials", "attempt": 1}',
-    created_at: new Date(Date.now() - 1000 * 60 * 120).toISOString(),
-  },
-  {
-    id: 'log-004',
-    operator_username: 'unknown_bot',
-    ip_address: '185.220.101.5',
-    user_agent: 'python-requests/2.31.0',
-    action: 'BRUTE_FORCE_LOCKOUT',
-    status: 'FAILED',
-    details: '{"attempts": 7, "lockout_mins": 30}',
-    created_at: new Date(Date.now() - 1000 * 60 * 115).toISOString(),
-  },
-  {
-    id: 'log-005',
-    operator_username: 'admin',
-    ip_address: '192.168.1.45',
-    user_agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/128.0',
-    action: 'RATE_DECK_UPLOAD',
-    status: 'SUCCESS',
-    details: '{"file": "Kimoksha_AZ_SMS_Direct_Q3_2026.xlsx"}',
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 4).toISOString(),
-  },
-];
-
-let mockBlockedIps = [
-  {
-    id: 'block-001',
-    ip_address: '185.220.101.5',
-    reason: 'Automated lockout: 7 consecutive failed login attempts',
-    failed_attempts: 7,
-    blocked_until: new Date(Date.now() + 1000 * 60 * 25).toISOString(),
-    is_permanent: false,
-    created_at: new Date(Date.now() - 1000 * 60 * 5).toISOString(),
-  },
-  {
-    id: 'block-002',
-    ip_address: '45.154.255.89',
-    reason: 'Suspicious credential stuffing on carrier gateway',
-    failed_attempts: 14,
-    blocked_until: null,
-    is_permanent: true,
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 48).toISOString(),
-  },
-];
-
 export async function GET(request) {
   try {
     const operator = await getCurrentOperator();
@@ -105,9 +31,6 @@ export async function GET(request) {
       if (!ipsRes.error && ipsRes.data) {
         blockedIps = ipsRes.data;
       }
-    } else {
-      logs = mockAuditLogs;
-      blockedIps = mockBlockedIps;
     }
 
     return NextResponse.json({

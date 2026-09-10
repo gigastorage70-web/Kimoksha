@@ -123,11 +123,14 @@ export default function AdminLoginPage() {
           </button>
         </form>
 
-        {/* Initial Credentials Hint */}
-        <div className="login-helper">
-          <p className="helper-title">Default Initial Operator Credentials:</p>
-          <code>admin / Password@123!</code>
-          <p className="helper-note">Brute-force lockout enabled after 7 consecutive failed attempts.</p>
+        {/* Security & Access Notice */}
+        <div className="login-security-notice">
+          <p className="security-notice-text">
+            Enterprise NOC access restricted to authorized carrier operations personnel.
+          </p>
+          <p className="security-subtext">
+            All access attempts are monitored and recorded. Brute-force protection active.
+          </p>
         </div>
       </div>
 
@@ -285,34 +288,22 @@ export default function AdminLoginPage() {
           opacity: 0.6;
           cursor: not-allowed;
         }
-        .login-helper {
-          margin-top: 2rem;
+        .login-security-notice {
+          margin-top: 1.75rem;
           padding-top: 1.25rem;
-          border-top: 1px solid rgba(255, 255, 255, 0.06);
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
           text-align: center;
         }
-        .helper-title {
+        .security-notice-text {
+          font-size: 0.75rem;
+          color: #94a3b8;
+          font-weight: 500;
+          margin-bottom: 4px;
+          line-height: 1.4;
+        }
+        .security-subtext {
           font-size: 0.7rem;
           color: #64748b;
-          text-transform: uppercase;
-          font-weight: 700;
-          letter-spacing: 0.05em;
-          margin-bottom: 4px;
-        }
-        .login-helper code {
-          display: inline-block;
-          background: rgba(255, 255, 255, 0.05);
-          color: #f26522;
-          padding: 3px 8px;
-          border-radius: 4px;
-          font-size: 0.75rem;
-          font-weight: 700;
-          font-family: monospace;
-          margin-bottom: 6px;
-        }
-        .helper-note {
-          font-size: 0.7rem;
-          color: #475569;
           margin: 0;
         }
       `}</style>

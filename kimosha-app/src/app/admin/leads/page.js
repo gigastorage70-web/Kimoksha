@@ -99,15 +99,26 @@ export default function LeadsCrmPage() {
     }
   };
 
-  const openLeadDetails = (lead) => {
+  const openLeadDetails = async (lead) => {
     setSelectedLead(lead);
-    // Preset default note
+    try {
+      const res = await fetch(`/api/admin/leads/${lead.id}/notes`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && Array.isArray(data.notes) && data.notes.length > 0) {
+          setNotes(data.notes);
+          return;
+        }
+      }
+    } catch (e) {}
+
+    // Initial audit trace if no manual notes yet
     setNotes([
       {
         id: 'note-init',
-        author_name: 'Lead Qualification Bot',
-        author_role: 'Automated CRM',
-        note_text: `Initial submission captured via "Lets Connect" form from IP: ${lead.ip_address || '127.0.0.1'} (${lead.geo_country || 'Global'}).`,
+        author_name: 'Lead Intake Pipeline',
+        author_role: 'NOC CRM Core',
+        note_text: `Inquiry submitted via carrier portal from IP: ${lead.ip_address || '127.0.0.1'} (${lead.geo_country || 'International'}). Service requested: ${lead.target_service || 'General Interconnect'}.`,
         created_at: lead.created_at,
       },
     ]);

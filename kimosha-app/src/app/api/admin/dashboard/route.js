@@ -14,6 +14,9 @@ export async function GET() {
     let rateDecksCount = 0;
     let recentLeads = [];
     let pops = [];
+    let serviceInterestDistribution = [];
+    let uptimeSla = '99.99%';
+    let bilateralMnoBinds = '500+';
 
     if (isSupabaseConfigured()) {
       try {
@@ -50,39 +53,46 @@ export async function GET() {
           .select('*')
           .order('display_order', { ascending: true });
         if (popData && popData.length > 0) pops = popData;
+
+        // Dynamic Service Interest Distribution from real incoming leads
+        const { data: allLeadsServices } = await supabaseServer
+          .from('leads')
+          .select('target_service');
+        if (allLeadsServices && allLeadsServices.length > 0) {
+          const counts = {};
+          allLeadsServices.forEach((l) => {
+            const svc = l.target_service || 'General Interconnect';
+            counts[svc] = (counts[svc] || 0) + 1;
+          });
+          const total = allLeadsServices.length;
+          serviceInterestDistribution = Object.entries(counts).map(([service, count]) => ({
+            service,
+            count,
+            percentage: Math.round((count / total) * 100),
+          }));
+        }
+
+        // Live telemetry values synced from CMS site_content
+        const { data: cmsHero } = await supabaseServer
+          .from('site_content')
+          .select('payload')
+          .eq('section_key', 'hero_counters')
+          .maybeSingle();
+        if (cmsHero?.payload) {
+          if (cmsHero.payload.network_uptime_sla) uptimeSla = cmsHero.payload.network_uptime_sla;
+          if (cmsHero.payload.direct_mno_binds) bilateralMnoBinds = cmsHero.payload.direct_mno_binds;
+        }
       } catch (e) {
         console.error('Supabase dashboard query error:', e);
       }
-    } else {
-      leadsCount = 14;
-      newLeadsCount = 5;
-      rateDecksCount = 8;
-      pops = [
-        { pop_code: 'DX1', name: 'Equinix DX1', city: 'Dubai', latency_ms: 18, status: 'ONLINE' },
-        { pop_code: 'LD4', name: 'Equinix LD4', city: 'London', latency_ms: 12, status: 'ONLINE' },
-        { pop_code: 'FR2', name: 'Equinix FR2', city: 'Frankfurt', latency_ms: 14, status: 'ONLINE' },
-        { pop_code: 'SG1', name: 'Equinix SG1', city: 'Singapore', latency_ms: 22, status: 'ONLINE' },
-      ];
-      recentLeads = [
-        {
-          id: 'lead-101',
-          full_name: 'Alexandre Dubois',
-          corporate_email: 'a.dubois@orange-carrier.fr',
-          subject: 'Wholesale A2P SMS Termination Request (France & EU)',
-          target_service: 'A2P Enterprise Messaging',
-          status: 'NEW',
-          geo_country: 'France',
-          created_at: new Date(Date.now() - 1000 * 60 * 25).toISOString(),
-        },
-      ];
     }
 
-    const serviceInterestDistribution = [
-      { service: 'Wholesale SMS Termination', count: 42, percentage: 38 },
-      { service: 'SIP Voice (VoIP / TDM)', count: 31, percentage: 28 },
-      { service: 'A2P Enterprise Messaging & OTP', count: 24, percentage: 22 },
-      { service: 'SMPP 3.4 & Bilateral Hubbing', count: 13, percentage: 12 },
-    ];
+    // Default empty state if no distribution yet
+    if (serviceInterestDistribution.length === 0) {
+      serviceInterestDistribution = [
+        { service: 'Wholesale SMS Termination', count: leadsCount > 0 ? leadsCount : 0, percentage: 100 },
+      ];
+    }
 
     return NextResponse.json({
       success: true,
@@ -90,8 +100,8 @@ export async function GET() {
         totalLeads: leadsCount,
         newLeads: newLeadsCount,
         activeRateDecks: rateDecksCount,
-        uptimeSla: '99.99%',
-        bilateralMnoBinds: '500+',
+        uptimeSla,
+        bilateralMnoBinds,
       },
       pops,
       recentLeads,
