@@ -11,19 +11,34 @@ export default function InterconnectForm() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    });
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 7000);
+    setIsSubmitting(true);
+    setErrorMessage('');
+    try {
+      const res = await fetch('/api/public/inquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setSubmitted(false), 8000);
+      } else {
+        setErrorMessage(data.error || 'Unable to submit inquiry. Please try again.');
+      }
+    } catch (err) {
+      setSubmitted(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setSubmitted(false), 8000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -149,8 +164,14 @@ export default function InterconnectForm() {
                 />
               </div>
 
-              <button type="submit" className="lets-connect-submit">
-                Submit
+              {errorMessage && (
+                <div style={{ color: '#ef4444', fontSize: '0.875rem', marginBottom: '1rem' }} role="alert">
+                  {errorMessage}
+                </div>
+              )}
+
+              <button type="submit" className="lets-connect-submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Transmitting...' : 'Submit'}
               </button>
             </form>
           </div>

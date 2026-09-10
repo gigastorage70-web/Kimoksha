@@ -99,8 +99,40 @@ const ROUTES = [
 ];
 
 export default function CarrierNetworkMap() {
+  const [nodes, setNodes] = useState(NODES);
   const [activeNode, setActiveNode] = useState(NODES[0]);
   const [liveTps, setLiveTps] = useState(12556);
+
+  // Sync with live Supabase network_pops
+  useEffect(() => {
+    fetch('/api/public/network-pops')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.pops && data.pops.length > 0) {
+          setNodes((prevNodes) =>
+            prevNodes.map((n) => {
+              const matched = data.pops.find(
+                (p) =>
+                  (p.pop_code === 'DX1' && n.id === 'dubai') ||
+                  (p.pop_code === 'LD4' && n.id === 'london') ||
+                  (p.pop_code === 'FR2' && n.id === 'frankfurt') ||
+                  (p.pop_code === 'SG1' && n.id === 'singapore') ||
+                  (p.pop_code === 'NY4' && n.id === 'newyork')
+              );
+              if (matched) {
+                return {
+                  ...n,
+                  specs: `Status: ${matched.status} | Latency: ${matched.latency_ms}ms | Peering: Active`,
+                  protocols: matched.supported_protocols || n.protocols,
+                };
+              }
+              return n;
+            })
+          );
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   // Live fluctuating throughput telemetry
   useEffect(() => {
@@ -212,7 +244,7 @@ export default function CarrierNetworkMap() {
 
               {/* Interactive Point of Presence Nodes */}
               <g className="carrier-nodes-group">
-                {NODES.map((node) => {
+                {nodes.map((node) => {
                   const isActive = activeNode?.id === node.id;
                   const isDimmed = activeNode && activeNode.id !== node.id && !isActive;
 

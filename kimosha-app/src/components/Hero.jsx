@@ -1,6 +1,27 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function Hero() {
+  const [metrics, setMetrics] = useState({
+    connected_countries: '200+',
+    direct_mno_binds: '500+',
+    network_uptime_sla: '99.99%',
+    daily_sms_volume: '150M+',
+  });
+
+  useEffect(() => {
+    fetch('/api/public/content?section=hero_counters')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.hero_counters) {
+          setMetrics((prev) => ({ ...prev, ...data.hero_counters }));
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <section className="hero-centered">
       <svg
@@ -20,7 +41,7 @@ export default function Hero() {
       <div className="container hero-content-centered">
         <div className="hero-eyebrow">
           <div className="status-dot"></div>
-          Global Routing Core: 100% Operational &bull; 500+ Interconnects Active
+          Global Routing Core: 100% Operational &bull; {metrics.direct_mno_binds} Interconnects Active
         </div>
         <h1>
           Global Carrier Hub for <span>Wholesale SMS & Voice</span>
@@ -49,20 +70,20 @@ export default function Hero() {
 
         <div className="hero-metrics-pill">
           <div className="metric-item">
-            <span className="metric-val">200+</span>
+            <span className="metric-val">{metrics.connected_countries}</span>
             <span className="metric-desc">Countries Terminated</span>
           </div>
           <div className="metric-item">
-            <span className="metric-val">500+</span>
+            <span className="metric-val">{metrics.direct_mno_binds}</span>
             <span className="metric-desc">MNO Direct Binds</span>
           </div>
           <div className="metric-item">
-            <span className="metric-val">99.99%</span>
+            <span className="metric-val">{metrics.network_uptime_sla}</span>
             <span className="metric-desc">Core SLA Uptime</span>
           </div>
           <div className="metric-item">
-            <span className="metric-val">&lt; 1.2s</span>
-            <span className="metric-desc">Handset DLR Latency</span>
+            <span className="metric-val">{metrics.daily_sms_volume}</span>
+            <span className="metric-desc">Daily SMS Volume</span>
           </div>
         </div>
       </div>
