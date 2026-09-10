@@ -53,7 +53,7 @@ export async function GET() {
         projectId: 'asazkpxgawnqhddnwqjc',
         projectName: 'Kimoksha',
         isConfigured: isSupabaseConfigured(),
-        url: process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://asazkpxgawnqhddnwqjc.supabase.co',
+        url: process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://asazkpxgawnqhddnwqjc.supabase.co',
       },
     });
   } catch (error) {
