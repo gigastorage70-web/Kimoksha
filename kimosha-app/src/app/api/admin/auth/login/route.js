@@ -7,6 +7,7 @@ import {
   recordLoginAttempt,
   logSecurityAudit,
 } from '@/lib/auth';
+import { supabaseServer, isSupabaseConfigured } from '@/lib/supabaseServer';
 
 export async function POST(request) {
   try {
@@ -65,6 +66,16 @@ export async function POST(request) {
 
     // 4. Success: clear attempts, set session cookie, and log audit event
     await recordLoginAttempt(ip, true);
+
+    if (isSupabaseConfigured() && operator.id) {
+      try {
+        await supabaseServer
+          .from('admin_users')
+          .update({ last_login_at: new Date().toISOString() })
+          .eq('id', operator.id);
+      } catch (e) {}
+    }
+
     const token = await createSessionToken(operator);
     await setSessionCookie(token);
 

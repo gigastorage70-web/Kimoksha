@@ -172,17 +172,19 @@ export async function logSecurityAudit({ username, ip, userAgent, action, status
 }
 
 // Authenticate operator with Supabase or built-in secure fallbacks
-export async function authenticateOperator(username, password) {
+export async function authenticateOperator(loginIdentifier, password) {
   let user = null;
 
   if (isSupabaseConfigured()) {
     try {
+      const cleanLogin = (loginIdentifier || '').trim();
       const { data, error } = await supabaseServer
         .from('admin_users')
         .select('*')
-        .eq('username', username)
+        .or(`username.ilike.${cleanLogin},email.ilike.${cleanLogin}`)
         .eq('is_active', true)
-        .single();
+        .limit(1)
+        .maybeSingle();
       if (!error && data) {
         user = data;
       }
@@ -190,7 +192,12 @@ export async function authenticateOperator(username, password) {
   }
 
   if (!user) {
-    user = fallbackUsers.find((u) => u.username.toLowerCase() === username.toLowerCase() && u.is_active);
+    const cleanLogin = (loginIdentifier || '').trim().toLowerCase();
+    user = fallbackUsers.find(
+      (u) =>
+        (u.username.toLowerCase() === cleanLogin || u.email.toLowerCase() === cleanLogin) &&
+        u.is_active
+    );
   }
 
   if (!user) return null;
