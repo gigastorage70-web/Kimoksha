@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import AdminHeader from '@/components/admin/AdminHeader';
+import { useAdminTheme } from '@/context/AdminThemeContext';
 import {
   Settings,
   Mail,
@@ -16,9 +17,48 @@ import {
   AlertCircle,
   ExternalLink,
   Lock,
+  Sun,
+  Moon,
+  Contrast,
+  Check,
+  Palette,
 } from 'lucide-react';
 
+const THEMES = [
+  {
+    id: 'light',
+    name: '1. Light Theme',
+    badge: 'Standard Light',
+    desc: 'Soft white canvas with dark high-contrast typography, crisp cards, and signature Kimoksha Orange accents.',
+    icon: Sun,
+    bgPreview: '#f8fafc',
+    cardPreview: '#ffffff',
+    textPreview: '#0f172a',
+  },
+  {
+    id: 'dark',
+    name: '2. Dark Theme',
+    badge: 'NOC Default',
+    desc: 'Deep navy background (#070c16) with sleek slate panels, bright white typography, and minimal eye strain.',
+    icon: Moon,
+    bgPreview: '#070c16',
+    cardPreview: '#0d1522',
+    textPreview: '#f8fafc',
+  },
+  {
+    id: 'medium-minimal',
+    name: '3. Medium Minimal',
+    badge: 'Clean Minimalist',
+    desc: 'Medium neutral grey background (#eef2f6) with clean white cards, charcoal text, and subtle borders.',
+    icon: Contrast,
+    bgPreview: '#eef2f6',
+    cardPreview: '#ffffff',
+    textPreview: '#1e293b',
+  },
+];
+
 export default function SystemSettingsPage() {
+  const { theme, setTheme } = useAdminTheme();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState('');
@@ -31,6 +71,9 @@ export default function SystemSettingsPage() {
   });
 
   const [settings, setSettings] = useState({
+    // Theme
+    admin_theme: 'dark',
+
     // Inbound Lead Routing
     alert_email_primary: 'sales@kimokshatelco.com',
     alert_email_secondary: 'info@kimokshatelco.com',
@@ -84,11 +127,11 @@ export default function SystemSettingsPage() {
       const res = await fetch('/api/admin/settings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ settings }),
+        body: JSON.stringify({ settings: { ...settings, admin_theme: theme } }),
       });
       const data = await res.json();
       if (data.success) {
-        setSaveSuccess('System settings & sales email dispatch updated successfully.');
+        setSaveSuccess('System settings & console parameters updated successfully.');
         setTimeout(() => setSaveSuccess(''), 4000);
       } else {
         setSaveError(data.error || 'Failed to save settings.');
@@ -100,351 +143,438 @@ export default function SystemSettingsPage() {
     }
   };
 
+  const handleSelectTheme = (newTheme) => {
+    setTheme(newTheme);
+    setSettings((prev) => ({ ...prev, admin_theme: newTheme }));
+  };
+
   return (
     <>
       <AdminHeader
-        title="System Settings & Sales Dispatch Configuration"
-        subtitle="Configure sales notification routing, corporate branding assets, and cloud infrastructure telemetry."
+        title="System Settings & Console Configuration"
+        subtitle="Manage global UI themes, sales notification routing, corporate branding, and infrastructure telemetry."
       />
+
       <div className="settings-page">
-      {/* Header */}
-      <div className="page-header">
-        <div>
-          <h1 className="page-title">System Settings & Dispatch Routing</h1>
-          <p className="page-subtitle">
-            Configure sales notification routing, carrier branding, SEO metadata, and cloud infrastructure telemetry.
-          </p>
-        </div>
-
-        <div className="header-actions">
-          <button
-            type="button"
-            onClick={fetchSettings}
-            className="btn-secondary"
-            disabled={loading}
-          >
-            <RefreshCw size={15} className={loading ? 'spin' : ''} />
-            Refresh
-          </button>
-          <button
-            type="button"
-            onClick={handleSave}
-            className="btn-primary"
-            disabled={saving || loading}
-          >
-            <Save size={16} />
-            {saving ? 'Saving...' : 'Save Configuration'}
-          </button>
-        </div>
-      </div>
-
-      {/* Toast Feedback */}
-      {saveSuccess && (
-        <div className="alert-toast success">
-          <CheckCircle2 size={18} />
-          <span>{saveSuccess}</span>
-        </div>
-      )}
-      {saveError && (
-        <div className="alert-toast error">
-          <AlertCircle size={18} />
-          <span>{saveError}</span>
-        </div>
-      )}
-
-      {loading ? (
-        <div className="loading-state">
-          <RefreshCw size={28} className="spin text-orange" />
-          <p>Loading enterprise configuration parameters...</p>
-        </div>
-      ) : (
-        <form onSubmit={handleSave} className="settings-grid">
-          {/* SECTION 1: SALES NOTIFICATION EMAIL (User's explicit requirement) */}
-          <div className="panel highlight-panel">
-            <div className="panel-header">
-              <div className="icon-badge orange">
-                <Mail size={18} />
-              </div>
-              <div>
-                <h2 className="panel-title">Inbound Inquiries & Sales Alert Routing</h2>
-                <p className="panel-desc">
-                  Incoming leads from the public &quot;Lets Connect&quot; form and Rate Deck requests are instantly routed to these addresses.
-                </p>
-              </div>
-            </div>
-
-            <div className="panel-body">
-              <div className="form-group">
-                <label>Primary Sales Notification Email *</label>
-                <input
-                  type="email"
-                  required
-                  value={settings.alert_email_primary || ''}
-                  onChange={(e) =>
-                    setSettings({ ...settings, alert_email_primary: e.target.value })
-                  }
-                  placeholder="sales@kimokshatelco.com"
-                />
-                <span className="field-hint">
-                  Primary corporate inbox receiving instant lead notifications with wholesale service requirements.
-                </span>
-              </div>
-
-              <div className="form-group">
-                <label>Secondary / NOC Dispatch Email</label>
-                <input
-                  type="email"
-                  value={settings.alert_email_secondary || ''}
-                  onChange={(e) =>
-                    setSettings({ ...settings, alert_email_secondary: e.target.value })
-                  }
-                  placeholder="info@kimokshatelco.com"
-                />
-                <span className="field-hint">
-                  Escrow / backup address CC&apos;d on urgent interconnection inquiries.
-                </span>
-              </div>
-
-              <div className="toggle-row">
-                <div>
-                  <div className="toggle-title">Automated Email Dispatch</div>
-                  <div className="toggle-desc">
-                    Trigger serverless SMTP dispatch on lead submission
-                  </div>
-                </div>
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    checked={settings.email_alerts_enabled === 'true'}
-                    onChange={(e) =>
-                      setSettings({
-                        ...settings,
-                        email_alerts_enabled: e.target.checked ? 'true' : 'false',
-                      })
-                    }
-                  />
-                  <span className="slider round"></span>
-                </label>
-              </div>
-            </div>
+        {/* Page Header */}
+        <div className="page-header">
+          <div>
+            <h1 className="page-title">Operations & Console Settings</h1>
+            <p className="page-subtitle">
+              Configure the 3-state console theme engine, sales notification routing, and carrier infrastructure telemetry.
+            </p>
           </div>
 
-          {/* SECTION 2: INFRASTRUCTURE TELEMETRY (Supabase + Vercel + GitHub) */}
-          <div className="panel">
-            <div className="panel-header">
-              <div className="icon-badge blue">
-                <Database size={18} />
+          <div className="header-actions">
+            <button
+              type="button"
+              onClick={fetchSettings}
+              className="btn-secondary"
+              disabled={loading}
+            >
+              <RefreshCw size={15} className={loading ? 'spin' : ''} />
+              <span>Refresh</span>
+            </button>
+            <button
+              type="button"
+              onClick={handleSave}
+              className="btn-primary"
+              disabled={saving || loading}
+            >
+              <Save size={16} />
+              <span>{saving ? 'Saving...' : 'Save Configuration'}</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Feedback Toasts */}
+        {saveSuccess && (
+          <div className="alert-toast success">
+            <CheckCircle2 size={18} />
+            <span>{saveSuccess}</span>
+          </div>
+        )}
+        {saveError && (
+          <div className="alert-toast error">
+            <AlertCircle size={18} />
+            <span>{saveError}</span>
+          </div>
+        )}
+
+        {loading ? (
+          <div className="loading-state">
+            <RefreshCw size={28} className="spin text-orange" />
+            <p>Loading enterprise configuration parameters...</p>
+          </div>
+        ) : (
+          <form onSubmit={handleSave} className="settings-grid">
+            {/* THEME SELECTION PANEL (Full Width Hero) */}
+            <div className="panel full-width highlight-panel">
+              <div className="panel-header">
+                <div className="icon-badge orange">
+                  <Palette size={20} />
+                </div>
+                <div>
+                  <h2 className="panel-title">Global Console Theme Engine</h2>
+                  <p className="panel-desc">
+                    Select your operational color palette. The preference is stored in your backend database and applied globally across all Next.js screens.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h2 className="panel-title">Cloud Infrastructure Telemetry</h2>
-                <p className="panel-desc">
-                  Decoupled serverless stack: Supabase PostgreSQL, Vercel Edge, GitHub VCS.
-                </p>
+
+              <div className="theme-cards-grid">
+                {THEMES.map((item) => {
+                  const Icon = item.icon;
+                  const isSelected = theme === item.id;
+                  return (
+                    <div
+                      key={item.id}
+                      className={`theme-card ${isSelected ? 'selected' : ''}`}
+                      onClick={() => handleSelectTheme(item.id)}
+                    >
+                      <div className="theme-card-top">
+                        <div className="theme-icon-wrap">
+                          <Icon size={18} />
+                          <span className="theme-title">{item.name}</span>
+                        </div>
+                        {isSelected && (
+                          <span className="selected-tag">
+                            <Check size={12} />
+                            <span>ACTIVE</span>
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Mini Theme Canvas Preview */}
+                      <div
+                        className="theme-preview-box"
+                        style={{ background: item.bgPreview }}
+                      >
+                        <div
+                          className="preview-card-item"
+                          style={{
+                            background: item.cardPreview,
+                            color: item.textPreview,
+                          }}
+                        >
+                          <div className="preview-top-row">
+                            <span
+                              className="preview-bar"
+                              style={{ background: '#f26522' }}
+                            />
+                            <span
+                              className="preview-pill"
+                              style={{ background: 'rgba(242, 101, 34, 0.15)', color: '#f26522' }}
+                            >
+                              Live
+                            </span>
+                          </div>
+                          <div
+                            className="preview-text-line"
+                            style={{ background: item.textPreview, opacity: 0.7 }}
+                          />
+                          <div
+                            className="preview-text-line short"
+                            style={{ background: item.textPreview, opacity: 0.35 }}
+                          />
+                        </div>
+                      </div>
+
+                      <p className="theme-desc">{item.desc}</p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
-            <div className="panel-body">
-              <div className="infra-card">
-                <div className="infra-row">
-                  <span className="infra-label">Supabase Project Name</span>
-                  <span className="infra-val">{supabaseInfo.projectName}</span>
+            {/* SECTION 1: SALES NOTIFICATION EMAIL */}
+            <div className="panel">
+              <div className="panel-header">
+                <div className="icon-badge orange">
+                  <Mail size={18} />
                 </div>
-                <div className="infra-row">
-                  <span className="infra-label">Supabase Project ID</span>
-                  <span className="infra-val code">{supabaseInfo.projectId}</span>
+                <div>
+                  <h2 className="panel-title">Inbound Inquiries & Sales Alert Routing</h2>
+                  <p className="panel-desc">
+                    Incoming carrier leads from &quot;Lets Connect&quot; are instantly routed to these addresses.
+                  </p>
                 </div>
-                <div className="infra-row">
-                  <span className="infra-label">PostgreSQL REST URL</span>
-                  <span className="infra-val code">{supabaseInfo.url}</span>
-                </div>
-                <div className="infra-row">
-                  <span className="infra-label">Application Hosting</span>
-                  <span className="infra-val">Vercel (Next.js 15 Serverless)</span>
-                </div>
-                <div className="infra-row">
-                  <span className="infra-label">Repository VCS</span>
-                  <span className="infra-val">GitHub</span>
-                </div>
-                <div className="infra-row">
-                  <span className="infra-label">Active Connection Engine</span>
-                  <span className="infra-badge active">
-                    <CheckCircle2 size={12} />
-                    {supabaseInfo.isConfigured ? 'LIVE SUPABASE CONNECTED' : 'ENTERPRISE RESILIENT FALLBACK ACTIVE'}
+              </div>
+
+              <div className="panel-body">
+                <div className="form-group">
+                  <label>Primary Sales Notification Email *</label>
+                  <input
+                    type="email"
+                    required
+                    value={settings.alert_email_primary || ''}
+                    onChange={(e) =>
+                      setSettings({ ...settings, alert_email_primary: e.target.value })
+                    }
+                    placeholder="sales@kimokshatelco.com"
+                  />
+                  <span className="field-hint">
+                    Primary corporate inbox receiving instant lead notifications.
                   </span>
                 </div>
-              </div>
 
-              <div className="infra-help-box">
-                <p>
-                  To apply the live database schema to your Supabase project <strong>{supabaseInfo.projectId}</strong>, open the Supabase SQL Editor and execute the script located in <code>backend-admin/database/supabase-migration.sql</code>.
-                </p>
-                <a
-                  href={`https://supabase.com/dashboard/project/${supabaseInfo.projectId}/sql`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-supabase-link"
-                >
-                  <ExternalLink size={14} />
-                  Open Supabase SQL Editor ({supabaseInfo.projectId})
-                </a>
+                <div className="form-group">
+                  <label>Secondary / NOC Dispatch Email</label>
+                  <input
+                    type="email"
+                    value={settings.alert_email_secondary || ''}
+                    onChange={(e) =>
+                      setSettings({ ...settings, alert_email_secondary: e.target.value })
+                    }
+                    placeholder="info@kimokshatelco.com"
+                  />
+                  <span className="field-hint">
+                    Backup address CC&apos;d on urgent interconnection inquiries.
+                  </span>
+                </div>
+
+                <div className="toggle-row">
+                  <div>
+                    <div className="toggle-title">Automated Email Dispatch</div>
+                    <div className="toggle-desc">
+                      Trigger serverless SMTP dispatch on lead submission
+                    </div>
+                  </div>
+                  <label className="switch">
+                    <input
+                      type="checkbox"
+                      checked={settings.email_alerts_enabled === 'true'}
+                      onChange={(e) =>
+                        setSettings({
+                          ...settings,
+                          email_alerts_enabled: e.target.checked ? 'true' : 'false',
+                        })
+                      }
+                    />
+                    <span className="slider round"></span>
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* SECTION 3: CARRIER BRANDING */}
-          <div className="panel">
-            <div className="panel-header">
-              <div className="icon-badge purple">
-                <Building2 size={18} />
+            {/* SECTION 2: INFRASTRUCTURE TELEMETRY */}
+            <div className="panel">
+              <div className="panel-header">
+                <div className="icon-badge blue">
+                  <Database size={18} />
+                </div>
+                <div>
+                  <h2 className="panel-title">Cloud Infrastructure Telemetry</h2>
+                  <p className="panel-desc">
+                    Decoupled serverless stack: Supabase PostgreSQL, Vercel Edge, GitHub VCS.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h2 className="panel-title">Carrier Identity & Brand Assets</h2>
-                <p className="panel-desc">
-                  Corporate logos, favicon paths, and legal entity display.
-                </p>
+
+              <div className="panel-body">
+                <div className="infra-card">
+                  <div className="infra-row">
+                    <span className="infra-label">Supabase Project Name</span>
+                    <span className="infra-val">{supabaseInfo.projectName}</span>
+                  </div>
+                  <div className="infra-row">
+                    <span className="infra-label">Supabase Project ID</span>
+                    <span className="infra-val code">{supabaseInfo.projectId}</span>
+                  </div>
+                  <div className="infra-row">
+                    <span className="infra-label">PostgreSQL REST URL</span>
+                    <span className="infra-val code">{supabaseInfo.url}</span>
+                  </div>
+                  <div className="infra-row">
+                    <span className="infra-label">Application Hosting</span>
+                    <span className="infra-val">Vercel (Next.js 15 Serverless)</span>
+                  </div>
+                  <div className="infra-row">
+                    <span className="infra-label">Repository VCS</span>
+                    <span className="infra-val">GitHub</span>
+                  </div>
+                  <div className="infra-row">
+                    <span className="infra-label">Active Connection Engine</span>
+                    <span className="infra-badge active">
+                      <CheckCircle2 size={12} />
+                      {supabaseInfo.isConfigured
+                        ? 'LIVE SUPABASE CONNECTED'
+                        : 'ENTERPRISE RESILIENT FALLBACK ACTIVE'}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="infra-help-box">
+                  <p>
+                    Supabase project <strong>{supabaseInfo.projectId}</strong> hosts your live <code>leads</code>, <code>rate_decks</code>, and <code>site_settings</code> tables.
+                  </p>
+                  <a
+                    href={`https://supabase.com/dashboard/project/${supabaseInfo.projectId}/sql`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-supabase-link"
+                  >
+                    <ExternalLink size={14} />
+                    Open Supabase SQL Editor ({supabaseInfo.projectId})
+                  </a>
+                </div>
               </div>
             </div>
 
-            <div className="panel-body">
-              <div className="form-group">
-                <label>Company Legal Display Name</label>
-                <input
-                  type="text"
-                  value={settings.branding_company_name || ''}
-                  onChange={(e) =>
-                    setSettings({ ...settings, branding_company_name: e.target.value })
-                  }
-                />
+            {/* SECTION 3: CARRIER BRANDING */}
+            <div className="panel">
+              <div className="panel-header">
+                <div className="icon-badge purple">
+                  <Building2 size={18} />
+                </div>
+                <div>
+                  <h2 className="panel-title">Carrier Identity & Brand Assets</h2>
+                  <p className="panel-desc">
+                    Corporate logos, favicon paths, and legal entity display.
+                  </p>
+                </div>
               </div>
 
-              <div className="form-group">
-                <label>Header Logo File Path</label>
-                <input
-                  type="text"
-                  value={settings.branding_logo_url || ''}
-                  onChange={(e) =>
-                    setSettings({ ...settings, branding_logo_url: e.target.value })
-                  }
-                />
-              </div>
+              <div className="panel-body">
+                <div className="form-group">
+                  <label>Company Legal Display Name</label>
+                  <input
+                    type="text"
+                    value={settings.branding_company_name || ''}
+                    onChange={(e) =>
+                      setSettings({ ...settings, branding_company_name: e.target.value })
+                    }
+                  />
+                </div>
 
-              {/* Logo Preview */}
-              <div className="logo-preview-box">
-                <span className="preview-tag">LIVE LOGO PREVIEW</span>
-                <div className="logo-img-wrap">
-                  <Image
-                    src={settings.branding_logo_url || '/kimoksha-logo-clean.png'}
-                    alt="Logo Preview"
-                    width={180}
-                    height={40}
-                    style={{ objectFit: 'contain', width: 'auto', height: '36px' }}
-                    priority
+                <div className="form-group">
+                  <label>Header Logo File Path</label>
+                  <input
+                    type="text"
+                    value={settings.branding_logo_url || ''}
+                    onChange={(e) =>
+                      setSettings({ ...settings, branding_logo_url: e.target.value })
+                    }
+                  />
+                </div>
+
+                <div className="logo-preview-box">
+                  <span className="preview-tag">LIVE LOGO PREVIEW</span>
+                  <div className="logo-img-wrap">
+                    <Image
+                      src={settings.branding_logo_url || '/kimoksha-logo-clean.png'}
+                      alt="Logo Preview"
+                      width={180}
+                      height={40}
+                      style={{ objectFit: 'contain', width: 'auto', height: '36px' }}
+                      priority
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label>Favicon Icon Path</label>
+                  <input
+                    type="text"
+                    value={settings.branding_favicon_url || ''}
+                    onChange={(e) =>
+                      setSettings({ ...settings, branding_favicon_url: e.target.value })
+                    }
                   />
                 </div>
               </div>
-
-              <div className="form-group">
-                <label>Favicon Icon Path</label>
-                <input
-                  type="text"
-                  value={settings.branding_favicon_url || ''}
-                  onChange={(e) =>
-                    setSettings({ ...settings, branding_favicon_url: e.target.value })
-                  }
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* SECTION 4: GLOBAL SEO & SECURITY POLICIES */}
-          <div className="panel">
-            <div className="panel-header">
-              <div className="icon-badge green">
-                <Globe size={18} />
-              </div>
-              <div>
-                <h2 className="panel-title">Global SEO & Perimeter Security</h2>
-                <p className="panel-desc">
-                  Search engine indexing tags and brute-force lockout rules.
-                </p>
-              </div>
             </div>
 
-            <div className="panel-body">
-              <div className="form-group">
-                <label>Global SEO Meta Title</label>
-                <input
-                  type="text"
-                  value={settings.seo_meta_title || ''}
-                  onChange={(e) =>
-                    setSettings({ ...settings, seo_meta_title: e.target.value })
-                  }
-                />
+            {/* SECTION 4: GLOBAL SEO & SECURITY */}
+            <div className="panel">
+              <div className="panel-header">
+                <div className="icon-badge green">
+                  <Globe size={18} />
+                </div>
+                <div>
+                  <h2 className="panel-title">Global SEO & Perimeter Security</h2>
+                  <p className="panel-desc">
+                    Search engine indexing tags and brute-force lockout rules.
+                  </p>
+                </div>
               </div>
 
-              <div className="form-group">
-                <label>Global SEO Meta Description</label>
-                <textarea
-                  rows={3}
-                  value={settings.seo_meta_description || ''}
-                  onChange={(e) =>
-                    setSettings({ ...settings, seo_meta_description: e.target.value })
-                  }
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Canonical Site Domain</label>
-                <input
-                  type="text"
-                  value={settings.canonical_url || ''}
-                  onChange={(e) =>
-                    setSettings({ ...settings, canonical_url: e.target.value })
-                  }
-                />
-              </div>
-
-              <div className="security-sub-grid">
+              <div className="panel-body">
                 <div className="form-group">
-                  <label>Max Consecutive Failed Logins</label>
-                  <div className="input-with-icon">
-                    <Shield size={16} />
-                    <input
-                      type="number"
-                      value={settings.security_max_login_attempts || '7'}
-                      onChange={(e) =>
-                        setSettings({
-                          ...settings,
-                          security_max_login_attempts: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
-                  <span className="field-hint">Triggers 30m IP lockout shield (Default: 7)</span>
+                  <label>Global SEO Meta Title</label>
+                  <input
+                    type="text"
+                    value={settings.seo_meta_title || ''}
+                    onChange={(e) =>
+                      setSettings({ ...settings, seo_meta_title: e.target.value })
+                    }
+                  />
                 </div>
 
                 <div className="form-group">
-                  <label>Session Inactivity Timeout (Seconds)</label>
-                  <div className="input-with-icon">
-                    <Lock size={16} />
-                    <input
-                      type="number"
-                      value={settings.security_session_timeout_seconds || '1800'}
-                      onChange={(e) =>
-                        setSettings({
-                          ...settings,
-                          security_session_timeout_seconds: e.target.value,
-                        })
-                      }
-                    />
+                  <label>Global SEO Meta Description</label>
+                  <textarea
+                    rows={3}
+                    value={settings.seo_meta_description || ''}
+                    onChange={(e) =>
+                      setSettings({ ...settings, seo_meta_description: e.target.value })
+                    }
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Canonical Site Domain</label>
+                  <input
+                    type="text"
+                    value={settings.canonical_url || ''}
+                    onChange={(e) =>
+                      setSettings({ ...settings, canonical_url: e.target.value })
+                    }
+                  />
+                </div>
+
+                <div className="security-sub-grid">
+                  <div className="form-group">
+                    <label>Max Failed Logins</label>
+                    <div className="input-with-icon">
+                      <Shield size={16} />
+                      <input
+                        type="number"
+                        value={settings.security_max_login_attempts || '7'}
+                        onChange={(e) =>
+                          setSettings({
+                            ...settings,
+                            security_max_login_attempts: e.target.value,
+                          })
+                        }
+                      />
+                    </div>
+                    <span className="field-hint">Triggers 30m IP lockout shield</span>
                   </div>
-                  <span className="field-hint">1800s = 30-min idle auto-logout</span>
+
+                  <div className="form-group">
+                    <label>Session Timeout (Seconds)</label>
+                    <div className="input-with-icon">
+                      <Lock size={16} />
+                      <input
+                        type="number"
+                        value={settings.security_session_timeout_seconds || '1800'}
+                        onChange={(e) =>
+                          setSettings({
+                            ...settings,
+                            security_session_timeout_seconds: e.target.value,
+                          })
+                        }
+                      />
+                    </div>
+                    <span className="field-hint">1800s = 30-min idle logout</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </form>
-      )}
+          </form>
+        )}
+      </div>
 
       <style jsx>{`
         .settings-page {
@@ -460,14 +590,15 @@ export default function SystemSettingsPage() {
           flex-wrap: wrap;
         }
         .page-title {
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           font-weight: 800;
-          color: #f8fafc;
+          color: var(--admin-text);
           letter-spacing: -0.02em;
+          margin: 0;
         }
         .page-subtitle {
-          font-size: 0.85rem;
-          color: #94a3b8;
+          font-size: 0.825rem;
+          color: var(--admin-text-muted);
           margin-top: 0.25rem;
           max-width: 680px;
         }
@@ -480,9 +611,9 @@ export default function SystemSettingsPage() {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          color: #e2e8f0;
+          background: var(--admin-card);
+          border: 1px solid var(--admin-border);
+          color: var(--admin-text-secondary);
           padding: 0.55rem 0.9rem;
           border-radius: 8px;
           font-size: 0.825rem;
@@ -491,17 +622,17 @@ export default function SystemSettingsPage() {
           transition: all 0.2s;
         }
         .btn-secondary:hover {
-          background: rgba(255, 255, 255, 0.1);
-          color: #ffffff;
+          color: var(--admin-text);
+          border-color: var(--admin-accent);
         }
         .btn-primary {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: #f26522;
-          border: 1px solid #f26522;
+          background: var(--admin-accent);
+          border: none;
           color: #ffffff;
-          padding: 0.55rem 1rem;
+          padding: 0.55rem 1.15rem;
           border-radius: 8px;
           font-size: 0.825rem;
           font-weight: 700;
@@ -509,12 +640,7 @@ export default function SystemSettingsPage() {
           transition: all 0.2s;
         }
         .btn-primary:hover:not(:disabled) {
-          background: #d85416;
-          box-shadow: 0 4px 12px rgba(242, 101, 34, 0.3);
-        }
-        .btn-primary:disabled {
-          opacity: 0.6;
-          cursor: not-allowed;
+          background: var(--admin-accent-hover);
         }
         .alert-toast {
           display: flex;
@@ -536,8 +662,8 @@ export default function SystemSettingsPage() {
           color: #f87171;
         }
         .loading-state {
-          background: #0d1522;
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: var(--admin-card);
+          border: 1px solid var(--admin-border);
           border-radius: 12px;
           padding: 3rem 2rem;
           text-align: center;
@@ -545,7 +671,7 @@ export default function SystemSettingsPage() {
           flex-direction: column;
           align-items: center;
           gap: 1rem;
-          color: #94a3b8;
+          color: var(--admin-text-muted);
         }
         .settings-grid {
           display: grid;
@@ -558,23 +684,25 @@ export default function SystemSettingsPage() {
           }
         }
         .panel {
-          background: #0d1522;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 12px;
+          background: var(--admin-card);
+          border: 1px solid var(--admin-border);
+          border-radius: 14px;
           padding: 1.5rem;
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
         }
+        .panel.full-width {
+          grid-column: 1 / -1;
+        }
         .highlight-panel {
-          border-color: rgba(242, 101, 34, 0.3);
-          background: linear-gradient(180deg, #101929 0%, #0d1522 100%);
+          border-color: var(--admin-accent-border);
         }
         .panel-header {
           display: flex;
           align-items: flex-start;
           gap: 0.75rem;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+          border-bottom: 1px solid var(--admin-border-subtle);
           padding-bottom: 1rem;
         }
         .icon-badge {
@@ -587,8 +715,8 @@ export default function SystemSettingsPage() {
           flex-shrink: 0;
         }
         .icon-badge.orange {
-          background: rgba(242, 101, 34, 0.15);
-          color: #f26522;
+          background: var(--admin-accent-subtle);
+          color: var(--admin-accent);
         }
         .icon-badge.blue {
           background: rgba(59, 130, 246, 0.15);
@@ -604,13 +732,113 @@ export default function SystemSettingsPage() {
         }
         .panel-title {
           font-size: 1.05rem;
-          font-weight: 700;
-          color: #f8fafc;
+          font-weight: 800;
+          color: var(--admin-text);
+          margin: 0;
         }
         .panel-desc {
           font-size: 0.8rem;
-          color: #64748b;
+          color: var(--admin-text-muted);
           margin-top: 0.2rem;
+        }
+        .theme-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          gap: 1rem;
+        }
+        @media (min-width: 768px) {
+          .theme-cards-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+        .theme-card {
+          background: var(--admin-card-inner);
+          border: 2px solid var(--admin-border);
+          border-radius: 12px;
+          padding: 1.25rem;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          gap: 0.85rem;
+          transition: all 0.2s ease;
+        }
+        .theme-card:hover {
+          border-color: var(--admin-accent);
+          transform: translateY(-2px);
+        }
+        .theme-card.selected {
+          border-color: var(--admin-accent);
+          box-shadow: 0 0 0 1px var(--admin-accent);
+        }
+        .theme-card-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .theme-icon-wrap {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .theme-title {
+          font-size: 0.9rem;
+          font-weight: 800;
+          color: var(--admin-text);
+        }
+        .selected-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          background: var(--admin-accent);
+          color: #ffffff;
+          font-size: 9px;
+          font-weight: 800;
+          padding: 2px 8px;
+          border-radius: 999px;
+          letter-spacing: 0.05em;
+        }
+        .theme-preview-box {
+          border-radius: 8px;
+          padding: 0.85rem;
+          border: 1px solid var(--admin-border);
+        }
+        .preview-card-item {
+          border-radius: 6px;
+          padding: 0.65rem;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .preview-top-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .preview-bar {
+          width: 32px;
+          height: 6px;
+          border-radius: 999px;
+        }
+        .preview-pill {
+          font-size: 8px;
+          font-weight: 800;
+          padding: 1px 5px;
+          border-radius: 3px;
+        }
+        .preview-text-line {
+          height: 5px;
+          border-radius: 3px;
+          width: 80%;
+        }
+        .preview-text-line.short {
+          width: 50%;
+        }
+        .theme-desc {
+          font-size: 0.75rem;
+          color: var(--admin-text-muted);
+          line-height: 1.4;
+          margin: 0;
         }
         .panel-body {
           display: flex;
@@ -623,50 +851,50 @@ export default function SystemSettingsPage() {
           gap: 0.4rem;
         }
         .form-group label {
-          font-size: 0.8rem;
+          font-size: 0.775rem;
           font-weight: 700;
-          color: #cbd5e1;
+          color: var(--admin-text-secondary);
         }
         .form-group input,
         .form-group textarea {
-          background: #070b13;
-          border: 1px solid rgba(255, 255, 255, 0.12);
+          background: var(--admin-input-bg);
+          border: 1px solid var(--admin-input-border);
           border-radius: 8px;
-          color: #ffffff;
-          font-size: 0.9rem;
+          color: var(--admin-text);
+          font-size: 0.875rem;
           padding: 0.65rem 0.85rem;
           outline: none;
           font-family: inherit;
         }
         .form-group input:focus,
         .form-group textarea:focus {
-          border-color: #f26522;
+          border-color: var(--admin-accent);
         }
         .field-hint {
           font-size: 0.7rem;
-          color: #64748b;
+          color: var(--admin-text-dim);
         }
         .toggle-row {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          background: #070b13;
+          background: var(--admin-card-inner);
           padding: 0.85rem 1rem;
           border-radius: 8px;
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          border: 1px solid var(--admin-border);
         }
         .toggle-title {
-          font-size: 0.85rem;
+          font-size: 0.825rem;
           font-weight: 700;
-          color: #f8fafc;
+          color: var(--admin-text);
         }
         .toggle-desc {
           font-size: 0.725rem;
-          color: #64748b;
+          color: var(--admin-text-muted);
         }
         .infra-card {
-          background: #070b13;
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: var(--admin-card-inner);
+          border: 1px solid var(--admin-border);
           border-radius: 8px;
           padding: 0.85rem;
           display: flex;
@@ -679,16 +907,16 @@ export default function SystemSettingsPage() {
           justify-content: space-between;
           font-size: 0.8rem;
           padding: 0.25rem 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+          border-bottom: 1px solid var(--admin-border-subtle);
         }
         .infra-row:last-child {
           border-bottom: none;
         }
         .infra-label {
-          color: #64748b;
+          color: var(--admin-text-dim);
         }
         .infra-val {
-          color: #cbd5e1;
+          color: var(--admin-text-secondary);
           font-weight: 600;
         }
         .infra-val.code {
@@ -707,19 +935,19 @@ export default function SystemSettingsPage() {
           border-radius: 4px;
         }
         .infra-help-box {
-          background: rgba(242, 101, 34, 0.06);
-          border: 1px dashed rgba(242, 101, 34, 0.25);
+          background: var(--admin-accent-subtle);
+          border: 1px dashed var(--admin-accent-border);
           border-radius: 8px;
           padding: 0.85rem;
           font-size: 0.775rem;
-          color: #cbd5e1;
+          color: var(--admin-text-secondary);
           line-height: 1.4;
         }
         .infra-help-box code {
-          background: rgba(0, 0, 0, 0.3);
+          background: rgba(0, 0, 0, 0.2);
           padding: 2px 5px;
           border-radius: 4px;
-          color: #f26522;
+          color: var(--admin-accent);
           font-family: monospace;
         }
         .btn-supabase-link {
@@ -736,8 +964,8 @@ export default function SystemSettingsPage() {
           text-decoration: underline;
         }
         .logo-preview-box {
-          background: #070b13;
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: var(--admin-card-inner);
+          border: 1px solid var(--admin-border);
           border-radius: 8px;
           padding: 0.85rem;
         }
@@ -745,7 +973,7 @@ export default function SystemSettingsPage() {
           font-size: 9px;
           font-weight: 800;
           letter-spacing: 0.08em;
-          color: #64748b;
+          color: var(--admin-text-dim);
           display: block;
           margin-bottom: 0.5rem;
         }
@@ -768,17 +996,17 @@ export default function SystemSettingsPage() {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          background: #070b13;
-          border: 1px solid rgba(255, 255, 255, 0.12);
+          background: var(--admin-input-bg);
+          border: 1px solid var(--admin-input-border);
           border-radius: 8px;
           padding: 0 0.75rem;
-          color: #64748b;
+          color: var(--admin-text-dim);
         }
         .input-with-icon input {
           background: transparent;
           border: none;
           padding: 0.65rem 0;
-          color: #ffffff;
+          color: var(--admin-text);
           width: 100%;
         }
 
@@ -801,7 +1029,8 @@ export default function SystemSettingsPage() {
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: #334155;
+          background-color: var(--admin-card-inner);
+          border: 1px solid var(--admin-border);
           transition: 0.3s;
         }
         .slider:before {
@@ -809,16 +1038,18 @@ export default function SystemSettingsPage() {
           content: '';
           height: 14px;
           width: 14px;
-          left: 3px;
-          bottom: 3px;
-          background-color: white;
+          left: 2px;
+          bottom: 2px;
+          background-color: #cbd5e1;
           transition: 0.3s;
         }
         input:checked + .slider {
-          background-color: #f26522;
+          background-color: var(--admin-accent);
+          border-color: var(--admin-accent);
         }
         input:checked + .slider:before {
           transform: translateX(18px);
+          background-color: #ffffff;
         }
         .slider.round {
           border-radius: 20px;
@@ -826,20 +1057,7 @@ export default function SystemSettingsPage() {
         .slider.round:before {
           border-radius: 50%;
         }
-
-        .spin {
-          animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
       `}</style>
-    </div>
     </>
   );
 }

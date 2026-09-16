@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import SessionWarningModal from '@/components/admin/SessionWarningModal';
+import { AdminThemeProvider } from '@/context/AdminThemeContext';
 
 export default function AdminShell({ operator, children }) {
   const pathname = usePathname();
@@ -15,18 +16,21 @@ export default function AdminShell({ operator, children }) {
   }
 
   return (
-    <div className="admin-shell-container">
-      <AdminSidebar
-        operator={operator}
-        isMobileOpen={isMobileOpen}
-        setIsMobileOpen={setIsMobileOpen}
-      />
+    <AdminThemeProvider>
+      <div className="admin-shell-container">
+        <AdminSidebar
+          operator={operator}
+          isMobileOpen={isMobileOpen}
+          setIsMobileOpen={setIsMobileOpen}
+        />
 
-      <div className="admin-main-viewport">
-        {children}
+        <div className="admin-main-viewport">
+          {children}
+        </div>
+
+        <SessionWarningModal />
       </div>
-
-      <SessionWarningModal />
-    </div>
+    </AdminThemeProvider>
   );
 }
+

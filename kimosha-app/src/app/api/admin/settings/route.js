@@ -3,6 +3,9 @@ import { getCurrentOperator, logSecurityAudit } from '@/lib/auth';
 import { supabaseServer, isSupabaseConfigured } from '@/lib/supabaseServer';
 
 let mockSettings = {
+  // Theme Setting
+  admin_theme: 'dark',
+
   // Notifications & Sales Routing
   alert_email_primary: 'sales@kimokshatelco.com',
   alert_email_secondary: 'info@kimokshatelco.com',

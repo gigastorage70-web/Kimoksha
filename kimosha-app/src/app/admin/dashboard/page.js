@@ -178,8 +178,8 @@ export default function AdminDashboardPage() {
                 </p>
               </div>
             </div>
-            <Link href="/admin/cms" className="section-link">
-              <span>Manage Map Nodes</span>
+            <Link href="/admin/rate-decks" className="section-link">
+              <span>Wholesale Rate Decks</span>
               <ArrowUpRight size={14} />
             </Link>
           </div>
@@ -308,9 +308,9 @@ export default function AdminDashboardPage() {
                   <FileSpreadsheet size={14} />
                   <span>Upload Rate Deck</span>
                 </Link>
-                <Link href="/admin/cms" className="shortcut-btn">
+                <Link href="/admin/settings" className="shortcut-btn">
                   <Server size={14} />
-                  <span>Update Live Specs</span>
+                  <span>Config & Theme</span>
                 </Link>
                 <Link href="/admin/leads" className="shortcut-btn">
                   <Users size={14} />

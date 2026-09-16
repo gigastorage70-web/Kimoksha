@@ -7,7 +7,11 @@ import {
   LayoutDashboard,
   Users,
   FileSpreadsheet,
-  Layers,
+  ClipboardList,
+  UserCheck,
+  FolderOpen,
+  BarChart3,
+  Cpu,
   ShieldCheck,
   Settings,
   Globe,
@@ -15,9 +19,9 @@ import {
   Radio,
 } from 'lucide-react';
 
-const NAV_ITEMS = [
+const OPERATIONS_NAV = [
   {
-    label: 'Dashboard & Telemetry',
+    label: 'Overview & Live NOC',
     href: '/admin/dashboard',
     icon: LayoutDashboard,
     badge: 'Live',
@@ -35,21 +39,51 @@ const NAV_ITEMS = [
     badge: null,
   },
   {
-    label: 'Dynamic Site CMS',
-    href: '/admin/cms',
-    icon: Layers,
+    label: 'Forms & Submissions',
+    href: '/admin/forms',
+    icon: ClipboardList,
+    badge: null,
+  },
+];
+
+const PLATFORM_NAV = [
+  {
+    label: 'Operator Users',
+    href: '/admin/users',
+    icon: UserCheck,
+    badge: null,
+  },
+  {
+    label: 'Media Library',
+    href: '/admin/media',
+    icon: FolderOpen,
+    badge: null,
+  },
+  {
+    label: 'Telemetry Analytics',
+    href: '/admin/analytics',
+    icon: BarChart3,
+    badge: null,
+  },
+];
+
+const SYSTEM_NAV = [
+  {
+    label: 'Integrations',
+    href: '/admin/integrations',
+    icon: Cpu,
+    badge: null,
+  },
+  {
+    label: 'Settings & Theme',
+    href: '/admin/settings',
+    icon: Settings,
     badge: null,
   },
   {
     label: 'Security & Audit Logs',
     href: '/admin/security',
     icon: ShieldCheck,
-    badge: null,
-  },
-  {
-    label: 'System Settings',
-    href: '/admin/settings',
-    icon: Settings,
     badge: null,
   },
 ];
@@ -100,7 +134,27 @@ export default function AdminSidebar({ operator, isMobileOpen, setIsMobileOpen }
         {/* Navigation Menu */}
         <nav className="sidebar-nav">
           <div className="nav-section-title">CORE OPERATIONS</div>
-          {NAV_ITEMS.map((item) => {
+          {OPERATIONS_NAV.map((item) => {
+            const Icon = item.icon;
+            const isActive = pathname === item.href || (item.href !== '/admin/dashboard' && pathname.startsWith(`${item.href}/`));
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`nav-item ${isActive ? 'active' : ''}`}
+                onClick={() => setIsMobileOpen(false)}
+              >
+                <Icon size={17} className="nav-icon" />
+                <span className="nav-label">{item.label}</span>
+                {item.badge && <span className="nav-badge">{item.badge}</span>}
+              </Link>
+            );
+          })}
+
+          <div className="nav-section-title" style={{ marginTop: '1rem' }}>
+            PLATFORM & ASSETS
+          </div>
+          {PLATFORM_NAV.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
@@ -110,18 +164,38 @@ export default function AdminSidebar({ operator, isMobileOpen, setIsMobileOpen }
                 className={`nav-item ${isActive ? 'active' : ''}`}
                 onClick={() => setIsMobileOpen(false)}
               >
-                <Icon size={18} className="nav-icon" />
+                <Icon size={17} className="nav-icon" />
                 <span className="nav-label">{item.label}</span>
                 {item.badge && <span className="nav-badge">{item.badge}</span>}
               </Link>
             );
           })}
 
-          <div className="nav-section-title" style={{ marginTop: '1.25rem' }}>
+          <div className="nav-section-title" style={{ marginTop: '1rem' }}>
+            SYSTEM CONFIG
+          </div>
+          {SYSTEM_NAV.map((item) => {
+            const Icon = item.icon;
+            const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`nav-item ${isActive ? 'active' : ''}`}
+                onClick={() => setIsMobileOpen(false)}
+              >
+                <Icon size={17} className="nav-icon" />
+                <span className="nav-label">{item.label}</span>
+                {item.badge && <span className="nav-badge">{item.badge}</span>}
+              </Link>
+            );
+          })}
+
+          <div className="nav-section-title" style={{ marginTop: '1rem' }}>
             EXTERNAL & SYSTEM
           </div>
           <Link href="/" target="_blank" className="nav-item">
-            <Globe size={18} className="nav-icon" />
+            <Globe size={17} className="nav-icon" />
             <span className="nav-label">View Live Website</span>
           </Link>
         </nav>
