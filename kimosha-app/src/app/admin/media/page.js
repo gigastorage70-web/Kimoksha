@@ -93,7 +93,9 @@ export default function MediaPage() {
 
   const copyUrl = (id, url) => {
     const fullUrl = `${window.location.origin}${url}`;
-    navigator.clipboard.writeText(fullUrl);
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(fullUrl).catch(() => {});
+    }
     setCopiedId(id);
     setTimeout(() => setCopiedId(null), 2500);
   };

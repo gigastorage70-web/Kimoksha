@@ -91,7 +91,9 @@ export default function RateDecksPage() {
 
   const copyDownloadLink = (token) => {
     const url = `${window.location.origin}/api/public/rate-decks/download/${token}`;
-    navigator.clipboard.writeText(url);
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(url).catch(() => {});
+    }
     setCopiedToken(token);
     setTimeout(() => setCopiedToken(null), 3000);
   };

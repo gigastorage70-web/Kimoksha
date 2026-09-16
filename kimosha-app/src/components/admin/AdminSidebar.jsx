@@ -90,13 +90,10 @@ const SYSTEM_NAV = [
   },
 ];
 
-export default function AdminSidebar({ operator, isMobileOpen: propIsMobileOpen, setIsMobileOpen: propSetIsMobileOpen }) {
+export default function AdminSidebar({ operator }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { isMobileOpen: ctxMobileOpen, setIsMobileOpen: ctxSetMobileOpen } = useAdminTheme();
-
-  const isMobileOpen = propIsMobileOpen !== undefined ? propIsMobileOpen : ctxMobileOpen;
-  const setIsMobileOpen = propSetIsMobileOpen || ctxSetMobileOpen;
+  const { isMobileOpen, setIsMobileOpen } = useAdminTheme();
 
   const handleSignOut = async () => {
     try {

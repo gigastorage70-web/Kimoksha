@@ -570,13 +570,29 @@
   border: 1px solid var(--admin-border);
   color: var(--admin-text);
   border-radius: 8px;
-  padding: 6px;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  padding: 0;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 10;
+  transition: all 0.15s ease;
+}
+
+.admin-header .btn-mobile-toggle:hover,
+.admin-header .btn-mobile-toggle:active {
+  background: var(--admin-card-hover);
+  border-color: var(--admin-accent);
+  color: var(--admin-accent);
 }
 
 @media (max-width: 1023px) {
   .admin-header .btn-mobile-toggle {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
