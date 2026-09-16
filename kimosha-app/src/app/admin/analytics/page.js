@@ -229,6 +229,16 @@ export default function AnalyticsPage() {
           flex-wrap: wrap;
           gap: 1rem;
         }
+        @media (max-width: 640px) {
+          .top-ctrl-bar {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.75rem;
+          }
+          .btn-refresh {
+            justify-content: center;
+          }
+        }
         .live-status-pill {
           display: inline-flex;
           align-items: center;

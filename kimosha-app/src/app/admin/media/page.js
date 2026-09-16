@@ -298,6 +298,30 @@ export default function MediaPage() {
           gap: 1rem;
           flex-wrap: wrap;
         }
+        @media (max-width: 640px) {
+          .media-top-bar {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.75rem;
+          }
+          .filter-pills {
+            overflow-x: auto;
+            max-width: 100%;
+          }
+          .top-right-actions {
+            flex-direction: column;
+            align-items: stretch;
+          }
+          .search-wrap {
+            width: 100%;
+          }
+          .search-wrap input {
+            width: 100% !important;
+          }
+          .btn-upload {
+            justify-content: center;
+          }
+        }
         .filter-pills {
           display: flex;
           align-items: center;

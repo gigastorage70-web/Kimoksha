@@ -3,22 +3,22 @@
 import { Menu, Activity, Shield, Sun, Moon } from 'lucide-react';
 import { useAdminTheme } from '@/context/AdminThemeContext';
 
-export default function AdminHeader({ title, subtitle, setIsMobileOpen }) {
-  const { theme, setTheme } = useAdminTheme();
+export default function AdminHeader({ title, subtitle, setIsMobileOpen: propSetIsMobileOpen }) {
+  const { theme, setTheme, toggleMobileMenu } = useAdminTheme();
+  const handleOpenMobile = propSetIsMobileOpen ? () => propSetIsMobileOpen(true) : toggleMobileMenu;
 
   return (
     <header className="admin-header">
       <div className="header-left">
-        {setIsMobileOpen && (
-          <button
-            onClick={() => setIsMobileOpen(true)}
-            className="btn-mobile-toggle"
-            aria-label="Open Navigation Menu"
-          >
-            <Menu size={20} />
-          </button>
-        )}
-        <div>
+        <button
+          type="button"
+          onClick={handleOpenMobile}
+          className="btn-mobile-toggle"
+          aria-label="Open Navigation Menu"
+        >
+          <Menu size={20} />
+        </button>
+        <div className="header-title-group">
           <h1 className="header-title">{title}</h1>
           {subtitle && <p className="header-subtitle">{subtitle}</p>}
         </div>

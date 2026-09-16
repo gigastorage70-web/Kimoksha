@@ -329,10 +329,27 @@ export default function AdminDashboardPage() {
           flex-direction: column;
           gap: 1.5rem;
         }
+        @media (max-width: 640px) {
+          .dashboard-content {
+            padding: 0.85rem 0.75rem;
+            gap: 1rem;
+          }
+        }
         .top-bar {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          gap: 0.75rem;
+        }
+        @media (max-width: 640px) {
+          .top-bar {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .btn-refresh {
+            width: 100%;
+            justify-content: center;
+          }
         }
         .live-indicator {
           display: inline-flex;
@@ -445,11 +462,24 @@ export default function AdminDashboardPage() {
           border-radius: 14px;
           padding: 1.25rem 1.5rem;
         }
+        @media (max-width: 640px) {
+          .dashboard-section {
+            padding: 1rem;
+            border-radius: 12px;
+          }
+        }
         .section-title-wrap {
           display: flex;
           align-items: center;
           justify-content: space-between;
           margin-bottom: 1.25rem;
+        }
+        @media (max-width: 640px) {
+          .section-title-wrap {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+          }
         }
         .section-title-left {
           display: flex;
@@ -587,6 +617,12 @@ export default function AdminDashboardPage() {
           display: flex;
           flex-direction: column;
         }
+        @media (max-width: 640px) {
+          .panel-box {
+            padding: 1rem;
+            border-radius: 12px;
+          }
+        }
         .panel-header {
           display: flex;
           align-items: center;
@@ -719,6 +755,11 @@ export default function AdminDashboardPage() {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 0.5rem;
+        }
+        @media (max-width: 480px) {
+          .shortcuts-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
         .shortcut-btn {
           display: flex;

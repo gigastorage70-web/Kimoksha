@@ -137,6 +137,37 @@
   gap: 0.65rem;
 }
 
+.sidebar-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.btn-close-sidebar {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--admin-border);
+  color: var(--admin-text-muted);
+  border-radius: 6px;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-close-sidebar:hover {
+  color: #ffffff;
+  border-color: var(--admin-accent);
+}
+
+@media (max-width: 1023px) {
+  .btn-close-sidebar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .sidebar-brand {
   display: flex;
   align-items: center;
@@ -382,10 +413,30 @@
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
+@media (max-width: 640px) {
+  .admin-header {
+    height: 58px;
+    padding: 0 0.85rem;
+  }
+}
+
 .admin-header .header-left {
   display: flex;
   align-items: center;
   gap: 1rem;
+  min-width: 0;
+  flex: 1;
+}
+
+@media (max-width: 640px) {
+  .admin-header .header-left {
+    gap: 0.65rem;
+  }
+}
+
+.admin-header .header-title-group {
+  min-width: 0;
+  overflow: hidden;
 }
 
 .admin-header .header-title {
@@ -394,27 +445,46 @@
   color: var(--admin-text);
   letter-spacing: -0.01em;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 640px) {
+  .admin-header .header-title {
+    font-size: 0.95rem;
+  }
 }
 
 .admin-header .header-subtitle {
   font-size: 0.75rem;
   color: var(--admin-text-muted);
   margin: 2px 0 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 640px) {
+  .admin-header .header-subtitle {
+    display: none;
+  }
 }
 
 .admin-header .header-right {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-shrink: 0;
 }
 
 @media (max-width: 640px) {
   .admin-header .header-right {
-    display: none;
+    gap: 0.4rem;
   }
 }
 
-/* 3-Way Theme Switcher in Header */
+/* 2-Way Theme Switcher in Header */
 .theme-toggle-pill {
   display: inline-flex;
   align-items: center;
@@ -450,6 +520,15 @@
   box-shadow: 0 1px 4px rgba(242, 101, 34, 0.3);
 }
 
+@media (max-width: 640px) {
+  .theme-btn {
+    padding: 5px 7px;
+  }
+  .theme-btn .theme-name {
+    display: none;
+  }
+}
+
 .admin-header .status-pill {
   display: inline-flex;
   align-items: center;
@@ -459,6 +538,18 @@
   letter-spacing: 0.08em;
   padding: 4px 10px;
   border-radius: 9999px;
+}
+
+@media (max-width: 860px) {
+  .admin-header .status-security {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-header .status-healthy {
+    display: none;
+  }
 }
 
 .admin-header .status-healthy {
@@ -488,16 +579,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
   }
 }
 
 /* ==============================================================================
-   COMMON PAGE CONTAINERS & PADDINGS
+   COMMON PAGE CONTAINERS & RESPONSIVE PADDINGS
    ============================================================================== */
 .admin-page-content,
+.dashboard-content,
 .dashboard-page,
 .leads-page,
+.crm-container,
 .rate-decks-page,
+.rate-decks-content,
 .users-page,
 .forms-page,
 .media-page,
@@ -509,4 +604,71 @@
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1023px) {
+  .admin-page-content,
+  .dashboard-content,
+  .dashboard-page,
+  .leads-page,
+  .crm-container,
+  .rate-decks-page,
+  .rate-decks-content,
+  .users-page,
+  .forms-page,
+  .media-page,
+  .analytics-page,
+  .integrations-page,
+  .security-page,
+  .settings-page {
+    padding: 1.25rem 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-page-content,
+  .dashboard-content,
+  .dashboard-page,
+  .leads-page,
+  .crm-container,
+  .rate-decks-page,
+  .rate-decks-content,
+  .users-page,
+  .forms-page,
+  .media-page,
+  .analytics-page,
+  .integrations-page,
+  .security-page,
+  .settings-page {
+    padding: 0.85rem 0.75rem;
+  }
+}
+
+/* Responsive Table Wrappers & Touch Scroll */
+.table-card,
+.crm-table-box,
+.leads-table-container,
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Global Mobile Modal & Drawer Sizing */
+@media (max-width: 640px) {
+  .modal-backdrop {
+    padding: 0.75rem !important;
+  }
+  .modal-card {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 1rem !important;
+    border-radius: 12px !important;
+    max-height: 92vh !important;
+    overflow-y: auto !important;
+  }
+  .drawer-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }

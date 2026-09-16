@@ -501,6 +501,23 @@ export default function SecurityPage() {
           gap: 1rem;
           flex-wrap: wrap;
         }
+        @media (max-width: 640px) {
+          .page-header {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 1rem;
+          }
+          .header-actions {
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+          }
+          .btn-primary,
+          .btn-secondary {
+            justify-content: center;
+            width: 100%;
+          }
+        }
         .title-row {
           display: flex;
           align-items: center;

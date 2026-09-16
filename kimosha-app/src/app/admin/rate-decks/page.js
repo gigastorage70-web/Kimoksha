@@ -406,6 +406,20 @@ export default function RateDecksPage() {
           flex-direction: column;
           gap: 1.5rem;
         }
+        @media (max-width: 640px) {
+          .rate-decks-content {
+            padding: 0.85rem 0.75rem;
+            gap: 1rem;
+          }
+          .rate-top-bar {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.75rem;
+          }
+          .btn-upload-deck {
+            justify-content: center;
+          }
+        }
         .rate-top-bar {
           display: flex;
           align-items: center;
@@ -597,6 +611,15 @@ export default function RateDecksPage() {
           display: flex;
           gap: 0.5rem;
         }
+        @media (max-width: 540px) {
+          .sandbox-input-wrap {
+            flex-direction: column;
+          }
+          .btn-test-route {
+            padding: 10px;
+            justify-content: center;
+          }
+        }
         .sandbox-input-wrap input {
           flex: 1;
           background: rgba(3, 7, 18, 0.7);
@@ -724,6 +747,11 @@ export default function RateDecksPage() {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 0.75rem;
+        }
+        @media (max-width: 500px) {
+          .form-row {
+            grid-template-columns: 1fr;
+          }
         }
         .form-group {
           display: flex;

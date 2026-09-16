@@ -337,6 +337,16 @@ export default function IntegrationsPage() {
           flex-direction: column;
           gap: 1.25rem;
         }
+        @media (max-width: 640px) {
+          .connector-card {
+            padding: 1rem;
+            border-radius: 12px;
+          }
+          .btn-save-all {
+            width: 100%;
+            justify-content: center;
+          }
+        }
         .connector-header {
           display: flex;
           align-items: flex-start;

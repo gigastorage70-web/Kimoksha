@@ -6,11 +6,19 @@ const AdminThemeContext = createContext({
   theme: 'dark',
   setTheme: () => {},
   isSaving: false,
+  isMobileOpen: false,
+  setIsMobileOpen: () => {},
+  toggleMobileMenu: () => {},
+  closeMobileMenu: () => {},
 });
 
 export function AdminThemeProvider({ children }) {
   const [theme, setThemeState] = useState('dark');
   const [isSaving, setIsSaving] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const toggleMobileMenu = () => setIsMobileOpen((prev) => !prev);
+  const closeMobileMenu = () => setIsMobileOpen(false);
 
   // Initialize theme from localStorage or backend settings on mount
   useEffect(() => {
@@ -71,7 +79,17 @@ export function AdminThemeProvider({ children }) {
   };
 
   return (
-    <AdminThemeContext.Provider value={{ theme, setTheme, isSaving }}>
+    <AdminThemeContext.Provider
+      value={{
+        theme,
+        setTheme,
+        isSaving,
+        isMobileOpen,
+        setIsMobileOpen,
+        toggleMobileMenu,
+        closeMobileMenu,
+      }}
+    >
       <div data-admin-theme={theme} className="admin-theme-wrapper">
         {children}
       </div>

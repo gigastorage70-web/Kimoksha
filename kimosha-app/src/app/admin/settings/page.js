@@ -655,6 +655,24 @@ export default function SystemSettingsPage() {
           gap: 1rem;
           flex-wrap: wrap;
         }
+        @media (max-width: 640px) {
+          .page-header {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 1rem;
+          }
+          .header-actions {
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+          }
+          .btn-purge-header,
+          .btn-secondary,
+          .btn-primary {
+            justify-content: center;
+            width: 100%;
+          }
+        }
         .page-title {
           font-size: 1.4rem;
           font-weight: 800;
@@ -776,6 +794,12 @@ export default function SystemSettingsPage() {
           flex-direction: column;
           gap: 1.25rem;
         }
+        @media (max-width: 640px) {
+          .panel {
+            padding: 1rem;
+            border-radius: 12px;
+          }
+        }
         .panel.full-width {
           grid-column: 1 / -1;
         }
@@ -846,6 +870,17 @@ export default function SystemSettingsPage() {
           justify-content: space-between;
           gap: 1rem;
           flex-wrap: wrap;
+        }
+        @media (max-width: 640px) {
+          .cache-flush-card {
+            flex-direction: column;
+            align-items: stretch;
+            padding: 1rem;
+          }
+          .btn-purge-action {
+            width: 100%;
+            justify-content: center;
+          }
         }
         .cache-flush-left {
           display: flex;

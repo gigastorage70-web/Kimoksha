@@ -355,6 +355,23 @@ export default function LeadsCrmPage() {
           flex-direction: column;
           gap: 1.25rem;
         }
+        @media (max-width: 640px) {
+          .crm-container {
+            padding: 0.85rem 0.75rem;
+            gap: 1rem;
+          }
+          .crm-toolbar {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.75rem;
+          }
+          .search-box {
+            max-width: 100%;
+          }
+          .btn-export-csv {
+            justify-content: center;
+          }
+        }
         .crm-toolbar {
           display: flex;
           align-items: center;
@@ -583,6 +600,14 @@ export default function LeadsCrmPage() {
           display: flex;
           flex-direction: column;
           overflow-y: auto;
+        }
+        @media (max-width: 640px) {
+          .drawer-panel {
+            width: 100%;
+          }
+          .drawer-header {
+            padding: 1rem;
+          }
         }
         .drawer-header {
           padding: 1.5rem;

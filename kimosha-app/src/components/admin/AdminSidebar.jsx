@@ -17,7 +17,9 @@ import {
   Globe,
   LogOut,
   Radio,
+  X,
 } from 'lucide-react';
+import { useAdminTheme } from '@/context/AdminThemeContext';
 
 const OPERATIONS_NAV = [
   {
@@ -88,9 +90,13 @@ const SYSTEM_NAV = [
   },
 ];
 
-export default function AdminSidebar({ operator, isMobileOpen, setIsMobileOpen }) {
+export default function AdminSidebar({ operator, isMobileOpen: propIsMobileOpen, setIsMobileOpen: propSetIsMobileOpen }) {
   const pathname = usePathname();
   const router = useRouter();
+  const { isMobileOpen: ctxMobileOpen, setIsMobileOpen: ctxSetMobileOpen } = useAdminTheme();
+
+  const isMobileOpen = propIsMobileOpen !== undefined ? propIsMobileOpen : ctxMobileOpen;
+  const setIsMobileOpen = propSetIsMobileOpen || ctxSetMobileOpen;
 
   const handleSignOut = async () => {
     try {
@@ -115,16 +121,26 @@ export default function AdminSidebar({ operator, isMobileOpen, setIsMobileOpen }
       <aside className={`admin-sidebar ${isMobileOpen ? 'open' : ''}`}>
         {/* Brand Header */}
         <div className="sidebar-header">
-          <Link href="/admin/dashboard" className="sidebar-brand">
-            <Image
-              src="/kimoksha-logo-clean.png"
-              alt="Kimoksha Telecom"
-              width={140}
-              height={32}
-              style={{ objectFit: 'contain', width: 'auto', height: '28px' }}
-              priority
-            />
-          </Link>
+          <div className="sidebar-header-top">
+            <Link href="/admin/dashboard" className="sidebar-brand" onClick={() => setIsMobileOpen(false)}>
+              <Image
+                src="/kimoksha-logo-clean.png"
+                alt="Kimoksha Telecom"
+                width={140}
+                height={32}
+                style={{ objectFit: 'contain', width: 'auto', height: '28px' }}
+                priority
+              />
+            </Link>
+            <button
+              type="button"
+              className="btn-close-sidebar"
+              onClick={() => setIsMobileOpen(false)}
+              aria-label="Close Navigation"
+            >
+              <X size={18} />
+            </button>
+          </div>
           <div className="telecom-console-tag">
             <Radio size={10} className="tag-ping" />
             <span>NOC CONSOLE</span>

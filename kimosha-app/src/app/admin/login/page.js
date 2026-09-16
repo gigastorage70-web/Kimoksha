@@ -170,6 +170,15 @@ export default function AdminLoginPage() {
           position: relative;
           z-index: 10;
         }
+        @media (max-width: 480px) {
+          .login-card-box {
+            padding: 1.75rem 1.25rem;
+            border-radius: 16px;
+          }
+          .login-title {
+            font-size: 1.2rem;
+          }
+        }
         .login-header {
           text-align: center;
           margin-bottom: 2rem;

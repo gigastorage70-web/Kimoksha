@@ -390,6 +390,19 @@ export default function UsersPage() {
           gap: 1rem;
           flex-wrap: wrap;
         }
+        @media (max-width: 640px) {
+          .controls-bar {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.75rem;
+          }
+          .search-wrap {
+            max-width: 100%;
+          }
+          .btn-add {
+            justify-content: center;
+          }
+        }
         .search-wrap {
           display: flex;
           align-items: center;
