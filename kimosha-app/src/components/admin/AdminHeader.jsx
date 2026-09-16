@@ -1,6 +1,6 @@
 'use client';
 
-import { Menu, Activity, Shield, Sun, Moon, Contrast } from 'lucide-react';
+import { Menu, Activity, Shield, Sun, Moon } from 'lucide-react';
 import { useAdminTheme } from '@/context/AdminThemeContext';
 
 export default function AdminHeader({ title, subtitle, setIsMobileOpen }) {
@@ -25,7 +25,7 @@ export default function AdminHeader({ title, subtitle, setIsMobileOpen }) {
       </div>
 
       <div className="header-right">
-        {/* 3-way Theme Selector */}
+        {/* 2-way Theme Selector (Light / Dark) */}
         <div className="theme-toggle-pill" role="group" aria-label="Theme selector">
           <button
             type="button"
@@ -44,15 +44,6 @@ export default function AdminHeader({ title, subtitle, setIsMobileOpen }) {
           >
             <Moon size={13} />
             <span className="theme-name">Dark</span>
-          </button>
-          <button
-            type="button"
-            className={`theme-btn ${theme === 'medium-minimal' ? 'active' : ''}`}
-            onClick={() => setTheme('medium-minimal')}
-            title="Switch to Medium Minimal Theme"
-          >
-            <Contrast size={13} />
-            <span className="theme-name">Minimal</span>
           </button>
         </div>
 

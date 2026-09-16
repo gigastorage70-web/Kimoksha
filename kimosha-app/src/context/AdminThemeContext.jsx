@@ -16,9 +16,12 @@ export function AdminThemeProvider({ children }) {
   useEffect(() => {
     // 1. Read localStorage for instant zero-flicker render
     const local = localStorage.getItem('kimoksha_admin_theme');
-    if (local && ['light', 'dark', 'medium-minimal'].includes(local)) {
+    if (local && ['light', 'dark'].includes(local)) {
       setThemeState(local);
       document.documentElement.setAttribute('data-admin-theme', local);
+    } else {
+      setThemeState('dark');
+      document.documentElement.setAttribute('data-admin-theme', 'dark');
     }
 
     // 2. Fetch official setting from backend
@@ -29,7 +32,7 @@ export function AdminThemeProvider({ children }) {
           const data = await res.json();
           if (data.success && data.settings?.admin_theme) {
             const serverTheme = data.settings.admin_theme;
-            if (['light', 'dark', 'medium-minimal'].includes(serverTheme)) {
+            if (['light', 'dark'].includes(serverTheme)) {
               setThemeState(serverTheme);
               localStorage.setItem('kimoksha_admin_theme', serverTheme);
               document.documentElement.setAttribute('data-admin-theme', serverTheme);
@@ -45,7 +48,7 @@ export function AdminThemeProvider({ children }) {
   }, []);
 
   const setTheme = async (newTheme) => {
-    if (!['light', 'dark', 'medium-minimal'].includes(newTheme)) return;
+    if (!['light', 'dark'].includes(newTheme)) return;
 
     // Immediate UI update
     setThemeState(newTheme);

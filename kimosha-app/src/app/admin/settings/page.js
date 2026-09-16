@@ -19,17 +19,18 @@ import {
   Lock,
   Sun,
   Moon,
-  Contrast,
   Check,
   Palette,
+  Trash2,
+  Zap,
 } from 'lucide-react';
 
 const THEMES = [
   {
     id: 'light',
     name: '1. Light Theme',
-    badge: 'Standard Light',
-    desc: 'Soft white canvas with dark high-contrast typography, crisp cards, and signature Kimoksha Orange accents.',
+    badge: 'Clean Day Mode',
+    desc: 'Crisp white canvas with dark high-contrast typography, clean cards, and signature Kimoksha Orange accents.',
     icon: Sun,
     bgPreview: '#f8fafc',
     cardPreview: '#ffffff',
@@ -44,16 +45,6 @@ const THEMES = [
     bgPreview: '#070c16',
     cardPreview: '#0d1522',
     textPreview: '#f8fafc',
-  },
-  {
-    id: 'medium-minimal',
-    name: '3. Medium Minimal',
-    badge: 'Clean Minimalist',
-    desc: 'Medium neutral grey background (#eef2f6) with clean white cards, charcoal text, and subtle borders.',
-    icon: Contrast,
-    bgPreview: '#eef2f6',
-    cardPreview: '#ffffff',
-    textPreview: '#1e293b',
   },
 ];
 
@@ -143,6 +134,41 @@ export default function SystemSettingsPage() {
     }
   };
 
+  const [isPurgingCache, setIsPurgingCache] = useState(false);
+  const [cacheMsg, setCacheMsg] = useState('');
+
+  const handlePurgeCache = async () => {
+    setIsPurgingCache(true);
+    setCacheMsg('');
+    try {
+      // 1. Purge Next.js server route cache
+      const res = await fetch('/api/admin/system/clear-cache', { method: 'POST' });
+      const data = await res.json();
+
+      // 2. Clear browser client memory & cache storage
+      if (typeof window !== 'undefined') {
+        sessionStorage.clear();
+        if ('caches' in window) {
+          const cacheNames = await caches.keys();
+          await Promise.all(cacheNames.map((name) => caches.delete(name)));
+        }
+      }
+
+      if (data.success) {
+        setCacheMsg(data.message);
+        setTimeout(() => setCacheMsg(''), 6000);
+      } else {
+        setCacheMsg('Local client cache cleared successfully.');
+        setTimeout(() => setCacheMsg(''), 4000);
+      }
+    } catch (e) {
+      setCacheMsg('Client memory cleared.');
+      setTimeout(() => setCacheMsg(''), 4000);
+    } finally {
+      setIsPurgingCache(false);
+    }
+  };
+
   const handleSelectTheme = (newTheme) => {
     setTheme(newTheme);
     setSettings((prev) => ({ ...prev, admin_theme: newTheme }));
@@ -161,11 +187,21 @@ export default function SystemSettingsPage() {
           <div>
             <h1 className="page-title">Operations & Console Settings</h1>
             <p className="page-subtitle">
-              Configure the 3-state console theme engine, sales notification routing, and carrier infrastructure telemetry.
+              Configure the console theme engine, sales notification routing, and carrier infrastructure telemetry.
             </p>
           </div>
 
           <div className="header-actions">
+            <button
+              type="button"
+              onClick={handlePurgeCache}
+              className="btn-purge-header"
+              disabled={isPurgingCache}
+              title="Flush all frontend and backend cache"
+            >
+              <Trash2 size={15} />
+              <span>{isPurgingCache ? 'Flushing...' : 'Flush Global Cache'}</span>
+            </button>
             <button
               type="button"
               onClick={fetchSettings}
@@ -188,6 +224,12 @@ export default function SystemSettingsPage() {
         </div>
 
         {/* Feedback Toasts */}
+        {cacheMsg && (
+          <div className="alert-toast success">
+            <CheckCircle2 size={18} />
+            <span>{cacheMsg}</span>
+          </div>
+        )}
         {saveSuccess && (
           <div className="alert-toast success">
             <CheckCircle2 size={18} />
@@ -284,6 +326,30 @@ export default function SystemSettingsPage() {
                     </div>
                   );
                 })}
+              </div>
+
+              {/* Cache Flush Utility Inside Theme Panel */}
+              <div className="cache-flush-card">
+                <div className="cache-flush-left">
+                  <div className="cache-icon-box">
+                    <Zap size={18} />
+                  </div>
+                  <div>
+                    <div className="cache-card-title">Instant Frontend & Backend Cache Flush</div>
+                    <div className="cache-card-desc">
+                      Purges Next.js server route caches and wipes local browser client storage so all live telemetry updates immediately.
+                    </div>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={handlePurgeCache}
+                  disabled={isPurgingCache}
+                  className="btn-purge-action"
+                >
+                  <Trash2 size={14} />
+                  <span>{isPurgingCache ? 'Flushing Cache...' : 'Flush Global Cache Now'}</span>
+                </button>
               </div>
             </div>
 
@@ -607,6 +673,24 @@ export default function SystemSettingsPage() {
           align-items: center;
           gap: 0.75rem;
         }
+        .btn-purge-header {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: rgba(239, 68, 68, 0.1);
+          border: 1px solid rgba(239, 68, 68, 0.3);
+          color: #ef4444;
+          padding: 0.55rem 0.95rem;
+          border-radius: 8px;
+          font-size: 0.825rem;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+        .btn-purge-header:hover:not(:disabled) {
+          background: #ef4444;
+          color: #ffffff;
+        }
         .btn-secondary {
           display: inline-flex;
           align-items: center;
@@ -748,8 +832,63 @@ export default function SystemSettingsPage() {
         }
         @media (min-width: 768px) {
           .theme-cards-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
           }
+        }
+        .cache-flush-card {
+          margin-top: 1.25rem;
+          background: var(--admin-card-inner);
+          border: 1px solid var(--admin-border);
+          border-radius: 10px;
+          padding: 1rem 1.25rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+        .cache-flush-left {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+        }
+        .cache-icon-box {
+          width: 36px;
+          height: 36px;
+          border-radius: 8px;
+          background: var(--admin-accent-subtle);
+          color: var(--admin-accent);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .cache-card-title {
+          font-size: 0.875rem;
+          font-weight: 800;
+          color: var(--admin-text);
+        }
+        .cache-card-desc {
+          font-size: 0.75rem;
+          color: var(--admin-text-muted);
+          margin-top: 2px;
+        }
+        .btn-purge-action {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: var(--admin-accent);
+          color: #ffffff;
+          border: none;
+          padding: 0.6rem 1.25rem;
+          border-radius: 8px;
+          font-size: 0.8rem;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+        .btn-purge-action:hover:not(:disabled) {
+          background: var(--admin-accent-hover);
         }
         .theme-card {
           background: var(--admin-card-inner);

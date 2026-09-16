@@ -56,30 +56,6 @@
   --admin-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.06);
 }
 
-[data-admin-theme='medium-minimal'] {
-  --admin-bg: #eef2f6;
-  --admin-surface: #ffffff;
-  --admin-surface-header: rgba(255, 255, 255, 0.92);
-  --admin-card: #ffffff;
-  --admin-card-solid: #ffffff;
-  --admin-card-inner: #f8fafc;
-  --admin-card-hover: #f1f5f9;
-  --admin-text: #1e293b;
-  --admin-text-secondary: #334155;
-  --admin-text-muted: #64748b;
-  --admin-text-dim: #94a3b8;
-  --admin-border: #cbd5e1;
-  --admin-border-subtle: #e2e8f0;
-  --admin-input-bg: #ffffff;
-  --admin-input-border: #94a3b8;
-  --admin-accent: #f26522;
-  --admin-accent-hover: #e05514;
-  --admin-accent-subtle: rgba(242, 101, 34, 0.1);
-  --admin-accent-border: rgba(242, 101, 34, 0.35);
-  --admin-table-hover: #f1f5f9;
-  --admin-shadow: 0 2px 12px -2px rgba(15, 23, 42, 0.08);
-}
-
 /* Reset & Main Layout */
 .admin-theme-wrapper {
   min-height: 100vh;
@@ -185,9 +161,71 @@
   flex: 1;
   padding: 0.75rem;
   overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
 }
+
+/* Custom Sleek Scrollbar for Sidebar */
+.sidebar-nav::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background: var(--admin-accent);
+}
+
+[data-admin-theme='light'] .sidebar-nav {
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+[data-admin-theme='light'] .sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* Global Sleek Scrollbar for Admin Area */
+.admin-shell-container * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
+
+.admin-shell-container *::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.admin-shell-container *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-shell-container *::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+}
+
+.admin-shell-container *::-webkit-scrollbar-thumb:hover {
+  background: var(--admin-accent);
+}
+
+[data-admin-theme='light'] * {
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+[data-admin-theme='light'] *::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+}
+
 
 .nav-section-title {
   font-size: 10px;
