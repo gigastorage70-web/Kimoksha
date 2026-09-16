@@ -16,47 +16,36 @@ import {
   ArrowUpRight,
 } from 'lucide-react';
 
-const FORMS_METRICS = [
-  {
-    id: 'form-connect',
-    name: "Let's Connect / Wholesale Lead",
-    endpoint: '/api/public/inquiries',
-    submissions_count: 28,
-    status: 'ACTIVE',
-    last_submission: '12 mins ago',
-  },
-  {
-    id: 'form-rates',
-    name: 'Wholesale Rate Deck Gated Request',
-    endpoint: '/api/public/rate-decks/download',
-    submissions_count: 42,
-    status: 'ACTIVE',
-    last_submission: '1 hour ago',
-  },
-  {
-    id: 'form-interconnect',
-    name: 'Carrier Direct Interconnect Proposal',
-    endpoint: '/api/public/interconnect',
-    submissions_count: 9,
-    status: 'ACTIVE',
-    last_submission: 'Yesterday',
-  },
-];
-
 export default function FormsPage() {
   const [submissions, setSubmissions] = useState([]);
+  const [rateDeckDownloads, setRateDeckDownloads] = useState(0);
   const [loading, setLoading] = useState(true);
   const [selectedForm, setSelectedForm] = useState('ALL');
   const [inspectItem, setInspectItem] = useState(null);
 
-  const fetchSubmissions = async () => {
+  const fetchSubmissionsAndStats = async () => {
     try {
       setLoading(true);
-      const res = await fetch('/api/admin/leads');
-      if (res.ok) {
-        const data = await res.json();
+      const [leadsRes, ratesRes] = await Promise.all([
+        fetch('/api/admin/leads'),
+        fetch('/api/admin/rate-decks'),
+      ]);
+
+      if (leadsRes.ok) {
+        const data = await leadsRes.json();
         if (data.success) {
           setSubmissions(data.leads || []);
+        }
+      }
+
+      if (ratesRes.ok) {
+        const data = await ratesRes.json();
+        if (data.success && data.rateDecks) {
+          const totalDownloads = data.rateDecks.reduce(
+            (acc, d) => acc + (d.download_count || 0),
+            0
+          );
+          setRateDeckDownloads(totalDownloads);
         }
       }
     } catch (e) {
@@ -67,8 +56,53 @@ export default function FormsPage() {
   };
 
   useEffect(() => {
-    fetchSubmissions();
+    fetchSubmissionsAndStats();
   }, []);
+
+  const formatLastReceived = (dateStr) => {
+    if (!dateStr) return 'No submissions yet';
+    const diffMs = Date.now() - new Date(dateStr).getTime();
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMins / 60);
+    const diffDays = Math.floor(diffHours / 24);
+
+    if (diffMins < 60) return diffMins <= 1 ? 'Just now' : `${diffMins} mins ago`;
+    if (diffHours < 24) return `${diffHours} hours ago`;
+    if (diffDays === 1) return 'Yesterday';
+    return `${diffDays} days ago`;
+  };
+
+  const interconnectCount = submissions.filter((s) =>
+    (s.target_service || '').toLowerCase().includes('voice') ||
+    (s.target_service || '').toLowerCase().includes('interconnect')
+  ).length;
+
+  const dynamicForms = [
+    {
+      id: 'form-connect',
+      name: "Let's Connect / Wholesale Lead",
+      endpoint: '/api/public/inquiries',
+      submissions_count: submissions.length,
+      status: 'ACTIVE',
+      last_submission: formatLastReceived(submissions[0]?.created_at),
+    },
+    {
+      id: 'form-rates',
+      name: 'Wholesale Rate Deck Gated Request',
+      endpoint: '/api/public/rate-decks/download',
+      submissions_count: rateDeckDownloads,
+      status: 'ACTIVE',
+      last_submission: rateDeckDownloads > 0 ? 'Live Gated Link' : 'No downloads yet',
+    },
+    {
+      id: 'form-interconnect',
+      name: 'Carrier Direct Interconnect Proposal',
+      endpoint: '/api/public/interconnect',
+      submissions_count: interconnectCount,
+      status: 'ACTIVE',
+      last_submission: submissions[0]?.created_at ? formatLastReceived(submissions[0]?.created_at) : 'No proposals yet',
+    },
+  ];
 
   return (
     <>
@@ -80,7 +114,7 @@ export default function FormsPage() {
       <div className="forms-page">
         {/* Active Ingestion Endpoints Cards */}
         <div className="forms-grid">
-          {FORMS_METRICS.map((f) => (
+          {dynamicForms.map((f) => (
             <div key={f.id} className="form-card">
               <div className="form-card-top">
                 <span className="form-badge">INGESTION ENDPOINT</span>
